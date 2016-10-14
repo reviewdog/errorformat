@@ -2,8 +2,79 @@ package errorformat
 
 import (
 	"reflect"
+	"strings"
 	"testing"
 )
+
+func TestScanner_Scan(t *testing.T) {
+	defer func(save func(string) bool) { fileexists = save }(fileexists)
+	fileexists = func(string) bool { return true }
+
+	result := `
+golint.new.go:3:5: exported var V should have comment or be unexported
+golint.new.go:5:5: exported var NewError1 should have comment or be unexported
+golint.new.go:7:1: comment on exported function F should be of the form "F ..."
+golint.new.go:11:1: comment on exported function F2 should be of the form "F2 ..."
+hoge
+`
+	efm, err := NewErrorformat([]string{`%f:%l:%c: %m`, `%-G%.%#`})
+	if err != nil {
+		t.Fatal(err)
+	}
+	s := efm.NewScanner(strings.NewReader(result))
+	cont := true
+	for cont {
+		b, qfline, err := s.Scan()
+		cont = b
+		if err != nil {
+			t.Error(err)
+		}
+		if qfline != nil {
+			t.Errorf("%#v", qfline)
+		}
+	}
+}
+
+func TestScanner_Scan_multi(t *testing.T) {
+	defer func(save func(string) bool) { fileexists = save }(fileexists)
+	fileexists = func(string) bool { return true }
+	result := `
+==============================================================
+FAIL: testGetTypeIdCachesResult (dbfacadeTest.DjsDBFacadeTest)
+--------------------------------------------------------------
+Traceback (most recent call last):
+  File "unittests/dbfacadeTest.py", line 89, in testFoo
+    self.assertEquals(34, dtid)
+  File "/usr/lib/python2.2/unittest.py", line 286, in
+ failUnlessEqual
+    raise self.failureException, \
+AssertionError: 34 != 33
+
+--------------------------------------------------------------
+Ran 27 tests in 0.063s
+`
+	efms := []string{
+		`%C %.%#`,
+		`%A  File "%f", line %l%.%#`,
+		`%Z%\b%m`,
+	}
+	efm, err := NewErrorformat(efms)
+	if err != nil {
+		t.Fatal(err)
+	}
+	s := efm.NewScanner(strings.NewReader(result))
+	cont := true
+	for cont {
+		b, qfline, err := s.Scan()
+		cont = b
+		if err != nil {
+			t.Error(err)
+		}
+		if qfline != nil {
+			t.Errorf("%#v", qfline)
+		}
+	}
+}
 
 type matchCase struct {
 	in   string
