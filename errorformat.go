@@ -99,6 +99,34 @@ type Entry struct {
 	Lines []string
 }
 
+// Types makes a nice message out of the error character and the error number:
+//
+// qf_types in src/quickfix.c
+func (e *Entry) Types() string {
+	s := ""
+	switch e.Type {
+	case 'e', 'E':
+		s = "error"
+	case 0:
+		if e.Nr > 0 {
+			s = "error"
+		}
+	case 'w', 'W':
+		s = "warning"
+	case 'i', 'I':
+		s = "info"
+	default:
+		s = string(e.Type)
+	}
+	if e.Nr > 0 {
+		if s != "" {
+			s += " "
+		}
+		s += strconv.Itoa(e.Nr)
+	}
+	return s
+}
+
 // Scan advances the Scanner to the next entry matched with errorformat, which
 // will then be available through the Entry method. It returns false
 // when the scan stops by reaching the end of the input.

@@ -62,6 +62,27 @@ Ran 27 tests in 0.063s
 	}
 }
 
+func TestEntry_Types(t *testing.T) {
+	tests := []struct {
+		t    rune
+		nr   int
+		want string
+	}{
+		{t: 'e', want: "error"},
+		{t: 'E', want: "error"},
+		{t: 'e', nr: 14, want: "error 14"},
+		{t: 'w', nr: 14, want: "warning 14"},
+		{t: 'i', want: "info"},
+		{nr: 14, want: "error 14"},
+	}
+	for _, tt := range tests {
+		e := &Entry{Type: tt.t, Nr: tt.nr}
+		if got := e.Types(); got != tt.want {
+			t.Errorf("(%v, %v): got %q, want %q", e.Type, e.Nr, got, tt.want)
+		}
+	}
+}
+
 type matchCase struct {
 	in   string
 	want *Match
