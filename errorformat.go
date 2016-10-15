@@ -87,14 +87,11 @@ type qfline struct {
 func (s *Scanner) Scan() (bool, *qfline, error) {
 	for s.source.Scan() {
 		line := s.source.Text()
-		status, fields, err := s.parseLine(line)
+		status, fields := s.parseLine(line)
 		switch status {
 		case qffail:
 			continue
-			_ = err
-			// return true, nil, err
 		case qfendmultiline:
-			fmt.Printf("%#v\n", s.qi.qflist[len(s.qi.qflist)-1])
 			return true, s.qi.qflist[len(s.qi.qflist)-1], nil
 		case qfignoreline:
 			continue
@@ -126,11 +123,11 @@ const (
 	qfok
 )
 
-func (s *Scanner) parseLine(line string) (qfstatus, *qffields, error) {
+func (s *Scanner) parseLine(line string) (qfstatus, *qffields) {
 	return s.parseLineInternal(line, 0)
 }
 
-func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields, error) {
+func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 	fields := &qffields{valid: true, enr: -1}
 	tail := ""
 	var idx byte
@@ -203,7 +200,7 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields, er
 		if !nomatch {
 			if idx == 'D' {
 				if fields.namebuf == "" {
-					return qffail, nil, errors.New("E379: Missing or empty directory name")
+					return qffail, nil
 				}
 				s.qi.directory = fields.namebuf
 				s.qi.dirstack = append(s.qi.dirstack, s.qi.directory)
@@ -229,10 +226,9 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields, er
 			if !s.qi.multiignore {
 				qfprev := s.qi.qflist[len(s.qi.qflist)-1]
 				if qfprev == nil {
-					return qffail, nil, errors.New("prev qfline doesn't exist")
+					return qffail, nil
 				}
 				if fields.errmsg != "" && !s.qi.multiignore {
-					fmt.Println("CZ!", line)
 					if qfprev.text == "" {
 						qfprev.text = fields.errmsg
 					} else {
@@ -256,9 +252,9 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields, er
 			if idx == 'Z' {
 				s.qi.multiline = false
 				s.qi.multiignore = false
-				return qfendmultiline, fields, nil
+				return qfendmultiline, fields
 			}
-			return qfignoreline, nil, nil
+			return qfignoreline, nil
 		} else if strchar("OPQ", idx) {
 			// global file names
 			fields.valid = false
@@ -281,10 +277,10 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields, er
 			if s.qi.multiline { // also exclude continuation lines
 				s.qi.multiignore = true
 			}
-			return qfignoreline, nil, nil
+			return qfignoreline, nil
 		}
 	}
-	return qfok, fields, nil
+	return qfok, fields
 }
 
 // Efm represents a errorformat.
