@@ -22,16 +22,9 @@ hoge
 		t.Fatal(err)
 	}
 	s := efm.NewScanner(strings.NewReader(result))
-	cont := true
-	for cont {
-		b, qfline, err := s.Scan()
-		cont = b
-		if err != nil {
-			t.Error(err)
-		}
-		if qfline != nil {
-			t.Errorf("%#v", qfline)
-		}
+	for s.Scan() {
+		e := s.Entry()
+		t.Errorf("%#v", e)
 	}
 }
 
@@ -63,16 +56,9 @@ Ran 27 tests in 0.063s
 		t.Fatal(err)
 	}
 	s := efm.NewScanner(strings.NewReader(result))
-	cont := true
-	for cont {
-		b, qfline, err := s.Scan()
-		cont = b
-		if err != nil {
-			t.Error(err)
-		}
-		if qfline != nil {
-			t.Errorf("%#v", qfline)
-		}
+	for s.Scan() {
+		e := s.Entry()
+		t.Errorf("%#v", e)
 	}
 }
 
