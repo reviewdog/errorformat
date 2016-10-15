@@ -10,28 +10,34 @@ func TestScanner_Scan(t *testing.T) {
 	defer func(save func(string) bool) { fileexists = save }(fileexists)
 	fileexists = func(string) bool { return true }
 
-	result := `
+	tests := []struct {
+		efm  []string
+		in   string
+		want []string
+	}{
+		{
+			efm: []string{`%f:%l:%c: %m`, `%-G%.%#`},
+			in: `
 golint.new.go:3:5: exported var V should have comment or be unexported
 golint.new.go:5:5: exported var NewError1 should have comment or be unexported
 golint.new.go:7:1: comment on exported function F should be of the form "F ..."
 golint.new.go:11:1: comment on exported function F2 should be of the form "F2 ..."
 hoge
-`
-	efm, err := NewErrorformat([]string{`%f:%l:%c: %m`, `%-G%.%#`})
-	if err != nil {
-		t.Fatal(err)
-	}
-	s := efm.NewScanner(strings.NewReader(result))
-	for s.Scan() {
-		e := s.Entry()
-		t.Errorf("%#v", e)
-	}
-}
-
-func TestScanner_Scan_multi(t *testing.T) {
-	defer func(save func(string) bool) { fileexists = save }(fileexists)
-	fileexists = func(string) bool { return true }
-	result := `
+		`,
+			want: []string{
+				`golint.new.go|3 col 5| exported var V should have comment or be unexported`,
+				`golint.new.go|5 col 5| exported var NewError1 should have comment or be unexported`,
+				`golint.new.go|7 col 1| comment on exported function F should be of the form "F ..."`,
+				`golint.new.go|11 col 1| comment on exported function F2 should be of the form "F2 ..."`,
+			},
+		},
+		{
+			efm: []string{
+				`%C %.%#`,
+				`%A  File "%f", line %l%.%#`,
+				`%Z%\b%m`,
+			},
+			in: `
 ==============================================================
 FAIL: testGetTypeIdCachesResult (dbfacadeTest.DjsDBFacadeTest)
 --------------------------------------------------------------
@@ -44,21 +50,184 @@ Traceback (most recent call last):
 AssertionError: 34 != 33
 
 --------------------------------------------------------------
-Ran 27 tests in 0.063s
-`
-	efms := []string{
-		`%C %.%#`,
-		`%A  File "%f", line %l%.%#`,
-		`%Z%\b%m`,
+Ran 27 tests in 0.063s`,
+			want: []string{
+				`||`,
+				`|| ==============================================================`,
+				`|| FAIL: testGetTypeIdCachesResult (dbfacadeTest.DjsDBFacadeTest)`,
+				`|| --------------------------------------------------------------`,
+				`|| Traceback (most recent call last):`,
+				`unittests/dbfacadeTest.py|89| AssertionError: 34 != 33`,
+				`||`,
+				`|| --------------------------------------------------------------`,
+				`|| Ran 27 tests in 0.063s`,
+			},
+		},
+		{
+			efm: []string{
+				`%A[%f]`,
+				`%C%trror`,
+				`%C%l\,%c`,
+				`%Z%m`,
+			},
+			in: `[~/.vimrc]
+Error
+12,5`,
+			want: []string{"~/.vimrc| error| 12,5"},
+		},
+		{
+			efm: []string{
+				`%A[%f]`,
+				`%C%tarning %n`,
+				`%C%l\,%c`,
+				`%Z%m`,
+			},
+			in: `[~/.vimrc]
+warning 14
+12,5`,
+			want: []string{"~/.vimrc| warning 14| 12,5"},
+		},
+		{
+			efm: []string{
+				`$%m`,
+				`%-G%.%#`,
+			},
+			in: `$hoge
+$foo
+piyo`,
+			want: []string{"|| hoge", "|| foo"},
+		},
+		{
+			efm: []string{`(%l,%c): %m`},
+			in: `(1,2): abc
+(13,27): xyz
+hoge`,
+			want: []string{"|1 col 2| abc", "|13 col 27| xyz", "|| hoge"},
+		},
+		{
+			efm: []string{`%[a-i]%m`},
+			in: `hoge
+foo
+piyo`,
+			want: []string{"|| oge", "|| oo", "|| piyo"},
+		},
+		{efm: []string{`{%l} %m`}, in: `{14} msg`, want: []string{"|14| msg"}},
+		{efm: []string{`[%l] %m`}, in: `[14] msg`, want: []string{"|14| msg"}},
+		{
+			efm: []string{`%EError %n`, `%Cline %l`, `%Ccolumn %c`, `%Z%m`},
+			in: `Error 275
+line 42
+column 3
+' ' expected after '--'`,
+			want: []string{"|42 col 3 error 275| ' ' expected after '--'"},
+		},
+		{ // :h errorformat-separate-filename
+			efm: []string{`%+P[%f]`, `(%l,%c)%*[ ]%t%*[^:]: %m`, `%-Q`},
+			in: `[a1.tt]
+(1,17)  error: ';' missing
+(21,2)  warning: variable 'z' not defined
+(67,3)  error: end of file found before string ended
+
+[a2.tt]
+
+[a3.tt]
+NEW compiler v1.1
+(2,2)   warning: variable 'x' not defined
+(67,3)  warning: 's' already defined
+`,
+			want: []string{
+				"a1.tt|| [a1.tt]",
+				"a1.tt|1 col 17 error| ';' missing",
+				"a1.tt|21 col 2 warning| variable 'z' not defined",
+				"a1.tt|67 col 3 error| end of file found before string ended",
+				"a2.tt|| [a2.tt]",
+				"a3.tt|| [a3.tt]",
+				"a3.tt|| NEW compiler v1.1",
+				"a3.tt|2 col 2 warning| variable 'x' not defined",
+				"a3.tt|67 col 3 warning| 's' already defined",
+			},
+		},
+		{
+			efm: []string{`%-P[%f]`, `(%l,%c)%*[ ]%t%*[^:]: %m`, `%-Q`, `%-G%.%#`},
+			in: `[a1.tt]
+(1,17)  error: ';' missing
+(21,2)  warning: variable 'z' not defined
+(67,3)  error: end of file found before string ended
+
+[a2.tt]
+
+[a3.tt]
+NEW compiler v1.1
+(2,2)   warning: variable 'x' not defined
+(67,3)  warning: 's' already defined
+`,
+			want: []string{
+				"a1.tt|1 col 17 error| ';' missing",
+				"a1.tt|21 col 2 warning| variable 'z' not defined",
+				"a1.tt|67 col 3 error| end of file found before string ended",
+				"a3.tt|2 col 2 warning| variable 'x' not defined",
+				"a3.tt|67 col 3 warning| 's' already defined",
+			},
+		},
+		{ // grep format. (ag, pt, etc...)
+			efm: []string{`%l:%m`, `%-P%f`, `%-Q`},
+			in: `errorformat.go
+1:// Package errorformat provides 'errorformat' functionality of Vim. :h
+398:// NewEfm converts a 'errorformat' string to regular expression pattern with
+
+README.md
+1:## go-errorformat - vim 'errorformat' implementation in Go
+`,
+			want: []string{
+				"errorformat.go|1| // Package errorformat provides 'errorformat' functionality of Vim. :h",
+				"errorformat.go|398| // NewEfm converts a 'errorformat' string to regular expression pattern with",
+				"README.md|1| ## go-errorformat - vim 'errorformat' implementation in Go",
+			},
+		},
+		{ // sbt
+			efm: []string{
+				`%A[%t%.%+] %f:%l: %*[^:]: %m`,
+				`%A[%t%.%+] %f:%l: %m`,
+				`%Z[%.%+] %p^`,
+				`%C[%.%+] %.%#`,
+				`%-G%.%#`,
+			},
+			in: `
+[error] /path/to/file:14: error: value ++ is not a member of Int
+[error]   val x = 1 ++ 2
+[error]             ^
+[warn] /path/to/file2:14: local val in method watch is never used
+[warn]    val x = 1
+[warn]        ^
+`,
+			want: []string{
+				"/path/to/file|14 col 13 error| value ++ is not a member of Int",
+				"/path/to/file2|14 col 8 warning| local val in method watch is never used",
+			},
+		},
 	}
-	efm, err := NewErrorformat(efms)
-	if err != nil {
-		t.Fatal(err)
-	}
-	s := efm.NewScanner(strings.NewReader(result))
-	for s.Scan() {
-		e := s.Entry()
-		t.Errorf("%#v", e)
+nexttext:
+	for _, tt := range tests {
+		efm, err := NewErrorformat(tt.efm)
+		if err != nil {
+			t.Error(err)
+			continue
+		}
+		s := efm.NewScanner(strings.NewReader(tt.in))
+		i := 0
+		for s.Scan() {
+			got := s.Entry().String()
+			efm := strings.Join(tt.efm, ",")
+			if i >= len(tt.want) {
+				t.Errorf("%v:%d: got %q, want is not specified", efm, i, got)
+				continue nexttext
+			}
+			want := tt.want[i]
+			if got != want {
+				t.Errorf("%v:%d: got %q, want %q", efm, i, got, want)
+			}
+			i++
+		}
 	}
 }
 

@@ -76,6 +76,8 @@ type qffields struct {
 // Entry represents matched entry of errorformat, equivalent to Vim's quickfix
 // list item.
 type Entry struct {
+	// name of a file
+	Filename string
 	// line number
 	Lnum int
 	// column number (first column is 1)
@@ -97,6 +99,30 @@ type Entry struct {
 	// Original error lines (often one line. more than one line for multi-line
 	// errorformat. :h errorformat-multi-line)
 	Lines []string
+}
+
+// || message
+// /path/to/file|| message
+// /path/to/file|1| message
+// /path/to/file|1 col 14| message
+// /path/to/file|1 col 14 error 8| message
+// {filename}|{lnum}[ col {col}][ {type} [{nr}]]| {text}
+func (e *Entry) String() string {
+	s := fmt.Sprintf("%s|", e.Filename)
+	if e.Lnum > 0 {
+		s += strconv.Itoa(e.Lnum)
+	}
+	if e.Col > 0 {
+		s += fmt.Sprintf(" col %d", e.Col)
+	}
+	if t := e.Types(); t != "" {
+		s += " " + t
+	}
+	s += "|"
+	if e.Text != "" {
+		s += " " + e.Text
+	}
+	return s
 }
 
 // Types makes a nice message out of the error character and the error number:
@@ -144,15 +170,19 @@ func (s *Scanner) Scan() bool {
 			continue
 		}
 		qfl := &Entry{
-			Lnum:    fields.lnum,
-			Col:     fields.col,
-			Nr:      fields.enr,
-			Pattern: fields.pattern,
-			Text:    fields.errmsg,
-			Vcol:    fields.useviscol,
-			Valid:   fields.valid,
-			Type:    rune(fields.etype),
-			Lines:   fields.lines,
+			Filename: fields.namebuf,
+			Lnum:     fields.lnum,
+			Col:      fields.col,
+			Nr:       fields.enr,
+			Pattern:  fields.pattern,
+			Text:     fields.errmsg,
+			Vcol:     fields.useviscol,
+			Valid:    fields.valid,
+			Type:     rune(fields.etype),
+			Lines:    fields.lines,
+		}
+		if qfl.Filename == "" && s.qi.currfile != "" {
+			qfl.Filename = s.qi.currfile
 		}
 		s.qi.qflist = append(s.qi.qflist, qfl)
 		if s.qi.multiline {
@@ -291,7 +321,7 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 						qfprev.Text += "\n" + fields.errmsg
 					}
 				}
-				if qfprev.Nr == -1 {
+				if qfprev.Nr < 1 {
 					qfprev.Nr = fields.enr
 				}
 				if fields.etype != 0 && qfprev.Type == 0 {
@@ -404,13 +434,9 @@ func NewEfm(errorformat string) (*Efm, error) {
 				} else {
 					return nil, fmt.Errorf("E375: Unsupported %%%v in format string", string(efmp))
 				}
-			} else if strchar(`%\.^$?+`, efmp) {
-				// regexp magic characters
-				// XXX: ? -> ~[
-				regpat.WriteByte(efmp)
-			} else if efmp == '#' {
-				regpat.WriteRune('*')
-			} else {
+			} else if (efmp == '+' || efmp == '-') &&
+				i < len(errorformat)-1 &&
+				strchar("DXAEWICZGOPQ", errorformat[i+1]) {
 				if efmp == '+' {
 					efm.flagplus = true
 					incefmp()
@@ -418,6 +444,13 @@ func NewEfm(errorformat string) (*Efm, error) {
 					efm.flagminus = true
 					incefmp()
 				}
+				efm.prefix = efmp
+			} else if strchar(`%\.^$?+[`, efmp) {
+				// regexp magic characters
+				regpat.WriteByte(efmp)
+			} else if efmp == '#' {
+				regpat.WriteRune('*')
+			} else {
 				if strchar("DXAEWICZGOPQ", efmp) {
 					efm.prefix = efmp
 				} else {
@@ -425,7 +458,12 @@ func NewEfm(errorformat string) (*Efm, error) {
 				}
 			}
 		} else { // copy normal character
-			regpat.WriteString(regexp.QuoteMeta(string(efmp)))
+			if efmp == '\\' && i < len(errorformat)-1 {
+				incefmp()
+			} else if strchar(`.+*()|[{^$`, efmp) { // escape regexp atoms
+				regpat.WriteRune('\\')
+			}
+			regpat.WriteByte(efmp)
 		}
 	}
 	regpat.WriteRune('$')
