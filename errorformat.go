@@ -55,7 +55,7 @@ type qfinfo struct {
 	multiline   bool
 	multiignore bool
 
-	qflist []*qfline
+	qflist []*Entry
 }
 
 type qffields struct {
@@ -68,23 +68,39 @@ type qffields struct {
 	enr       int
 	etype     byte
 	valid     bool
+
+	lines []string
 }
 
-type qfline struct {
-	lnum    int
-	col     int
-	nr      int
-	pattern string
-	text    string
-	viscol  bool
-	etype   byte
-	valid   bool
+// Entry represents matched entry of errorformat, equivalent to Vim's quickfix
+// list item.
+type Entry struct {
+	// line number
+	Lnum int
+	// column number (first column is 1)
+	Col int
+	// true: "col" is visual column
+	// false: "col" is byte index
+	Vcol bool
+	// error number
+	Nr int
+	// search pattern used to locate the error
+	Pattern string
+	// description of the error
+	Text string
+	// type of the error, 'E', '1', etc.
+	Type rune
+	// true: recognized error message
+	Valid bool
+
+	// Original error lines (often one line. more than one line for multi-line
+	// errorformat. :h errorformat-multi-line)
+	Lines []string
 }
 
 // Scan scans reader and returns next match.
 // It returns nil if next match doesn't exist.
-// func (s *Scanner) Scan() (*Match, error) {
-func (s *Scanner) Scan() (bool, *qfline, error) {
+func (s *Scanner) Scan() (bool, *Entry, error) {
 	for s.source.Scan() {
 		line := s.source.Text()
 		status, fields := s.parseLine(line)
@@ -96,14 +112,16 @@ func (s *Scanner) Scan() (bool, *qfline, error) {
 		case qfignoreline:
 			continue
 		}
-		qfl := &qfline{
-			lnum:    fields.lnum,
-			col:     fields.col,
-			nr:      fields.enr,
-			pattern: fields.pattern,
-			text:    fields.errmsg,
-			viscol:  fields.useviscol,
-			valid:   fields.valid,
+		qfl := &Entry{
+			Lnum:    fields.lnum,
+			Col:     fields.col,
+			Nr:      fields.enr,
+			Pattern: fields.pattern,
+			Text:    fields.errmsg,
+			Vcol:    fields.useviscol,
+			Valid:   fields.valid,
+			Type:    rune(fields.etype),
+			Lines:   fields.lines,
 		}
 		s.qi.qflist = append(s.qi.qflist, qfl)
 		if s.qi.multiline {
@@ -128,7 +146,7 @@ func (s *Scanner) parseLine(line string) (qfstatus, *qffields) {
 }
 
 func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
-	fields := &qffields{valid: true, enr: -1}
+	fields := &qffields{valid: true, enr: -1, lines: []string{line}}
 	tail := ""
 	var idx byte
 	nomatch := false
@@ -225,29 +243,30 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 			// continuation of multi-line msg
 			if !s.qi.multiignore {
 				qfprev := s.qi.qflist[len(s.qi.qflist)-1]
+				qfprev.Lines = append(qfprev.Lines, line)
 				if qfprev == nil {
 					return qffail, nil
 				}
 				if fields.errmsg != "" && !s.qi.multiignore {
-					if qfprev.text == "" {
-						qfprev.text = fields.errmsg
+					if qfprev.Text == "" {
+						qfprev.Text = fields.errmsg
 					} else {
-						qfprev.text += "\n" + fields.errmsg
+						qfprev.Text += "\n" + fields.errmsg
 					}
 				}
-				if qfprev.nr == -1 {
-					qfprev.nr = fields.enr
+				if qfprev.Nr == -1 {
+					qfprev.Nr = fields.enr
 				}
-				if fields.etype != 0 && qfprev.etype == 0 {
-					qfprev.etype = fields.etype
+				if fields.etype != 0 && qfprev.Type == 0 {
+					qfprev.Type = rune(fields.etype)
 				}
-				if qfprev.lnum == 0 {
-					qfprev.lnum = fields.lnum
+				if qfprev.Lnum == 0 {
+					qfprev.Lnum = fields.lnum
 				}
-				if qfprev.col == 0 {
-					qfprev.col = fields.col
+				if qfprev.Col == 0 {
+					qfprev.Col = fields.col
 				}
-				qfprev.viscol = fields.useviscol
+				qfprev.Vcol = fields.useviscol
 			}
 			if idx == 'Z' {
 				s.qi.multiline = false
