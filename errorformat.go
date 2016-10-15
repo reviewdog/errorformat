@@ -8,7 +8,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -537,7 +536,10 @@ func mustAtoI(s string) int {
 	return i
 }
 
+// Vim sees the file exists or not (maybe for quickfix usage), but do not see
+// file exists this implementation. Always return true.
 var fileexists = func(filename string) bool {
-	_, err := os.Stat(filename)
-	return err == nil
+	return true
+	// _, err := os.Stat(filename)
+	// return err == nil
 }
