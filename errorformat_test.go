@@ -293,6 +293,20 @@ func TestNewEfm(t *testing.T) {
 				{in: "golint.new.go:3:5", want: nil},
 			},
 		},
+		{
+			// windows
+			errorformat: `%f:%m`,
+			cases: []matchCase{
+				{
+					in:   "c:/foo/bar.c:msg:hi:14",
+					want: &Match{F: "c:/foo/bar.c", M: "msg:hi:14"},
+				},
+				{
+					in:   "hoge/c:/foo/bar.c:msg:hi:14",
+					want: &Match{F: "hoge/c", M: "/foo/bar.c:msg:hi:14"},
+				},
+			},
+		},
 	}
 	for _, tt := range tests {
 		efm, err := NewEfm(tt.errorformat)
