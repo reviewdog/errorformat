@@ -1,0 +1,7 @@
+errorformat.go
+1:// Package errorformat provides 'errorformat' functionality of Vim. :h
+398:// NewEfm converts a 'errorformat' string to regular expression pattern with
+
+README.md
+1:## errorformat - vim 'errorformat' implementation in Go
+

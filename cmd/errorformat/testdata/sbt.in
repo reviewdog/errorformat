@@ -1,0 +1,18 @@
+[warn] /path/to/F1.scala:203: local val in method f is never used: (warning smaple 3)
+[warn]         val x = 1
+[warn]             ^
+[warn] /path/to/F1.scala:204: local val in method f is never used: (warning smaple 2)
+[warn]   val x = 2
+[warn]       ^
+[error] /path/to/F2.scala:1093: error: value ++ is not a member of Int
+[error]     val x = 1 ++ 2
+[error]               ^
+[warn] /path/to/dir/F3.scala:83: local val in method f is never used
+[warn]         val x = 4
+[warn]             ^
+[error] /path/to/dir/F3.scala:84: error: value ++ is not a member of Int
+[error]         val x = 5 ++ 2
+[error]                   ^
+[warn] /path/to/dir/F3.scala:86: local val in method f is never used
+[warn]         val x = 6
+[warn]                          ^
