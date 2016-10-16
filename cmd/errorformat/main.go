@@ -134,8 +134,3 @@ func (t *TrackingWriter) WriteNL() (int, error) {
 func (t *TrackingWriter) NeedNL() bool {
 	return t.last != '\n'
 }
-
-func fatalf(f string, args ...interface{}) {
-	fmt.Fprintf(os.Stderr, f, args...)
-	os.Exit(1)
-}
