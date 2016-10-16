@@ -120,10 +120,12 @@ func (t *TrackingWriter) Write(p []byte) (n int, err error) {
 
 var nl = []byte{'\n'}
 
+// WriteNL writes NL.
 func (t *TrackingWriter) WriteNL() (int, error) {
 	return t.w.Write(nl)
 }
 
+// NeedNL returns true if the last byte written is not NL.
 func (t *TrackingWriter) NeedNL() bool {
 	return t.last != '\n'
 }
