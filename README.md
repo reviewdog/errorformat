@@ -6,6 +6,10 @@
 [![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GoDoc](https://godoc.org/github.com/haya14busa/errorformat?status.svg)](https://godoc.org/github.com/haya14busa/errorformat)
 
+errorformat is Vim's quickfix [errorformat](http://vimdoc.sourceforge.net/htmldoc/quickfix.html#errorformat) implementation in golang.
+
+It's highly compatible with Vim implementation, but it doesn't support Vim regex.
+
 ### Usage
 
 ```go
@@ -52,10 +56,6 @@ go get -u github.com/haya14busa/errorformat/cmd/errorformat
 ```
 errorformat [flags] [errorformat ...]
 ```
-
-errorformat reads compiler/linter/static analyzer result from STDIN, formats
-them by given 'errorformat' (90% compatible with Vim's errorformat.
-[:h errorformat](http://vimdoc.sourceforge.net/htmldoc/quickfix.html#errorformat)), and outputs formated result to STDOUT.
 
 ```
 $ cat testdata/golint.in
