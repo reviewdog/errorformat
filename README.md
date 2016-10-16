@@ -96,7 +96,7 @@ $ errorformat "%E[%t%.%+] %f:%l: error: %m" "%A[%t%.%+] %f:%l: %m" "%Z[%.%+] %p^
 /path/to/F2.scala|1093 col 15 error| value &#43;&#43; is not a member of Int
 /path/to/dir/F3.scala|83 col 13 warning| local val in method f is never used
 /path/to/dir/F3.scala|84 col 19 error| value &#43;&#43; is not a member of Int
-/path/to/dir/F3.scala|86 col 26 warning| local val in method f is never used
+/path/to/dir/F3.scala|86 col 13 warning| local val in method f is never used
 ```
 
 ## :bird: Author
