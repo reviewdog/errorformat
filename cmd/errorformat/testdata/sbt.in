@@ -15,4 +15,4 @@
 [error]                   ^
 [warn] /path/to/dir/F3.scala:86: local val in method f is never used
 [warn]         val x = 6
-[warn]                          ^
+[warn]             ^

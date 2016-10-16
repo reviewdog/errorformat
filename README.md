@@ -89,7 +89,7 @@ $ cat testdata/sbt.in
 [error]                   ^
 [warn] /path/to/dir/F3.scala:86: local val in method f is never used
 [warn]         val x = 6
-[warn]                          ^
+[warn]             ^
 $ errorformat "%E[%t%.%+] %f:%l: error: %m" "%A[%t%.%+] %f:%l: %m" "%Z[%.%+] %p^" "%C[%.%+] %.%#" "%-G%.%#" < testdata/sbt.in
 /path/to/F1.scala|203 col 13 warning| local val in method f is never used: (warning smaple 3)
 /path/to/F1.scala|204 col 7 warning| local val in method f is never used: (warning smaple 2)
