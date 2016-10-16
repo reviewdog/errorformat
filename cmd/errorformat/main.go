@@ -67,32 +67,37 @@ func main() {
 	flag.Usage = usage
 	flag.Parse()
 	errorformats := flag.Args()
+	if err := run(os.Stdin, os.Stdout, errorformats, *entryFmt); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
 
-	out := newTrackingWriter(os.Stdout)
+func run(r io.Reader, w io.Writer, efms []string, entryFmt string) error {
+	out := newTrackingWriter(w)
 
 	fm := template.FuncMap{
 		"join": strings.Join,
 	}
-	tmpl, err := template.New("main").Funcs(fm).Parse(*entryFmt)
+	tmpl, err := template.New("main").Funcs(fm).Parse(entryFmt)
 	if err != nil {
-		fatalf("%s\n", err)
+		return err
 	}
-	_ = tmpl
 
-	efm, err := errorformat.NewErrorformat(errorformats)
+	efm, err := errorformat.NewErrorformat(efms)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		return err
 	}
-	s := efm.NewScanner(os.Stdin)
+	s := efm.NewScanner(r)
 	for s.Scan() {
 		if err := tmpl.Execute(out, s.Entry()); err != nil {
-			fatalf("%s\n", err)
+			return err
 		}
 		if out.NeedNL() {
 			out.WriteNL()
 		}
 	}
+	return nil
 }
 
 // TrackingWriter tracks the last byte written on every write so
