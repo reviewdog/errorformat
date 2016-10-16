@@ -18,6 +18,8 @@ type Errorformat struct {
 	Efms []*Efm
 }
 
+// Scanner provides a interface for scanning compiler/linter/static analyzer
+// result using Errorformat.
 type Scanner struct {
 	*Errorformat
 	source *bufio.Scanner
@@ -26,6 +28,8 @@ type Scanner struct {
 	entry *Entry
 }
 
+// NewErrorformat compiles given errorformats string (efms) and returns a new
+// Errorformat. It returns error if the errorformat is invalid.
 func NewErrorformat(efms []string) (*Errorformat, error) {
 	errorformat := &Errorformat{Efms: make([]*Efm, 0, len(efms))}
 	for _, efm := range efms {
@@ -38,6 +42,7 @@ func NewErrorformat(efms []string) (*Errorformat, error) {
 	return errorformat, nil
 }
 
+// NewScanner returns a new Scanner to read from r.
 func (errorformat *Errorformat) NewScanner(r io.Reader) *Scanner {
 	return &Scanner{
 		Errorformat: errorformat,
