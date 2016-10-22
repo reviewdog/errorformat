@@ -43,8 +43,24 @@ func init() {
 			`[%tarn] %f: %m`,        // [warn]
 			`%-G%.%#`,
 		},
-		Description: "the Scalastyle SBT plugin",
+		Description: "Scalastyle - SBT plugin",
 		URL:         "http://www.scalastyle.org/sbt.html",
+		Language:    lang,
+	})
+
+	register(&Fmt{
+		Name: "scalastyle",
+		Errorformat: []string{
+			`%trror file=%f message=%m line=%l column=%c`,
+			`%trror file=%f message=%m line=%l`,
+			`%trror file=%f message=%m`,
+			`%tarning file=%f message=%m line=%l column=%c`,
+			`%tarning file=%f message=%m line=%l`,
+			`%tarning file=%f message=%m`,
+			`%-G%.%#`,
+		},
+		Description: "Scalastyle - Command line",
+		URL:         "http://www.scalastyle.org/command-line.html",
 		Language:    lang,
 	})
 }
