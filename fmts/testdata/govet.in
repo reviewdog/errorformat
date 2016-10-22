@@ -1,0 +1,6 @@
+buildtag.go:7: possible malformed +build comment
+buildtag.go:12: +build comment must appear before package clause and be followed by a blank line
+assign.go:15: self-assignment of x to x
+assign.go:17: self-assignment of s.x to s.x
+atomic.go:17: direct assignment to atomic value
+exit status 1
