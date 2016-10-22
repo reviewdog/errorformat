@@ -253,10 +253,12 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 				continue
 			}
 		}
-		fields.enr = r.N                     // %n
-		fields.lnum = r.L                    // %l
-		fields.col = r.C                     // %c
-		fields.etype = r.T                   // %t
+		fields.enr = r.N  // %n
+		fields.lnum = r.L // %l
+		fields.col = r.C  // %c
+		if r.T != 0 {
+			fields.etype = r.T // %t
+		}
 		if efm.flagplus && !s.qi.multiscan { // %+
 			fields.errmsg = line
 		} else if r.M != "" {
@@ -383,7 +385,7 @@ type Efm struct {
 }
 
 var fmtpattern = map[byte]string{
-	'f': `(?P<f>(?:[[:alpha:]]:)?.+?)`,
+	'f': `(?P<f>(?:[[:alpha:]]:)?(?:\\ |[^ ])+?)`,
 	'n': `(?P<n>\d+)`,
 	'l': `(?P<l>\d+)`,
 	'c': `(?P<c>\d+)`,

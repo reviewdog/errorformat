@@ -19,7 +19,6 @@ func main() {
 }
 
 func run() error {
-	fmt.Println("hi!")
 	f, err := os.Create("doc.go")
 	if err != nil {
 		return err

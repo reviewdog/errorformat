@@ -1,0 +1,13 @@
+scalac.scala:6: error: missing argument list for method error in object Predef
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `error _` or `error(_)` instead of `error`.
+  error
+  ^
+scalac.scala:4: warning: private val in object F is never used
+  private val unused = 1
+              ^
+scalac.scala:5: warning: private method in object F is never used
+  private def unusedF = {}
+              ^
+two warnings found
+one error found

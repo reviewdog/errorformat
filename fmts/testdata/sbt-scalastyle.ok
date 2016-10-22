@@ -1,0 +1,2 @@
+/path/to/src/github.com/scalastyle/scalastyle-sbt-plugin/src/sbt-test/errors-warnings/error/src/main/scala/hello.scala| error| File length exceeds 5 lines
+/path/to/src/github.com/scalastyle/scalastyle-sbt-plugin/src/sbt-test/errors-warnings/error/src/main/scala/hello.scala|6 col 7 warning| Object name does not match the regular expression '[A-Z][A-Za-z]*'
