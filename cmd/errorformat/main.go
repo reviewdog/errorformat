@@ -9,6 +9,7 @@ import (
 	"text/template"
 
 	"github.com/haya14busa/errorformat"
+	"github.com/haya14busa/errorformat/fmts"
 )
 
 const usageMessage = "" +
@@ -22,6 +23,8 @@ Example:
 	$ echo '/path/to/file:14:28: error message\nfile2:3:4: msg' | errorformat "%f:%l:%c: %m"
 	/path/to/file|14 col 28| error message
 	file2|3 col 4| msg
+
+	$ golint ./... | errorformat -name=golint
 
 The -f flag specifies an alternate format for the entry, using the
 syntax of package template.  The default output is equivalent to -f
@@ -61,19 +64,30 @@ func usage() {
 	os.Exit(2)
 }
 
-var entryFmt = flag.String("f", "{{.String}}", "format template")
+var (
+	entryFmt = flag.String("f", "{{.String}}", "format template")
+	name     = flag.String("name", "", "defined errorformat name")
+)
 
 func main() {
 	flag.Usage = usage
 	flag.Parse()
 	errorformats := flag.Args()
-	if err := run(os.Stdin, os.Stdout, errorformats, *entryFmt); err != nil {
+	if err := run(os.Stdin, os.Stdout, errorformats, *entryFmt, *name); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
 
-func run(r io.Reader, w io.Writer, efms []string, entryFmt string) error {
+func run(r io.Reader, w io.Writer, efms []string, entryFmt, name string) error {
+	if name != "" {
+		f, ok := fmts.DefinedFmts()[name]
+		if !ok {
+			return fmt.Errorf("%q is not defined", name)
+		}
+		efms = f.Errorformat
+	}
+
 	out := newTrackingWriter(w)
 
 	fm := template.FuncMap{
