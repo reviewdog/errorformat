@@ -1,0 +1,38 @@
+[info] Loading global plugins from /path/to/.sbt/0.13/plugins
+[info] Loading project definition from /path/to/src/github.com/scalastyle/scalastyle-sbt-plugin/src/sbt-test/errors-warnings/error/project
+[info] Set current project to error (in build file:/path/to/src/github.com/scalastyle/scalastyle-sbt-plugin/src/sbt-test/errors-warnings/error/)
+[info] scalastyle using config /path/to/src/github.com/scalastyle/scalastyle-sbt-plugin/src/sbt-test/errors-warnings/error/scalastyle-config.xml
+[error] /path/to/src/github.com/scalastyle/scalastyle-sbt-plugin/src/sbt-test/errors-warnings/error/src/main/scala/hello.scala: File length exceeds 5 lines
+[warn] /path/to/src/github.com/scalastyle/scalastyle-sbt-plugin/src/sbt-test/errors-warnings/error/src/main/scala/hello.scala:6:7: Object name does not match the regular expression '[A-Z][A-Za-z]*'
+[info] Processed 1 file(s)
+[info] Found 1 errors
+[info] Found 1 warnings
+[info] Found 0 infos
+[info] Finished in 9 ms
+[success] created output: /path/to/src/github.com/scalastyle/scalastyle-sbt-plugin/src/sbt-test/errors-warnings/error/target
+java.lang.RuntimeException: errors exist
+	at scala.sys.package$.error(package.scala:27)
+	at org.scalastyle.sbt.Tasks$.onHasErrors$1(Plugin.scala:132)
+	at org.scalastyle.sbt.Tasks$.doScalastyleWithConfig$1(Plugin.scala:187)
+	at org.scalastyle.sbt.Tasks$.doScalastyle(Plugin.scala:195)
+	at org.scalastyle.sbt.ScalastylePlugin$$anonfun$rawScalastyleSettings$1$$anonfun$apply$1$$anonfun$apply$2.apply(Plugin.scala:89)
+	at org.scalastyle.sbt.ScalastylePlugin$$anonfun$rawScalastyleSettings$1$$anonfun$apply$1$$anonfun$apply$2.apply(Plugin.scala:77)
+	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
+	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:42)
+	at sbt.std.Transform$$anon$4.work(System.scala:64)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:237)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:237)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:18)
+	at sbt.Execute.work(Execute.scala:244)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:237)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:237)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:160)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:30)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[error] (compile:scalastyle) errors exist
+[error] Total time: 0 s, completed Oct 23, 2016 4:53:19 AM

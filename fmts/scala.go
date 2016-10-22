@@ -31,4 +31,20 @@ func init() {
 		URL:         "http://www.scala-sbt.org/",
 		Language:    lang,
 	})
+
+	register(&Fmt{
+		Name: "sbt-scalastyle",
+		Errorformat: []string{
+			`[%trror] %f:%l:%c: %m`, // [error]
+			`[%tarn] %f:%l:%c: %m`,  // [warn]
+			`[%trror] %f:%l: %m`,    // [error]
+			`[%tarn] %f:%l: %m`,     // [warn]
+			`[%trror] %f: %m`,       // [error]
+			`[%tarn] %f: %m`,        // [warn]
+			`%-G%.%#`,
+		},
+		Description: "the Scalastyle SBT plugin",
+		URL:         "http://www.scalastyle.org/sbt.html",
+		Language:    lang,
+	})
 }
