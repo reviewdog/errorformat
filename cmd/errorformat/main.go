@@ -67,19 +67,27 @@ func usage() {
 var (
 	entryFmt = flag.String("f", "{{.String}}", "format template")
 	name     = flag.String("name", "", "defined errorformat name")
+	list     = flag.Bool("list", false, "list defined errorformats")
 )
 
 func main() {
 	flag.Usage = usage
 	flag.Parse()
 	errorformats := flag.Args()
-	if err := run(os.Stdin, os.Stdout, errorformats, *entryFmt, *name); err != nil {
+	if err := run(os.Stdin, os.Stdout, errorformats, *entryFmt, *name, *list); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
 
-func run(r io.Reader, w io.Writer, efms []string, entryFmt, name string) error {
+func run(r io.Reader, w io.Writer, efms []string, entryFmt, name string, list bool) error {
+	if list {
+		for _, f := range fmts.DefinedFmts() {
+			fmt.Fprintf(w, "%s\t\t%s - %s\n", f.Name, f.Description, f.URL)
+		}
+		return nil
+	}
+
 	if name != "" {
 		f, ok := fmts.DefinedFmts()[name]
 		if !ok {

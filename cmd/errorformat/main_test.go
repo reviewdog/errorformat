@@ -60,11 +60,19 @@ golint.new.go
 
 	for _, tt := range tests {
 		out := new(bytes.Buffer)
-		if err := run(strings.NewReader(tt.in), out, tt.efms, tt.entryFmt, tt.name); err != nil {
+		if err := run(strings.NewReader(tt.in), out, tt.efms, tt.entryFmt, tt.name, false); err != nil {
 			t.Error(err)
 		}
 		if got := out.String(); got != tt.want {
 			t.Errorf("got:\n%v\nwant:\n%v", got, tt.want)
 		}
 	}
+}
+
+func TestRun_list(t *testing.T) {
+	out := new(bytes.Buffer)
+	if err := run(nil, out, nil, "", "", true); err != nil {
+		t.Error(err)
+	}
+	t.Log(out.String())
 }
