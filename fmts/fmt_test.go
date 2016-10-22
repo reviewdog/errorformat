@@ -21,14 +21,14 @@ func testfmt(t *testing.T, name string, f *Fmt) {
 	infile := fmt.Sprintf("testdata/%s.in", name)
 	in, err := os.Open(infile)
 	if err != nil {
-		t.Error("no test for %q: %v", name, err)
+		t.Errorf("no test for %q: %v", name, err)
 		return
 	}
 	defer in.Close()
 	okfile := fmt.Sprintf("testdata/%s.ok", name)
 	ok, err := os.Open(okfile)
 	if err != nil {
-		t.Error("no ok test for %q: %v", name, err)
+		t.Errorf("no ok test for %q: %v", name, err)
 		return
 	}
 	defer ok.Close()
