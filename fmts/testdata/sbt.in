@@ -1,0 +1,18 @@
+[info] Loading global plugins from /home/haya14busa/.sbt/0.13/plugins
+[info] Set current project to testdata (in build file:/home/haya14busa/src/github.com/haya14busa/errorformat/fmts/testdata/)
+[info] Compiling 1 Scala source to /home/haya14busa/src/github.com/haya14busa/errorformat/fmts/testdata/target/scala-2.11/classes...
+[error] /home/haya14busa/src/github.com/haya14busa/errorformat/fmts/testdata/scalac.scala:5: missing argument list for method error in object Predef
+[error] Unapplied methods are only converted to functions when a function type is expected.
+[error] You can make this conversion explicit by writing `error _` or `error(_)` instead of `error`.
+[error]   error
+[error]   ^
+[warn] /home/haya14busa/src/github.com/haya14busa/errorformat/fmts/testdata/scalac.scala:3: private val in object F is never used
+[warn]   private val unused = 1
+[warn]               ^
+[warn] /home/haya14busa/src/github.com/haya14busa/errorformat/fmts/testdata/scalac.scala:4: private method in object F is never used
+[warn]   private def unusedF = {}
+[warn]               ^
+[warn] two warnings found
+[error] one error found
+[error] (compile:compileIncremental) Compilation failed
+[error] Total time: 2 s, completed Oct 23, 2016 3:31:26 AM
