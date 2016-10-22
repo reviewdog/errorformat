@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"sort"
 	"strings"
 	"text/template"
 
@@ -82,9 +83,13 @@ func main() {
 
 func run(r io.Reader, w io.Writer, efms []string, entryFmt, name string, list bool) error {
 	if list {
-		for _, f := range fmts.DefinedFmts() {
-			fmt.Fprintf(w, "%s\t\t%s - %s\n", f.Name, f.Description, f.URL)
+		fs := fmts.DefinedFmts()
+		out := make([]string, 0, len(fs))
+		for _, f := range fs {
+			out = append(out, fmt.Sprintf("%s\t\t%s - %s", f.Name, f.Description, f.URL))
 		}
+		sort.Strings(out)
+		fmt.Fprintln(w, strings.Join(out, "\n"))
 		return nil
 	}
 
