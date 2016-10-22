@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
-	"html/template"
 	"io"
 	"os"
 	"strings"
+	"text/template"
 
 	"github.com/haya14busa/errorformat"
 )
