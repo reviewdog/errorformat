@@ -8,7 +8,10 @@
 
 errorformat is Vim's quickfix [errorformat](http://vimdoc.sourceforge.net/htmldoc/quickfix.html#errorformat) implementation in golang.
 
-It's highly compatible with Vim implementation, but it doesn't support Vim regex.
+You can see defined errorformats [here](https://godoc.org/github.com/haya14busa/errorformat/fmts).
+Also, it's easy to [add new errorformat](fmts/README.md) in a similar way to Vim's errorformat.
+
+Note that it's highly compatible with Vim implementation, but it doesn't support Vim regex.
 
 ### Usage
 
@@ -54,20 +57,56 @@ go get -u github.com/haya14busa/errorformat/cmd/errorformat
 #### Usage
 
 ```
-errorformat [flags] [errorformat ...]
-```
+Usage: errorformat [flags] [errorformat ...]
 
-```
-$ cat testdata/golint.in
-golint.new.go:3:5: exported var V should have comment or be unexported
-golint.new.go:5:5: exported var NewError1 should have comment or be unexported
-golint.new.go:7:1: comment on exported function F should be of the form "F ..."
-golint.new.go:11:1: comment on exported function F2 should be of the form "F2 ..."
-$ errorformat -f="file:{{.Filename}} line:{{.Lnum}} col:{{.Col}}" "%f:%l:%c: %m" < testdata/golint.in
-file:golint.new.go line:3 col:5
-file:golint.new.go line:5 col:5
-file:golint.new.go line:7 col:1
-file:golint.new.go line:11 col:1
+errorformat reads compiler/linter/static analyzer result from STDIN, formats
+them by given 'errorformat' (90% compatible with Vim's errorformat. :h
+errorformat), and outputs formated result to STDOUT.
+
+Example:
+        $ echo '/path/to/file:14:28: error message\nfile2:3:4: msg' | errorformat "%f:%l:%c: %m"
+        /path/to/file|14 col 28| error message
+        file2|3 col 4| msg
+
+        $ golint ./... | errorformat -name=golint
+
+The -f flag specifies an alternate format for the entry, using the
+syntax of package template.  The default output is equivalent to -f
+'{{.String}}'. The struct being passed to the template is:
+
+        type Entry struct {
+                // name of a file
+                Filename string
+                // line number
+                Lnum int
+                // column number (first column is 1)
+                Col int
+                // true: "col" is visual column
+                // false: "col" is byte index
+                Vcol bool
+                // error number
+                Nr int
+                // search pattern used to locate the error
+                Pattern string
+                // description of the error
+                Text string
+                // type of the error, 'E', '1', etc.
+                Type rune
+                // true: recognized error message
+                Valid bool
+
+                // Original error lines (often one line. more than one line for multi-line
+                // errorformat. :h errorformat-multi-line)
+                Lines []string
+        }
+
+Flags:
+  -f string
+        format template (default "{{.String}}")
+  -list
+        list defined errorformats
+  -name string
+        defined errorformat name
 ```
 
 ```
