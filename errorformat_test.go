@@ -67,25 +67,25 @@ Ran 27 tests in 0.063s`,
 			efm: []string{
 				`%A[%f]`,
 				`%C%trror`,
-				`%C%l\,%c`,
+				`%C%l,%c`,
 				`%Z%m`,
 			},
 			in: `[~/.vimrc]
 Error
 12,5`,
-			want: []string{"~/.vimrc| error| 12,5"},
+			want: []string{"~/.vimrc|12 col 5 error|"},
 		},
 		{
 			efm: []string{
 				`%A[%f]`,
 				`%C%tarning %n`,
-				`%C%l\,%c`,
+				`%C%l,%c`,
 				`%Z%m`,
 			},
 			in: `[~/.vimrc]
 warning 14
 12,5`,
-			want: []string{"~/.vimrc| warning 14| 12,5"},
+			want: []string{"~/.vimrc|12 col 5 warning 14|"},
 		},
 		{
 			efm: []string{
@@ -205,6 +205,31 @@ README.md
 				"/path/to/file2|14 col 8 warning| local val in method watch is never used",
 			},
 		},
+		{ // multiline
+			efm: []string{
+				`%E[%t%.%+] %f:%l: error: %m`,
+				`%A[%t%.%+] %f:%l: %m`,
+				`[%t%.%+] %f: error: %m`, // oneline
+				`%Z[%.%+] %p^`,
+				`%C[%.%+] %.%#`,
+				`%-G%.%#`,
+			},
+			in: `
+[error] /path/to/file:14: error: value ++ is not a member of Int
+[error]   val x = 1 ++ 2
+[error]             ^
+[error] /path/to/file: error: oneline error for the file
+[error] /path/to/file:14: error: multiline
+[error]  without pointer
+[error] /path/to/file: error: oneline error for the file 2
+`,
+			want: []string{
+				"/path/to/file|14 col 13 error| value ++ is not a member of Int",
+				"/path/to/file| error| oneline error for the file",
+				"/path/to/file|14 error| multiline",
+				"/path/to/file| error| oneline error for the file 2",
+			},
+		},
 	}
 nexttext:
 	for _, tt := range tests {
@@ -224,7 +249,7 @@ nexttext:
 			}
 			want := tt.want[i]
 			if got != want {
-				t.Errorf("%v:%d: got %q, want %q", efm, i, got, want)
+				t.Errorf("%v:%d:\ngot:  %q\nwant: %q", efm, i, got, want)
 			}
 			i++
 		}
