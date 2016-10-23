@@ -1,0 +1,4 @@
+tsc.ts|3 col 13 error 7006| Parameter 'y' implicitly has an 'any' type.
+tsc.ts|5 col 12 error 2345| Argument of type 'boolean' is not assignable to parameter of type 'number | string'.
+Type 'boolean' is not assignable to type 'string'.
+tsc.ts|11 col 1 error 2304| Cannot find name 'error'.
