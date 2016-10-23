@@ -24,8 +24,10 @@ type Scanner struct {
 	*Errorformat
 	source *bufio.Scanner
 
-	qi    *qfinfo
-	entry *Entry
+	qi *qfinfo
+
+	entry   *Entry // entry which is returned by Entry() func
+	mlpoped bool   // is multiline entry poped (for non-end multiline entry)
 }
 
 // NewErrorformat compiles given errorformats string (efms) and returns a new
@@ -48,6 +50,7 @@ func (errorformat *Errorformat) NewScanner(r io.Reader) *Scanner {
 		Errorformat: errorformat,
 		source:      bufio.NewScanner(r),
 		qi:          &qfinfo{},
+		mlpoped:     true,
 	}
 }
 
@@ -168,10 +171,15 @@ func (s *Scanner) Scan() bool {
 		case qffail:
 			continue
 		case qfendmultiline:
+			s.mlpoped = true
 			s.entry = s.qi.qflist[len(s.qi.qflist)-1]
 			return true
 		case qfignoreline:
 			continue
+		}
+		var lastml *Entry // last multiline entry which isn't poped out
+		if !s.mlpoped {
+			lastml = s.qi.qflist[len(s.qi.qflist)-1]
 		}
 		qfl := &Entry{
 			Filename: fields.namebuf,
@@ -190,9 +198,23 @@ func (s *Scanner) Scan() bool {
 		}
 		s.qi.qflist = append(s.qi.qflist, qfl)
 		if s.qi.multiline {
+			s.mlpoped = false // mark multiline entry is not poped
+			// if there is last multiline entry which isn't poped out yet, pop it out now.
+			if lastml != nil {
+				s.entry = lastml
+				return true
+			}
 			continue
 		}
+		// multiline flag doesn't be reset with new entry.
+		// %Z or nomach are the only way to reset multiline flag.
 		s.entry = qfl
+		return true
+	}
+	// pop last not-ended multiline entry
+	if !s.mlpoped {
+		s.mlpoped = true
+		s.entry = s.qi.qflist[len(s.qi.qflist)-1]
 		return true
 	}
 	return false

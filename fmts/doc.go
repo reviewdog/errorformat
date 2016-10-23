@@ -10,4 +10,7 @@
 // 		sbt-scalastyle	Scalastyle - SBT plugin - http://www.scalastyle.org/sbt.html
 // 		scalac	Scala compiler - http://www.scala-lang.org/
 // 		scalastyle	Scalastyle - Command line - http://www.scalastyle.org/command-line.html
+// 	typescript
+// 		tsc	TypeScript compiler - https://www.typescriptlang.org/
+// 		tslint	An extensible linter for the TypeScript language - https://github.com/palantir/tslint
 package fmts

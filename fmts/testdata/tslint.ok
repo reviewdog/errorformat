@@ -1,0 +1,6 @@
+path/to/file1.ts|418 col 38| ' should be "
+path/to/file1.ts|15 col 11| missing semicolon
+path/to/file1.ts|289 col 60| missing semicolon
+path/to/file1.ts|312 col 58| missing semicolon
+path/to/file2.ts|5 col 1| forbidden internal module
+path/to/file2.ts|216 col 13| forbidden 'var' keyword, use 'let' or 'const' instead
