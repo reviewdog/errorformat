@@ -90,6 +90,8 @@ golint.new.go|7 col 1| comment on exported function F should be of the form "F .
 golint.new.go|11 col 1| comment on exported function F2 should be of the form "F2 ..."
 ```
 
+You can run test by `go test ./...`
+
 ### 4) go generate ./...
 
 Run `go generate ./...` to update document file.
