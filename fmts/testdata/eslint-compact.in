@@ -1,0 +1,9 @@
+/path/to/eslint.js: line 2, col 10, Error - 'unusedf' is defined but never used. (no-unused-vars)
+/path/to/eslint.js: line 2, col 18, Error - 'a' is defined but never used. (no-unused-vars)
+/path/to/eslint.js: line 3, col 3, Error - Expected indentation of 4 spaces but found 2. (indent)
+/path/to/eslint.js: line 3, col 7, Error - 'x' is assigned a value but never used. (no-unused-vars)
+/path/to/eslint.js: line 3, col 11, Warning - Strings must use singlequote. (quotes)
+/path/to/eslint.js: line 6, col 5, Error - 'unusedvar' is assigned a value but never used. (no-unused-vars)
+/path/to/eslint.js: line 6, col 18, Error - Missing semicolon. (semi)
+
+7 problems

@@ -1,0 +1,12 @@
+
+/path/to/eslint.js
+  2:10  error    'unusedf' is defined but never used             no-unused-vars
+  2:18  error    'a' is defined but never used                   no-unused-vars
+  3:3   error    Expected indentation of 4 spaces but found 2    indent
+  3:7   error    'x' is assigned a value but never used          no-unused-vars
+  3:11  warning  Strings must use singlequote                    quotes
+  6:5   error    'unusedvar' is assigned a value but never used  no-unused-vars
+  6:18  error    Missing semicolon                               semi
+
+✖ 7 problems (6 errors, 1 warning)
+
