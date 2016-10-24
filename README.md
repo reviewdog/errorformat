@@ -8,6 +8,7 @@
 
 errorformat is Vim's quickfix [errorformat](http://vimdoc.sourceforge.net/htmldoc/quickfix.html#errorformat) implementation in golang.
 
+errorformat provides default errorformats for major tools.
 You can see defined errorformats [here](https://godoc.org/github.com/haya14busa/errorformat/fmts).
 Also, it's easy to [add new errorformat](fmts/README.md) in a similar way to Vim's errorformat.
 
@@ -137,6 +138,9 @@ $ errorformat "%E[%t%.%+] %f:%l: error: %m" "%A[%t%.%+] %f:%l: %m" "%Z[%.%+] %p^
 /path/to/dir/F3.scala|84 col 19 error| value &#43;&#43; is not a member of Int
 /path/to/dir/F3.scala|86 col 13 warning| local val in method f is never used
 ```
+
+### Use cases of 'errorformat' outside Vim
+- [haya14busa/reviewdog: A code review dog who keeps your codebase healthy](https://github.com/haya14busa/reviewdog)
 
 ## :bird: Author
 haya14busa (https://github.com/haya14busa)
