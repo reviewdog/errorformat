@@ -1,4 +1,4 @@
-## How to add errorformat for new command
+## How to add errorformat for new tool
 
 ### 1) Download errorformat CLI tool for debugging (optional)
 
