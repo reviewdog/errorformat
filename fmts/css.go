@@ -7,7 +7,7 @@ func init() {
 		Name: "stylelint",
 		Errorformat: []string{
 			`%+P%f`,
-			`%*[\ ]%l:%c%*[\ ]✖%*[\ ]%m`,
+			`%*[\ ]%l:%c%*[\ ]%*[✖⚠]%*[\ ]%m`,
 			`%-Q`,
 		},
 		Description: "A mighty modern CSS linter",
