@@ -25,13 +25,6 @@ func testfmt(t *testing.T, name string, f *Fmt) {
 		return
 	}
 	defer in.Close()
-	okfile := fmt.Sprintf("testdata/%s.ok", name)
-	ok, err := os.Open(okfile)
-	if err != nil {
-		t.Errorf("no ok test for %q: %v", name, err)
-		return
-	}
-	defer ok.Close()
 	outfile := fmt.Sprintf("testdata/%s.out", name)
 	out, err := os.Create(outfile)
 	if err != nil {
@@ -51,6 +44,13 @@ func testfmt(t *testing.T, name string, f *Fmt) {
 	if err := bufout.Flush(); err != nil {
 		t.Error(err)
 	}
+	okfile := fmt.Sprintf("testdata/%s.ok", name)
+	ok, err := os.Open(okfile)
+	if err != nil {
+		t.Errorf("no ok test for %q: %v", name, err)
+		return
+	}
+	defer ok.Close()
 	b, err := exec.Command("diff", "-u", okfile, outfile).Output()
 	if err != nil {
 		t.Error(err)
