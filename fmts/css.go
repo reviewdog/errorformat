@@ -6,7 +6,7 @@ func init() {
 	register(&Fmt{
 		Name: "stylelint",
 		Errorformat: []string{
-			`%+P%f`,
+			`%-P%f`,
 			`%*[\ ]%l:%c%*[\ ]%*[✖⚠]%*[\ ]%m`,
 			`%-Q`,
 		},
