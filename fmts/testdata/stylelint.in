@@ -1,0 +1,12 @@
+renderer/style.css
+  46:3   ✖  Unexpected longhand value '0px 5px 0 5px' instead of '0px 5px 0'              shorthand-property-no-redundant-values
+  46:12  ⚠  Unexpected unit                                                               length-zero-no-unit                   
+ 116:3   ✖  Unexpected longhand value '0 5px 0 5px' instead of '0 5px'                    shorthand-property-no-redundant-values
+ 145:16  ⚠  Unexpected unit                                                               length-zero-no-unit                   
+ 146:13  ⚠  Unexpected unit                                                               length-zero-no-unit                   
+ 151:17  ⚠  Unexpected unit                                                               length-zero-no-unit                   
+ 152:3   ✖  Unexpected longhand value '0px 16px 100px 16px' instead of '0px 16px 100px'   shorthand-property-no-redundant-values
+ 152:13  ⚠  Unexpected unit                                                               length-zero-no-unit                   
+ 166:18  ⚠  Unexpected unit                                                               length-zero-no-unit                   
+ 182:1   ✖  Expected empty line before non-nested rule                                    rule-non-nested-empty-line-before     
+ 200:1   ✖  Expected empty line before non-nested rule                                    rule-non-nested-empty-line-before
