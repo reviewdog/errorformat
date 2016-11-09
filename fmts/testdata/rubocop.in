@@ -1,0 +1,780 @@
+Inspecting 55 files
+C.CCCCCC.C.CCCCCCCWCCC.C...CCCCCCC.WWWC.CCC.C.C....CCCC
+
+Offenses:
+
+Gemfile:4:1: C: Extra blank line detected.
+Gemfile:50:81: C: Line is too long. [83/80]
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+                                                                                ^^^
+Gemfile:56:81: C: Line is too long. [130/80]
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Gemfile:59:1: C: 1 trailing blank lines detected.
+Rakefile:2:81: C: Line is too long. [90/80]
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
+                                                                                ^^^^^^^^^^
+app/helpers/application_helper.rb:1:1: C: Missing top-level module documentation comment.
+module ApplicationHelper
+^^^^^^
+app/helpers/welcome_helper.rb:1:1: C: Missing top-level module documentation comment.
+module WelcomeHelper
+^^^^^^
+app/helpers/users_helper.rb:1:1: C: Missing top-level module documentation comment.
+module UsersHelper
+^^^^^^
+app/helpers/collections_helper.rb:1:1: C: Missing top-level module documentation comment.
+module CollectionsHelper
+^^^^^^
+app/helpers/texts_helper.rb:1:1: C: Missing top-level module documentation comment.
+module TextsHelper
+^^^^^^
+app/views/collections/show.json.jbuilder:1:81: C: Line is too long. [88/80]
+json.extract! @collection, :id, :title, :description, :user_id, :created_at, :updated_at
+                                                                                ^^^^^^^^
+app/views/texts/show.json.jbuilder:1:81: C: Line is too long. [95/80]
+json.extract! @text, :id, :title, :body, :description, :collection_id, :created_at, :updated_at
+                                                                                ^^^^^^^^^^^^^^^
+app/controllers/texts_controller.rb:1:1: C: Missing top-level class documentation comment.
+class TextsController < ApplicationController
+^^^^^
+app/controllers/texts_controller.rb:28:81: C: Line is too long. [118/80]
+        format.html { redirect_to user_collection_path(@user, @collection), notice: 'Text was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/texts_controller.rb:42:81: C: Line is too long. [130/80]
+        format.html { redirect_to user_collection_text_path(@user, @collection, @text), notice: 'Text was successfully updated.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/texts_controller.rb:56:81: C: Line is too long. [117/80]
+      format.html { redirect_to user_collection_url(@user, @collection), notice: 'Text was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/texts_controller.rb:61:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/texts_controller.rb:63:5: C: Inconsistent indentation detected.
+    def set_text ...
+    ^^^^^^^^^^^^
+app/controllers/texts_controller.rb:67:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/texts_controller.rb:68:5: C: Inconsistent indentation detected.
+    def text_params ...
+    ^^^^^^^^^^^^^^^
+app/controllers/texts_controller.rb:72:5: C: Inconsistent indentation detected.
+    def set_collection ...
+    ^^^^^^^^^^^^^^^^^^
+app/controllers/texts_controller.rb:76:5: C: Inconsistent indentation detected.
+    def set_user ...
+    ^^^^^^^^^^^^
+app/controllers/texts_controller.rb:80:5: C: Inconsistent indentation detected.
+    def authenticate_user ...
+    ^^^^^^^^^^^^^^^^^^^^^
+app/controllers/texts_controller.rb:82:7: C: Use a guard clause instead of wrapping the code inside a conditional expression.
+      if @user != current_user
+      ^^
+app/controllers/welcome_controller.rb:1:1: C: Missing top-level class documentation comment.
+class WelcomeController < ApplicationController
+^^^^^
+app/controllers/welcome_controller.rb:9:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/welcome_controller.rb:10:5: C: Inconsistent indentation detected.
+    def set_newest_collections ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/welcome_controller.rb:11:46: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      @newest_collections = Collection.order("created_at DESC").limit(10)
+                                             ^^^^^^^^^^^^^^^^^
+app/controllers/collections_controller.rb:1:1: C: Missing top-level class documentation comment.
+class CollectionsController < ApplicationController
+^^^^^
+app/controllers/collections_controller.rb:25:20: C: Space missing inside {.
+      format.json {render :json => @collection.as_json(:include => :texts)}
+                   ^
+app/controllers/collections_controller.rb:25:27: C: Use the new Ruby 1.9 hash syntax.
+      format.json {render :json => @collection.as_json(:include => :texts)}
+                          ^^^^^^^^
+app/controllers/collections_controller.rb:25:56: C: Use the new Ruby 1.9 hash syntax.
+      format.json {render :json => @collection.as_json(:include => :texts)}
+                                                       ^^^^^^^^^^^
+app/controllers/collections_controller.rb:25:75: C: Space missing inside }.
+      format.json {render :json => @collection.as_json(:include => :texts)}
+                                                                          ^
+app/controllers/collections_controller.rb:35:3: C: Assignment Branch Condition size for create is too high. [15.07/15]
+  def create
+  ^^^
+app/controllers/collections_controller.rb:40:81: C: Line is too long. [135/80]
+        format.html { redirect_to user_collection_path(@collection.user, @collection), notice: 'Collection was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/collections_controller.rb:44:81: C: Line is too long. [86/80]
+        format.json { render json: @collection.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^
+app/controllers/collections_controller.rb:54:81: C: Line is too long. [135/80]
+        format.html { redirect_to user_collection_path(@collection.user, @collection), notice: 'Collection was successfully updated.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/collections_controller.rb:58:81: C: Line is too long. [86/80]
+        format.json { render json: @collection.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^
+app/controllers/collections_controller.rb:68:81: C: Line is too long. [104/80]
+      format.html { redirect_to user_collections_url, notice: 'Collection was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/collections_controller.rb:73:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/collections_controller.rb:75:5: C: Inconsistent indentation detected.
+    def set_collection ...
+    ^^^^^^^^^^^^^^^^^^
+app/controllers/collections_controller.rb:79:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/collections_controller.rb:80:5: C: Inconsistent indentation detected.
+    def collection_params ...
+    ^^^^^^^^^^^^^^^^^^^^^
+app/controllers/collections_controller.rb:84:5: C: Inconsistent indentation detected.
+    def set_user ...
+    ^^^^^^^^^^^^
+app/controllers/collections_controller.rb:88:5: C: Inconsistent indentation detected.
+    def authenticate_user ...
+    ^^^^^^^^^^^^^^^^^^^^^
+app/controllers/collections_controller.rb:90:7: C: Use a guard clause instead of wrapping the code inside a conditional expression.
+      if @user != current_user
+      ^^
+app/controllers/application_controller.rb:1:1: C: Missing top-level class documentation comment.
+class ApplicationController < ActionController::Base
+^^^^^
+app/controllers/application_controller.rb:11:81: C: Line is too long. [129/80]
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/application_controller.rb:12:81: C: Line is too long. [113/80]
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/application_controller.rb:13:81: C: Line is too long. [141/80]
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:1:1: C: Missing top-level class documentation comment.
+class UsersController < ApplicationController
+^^^^^
+app/controllers/users_controller.rb:11:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/users_controller.rb:13:5: C: Inconsistent indentation detected.
+    def set_user ...
+    ^^^^^^^^^^^^
+app/models/text.rb:1:1: C: Missing top-level class documentation comment.
+class Text < ActiveRecord::Base
+^^^^^
+app/models/text.rb:5:5: C: Align the parameters of a method call if they span more than one line.
+    :presence => true, ...
+    ^^^^^^^^^^^^^^^^^^
+app/models/text.rb:5:5: C: Use the new Ruby 1.9 hash syntax.
+    :presence => true,
+    ^^^^^^^^^^^^
+app/models/text.rb:6:5: C: Use the new Ruby 1.9 hash syntax.
+    :uniqueness => {
+    ^^^^^^^^^^^^^^
+app/models/text.rb:7:7: C: Use the new Ruby 1.9 hash syntax.
+      :scope => [:collection_id],
+      ^^^^^^^^^
+app/models/text.rb:8:7: C: Use the new Ruby 1.9 hash syntax.
+      :case_sensitive => false
+      ^^^^^^^^^^^^^^^^^^
+app/models/text.rb:11:20: C: Use the new Ruby 1.9 hash syntax.
+  validates :body, :presence => true
+                   ^^^^^^^^^^^^
+app/models/text.rb:14:5: C: Redundant self detected.
+    self.find_by_title(query) || super(query)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/text.rb:18:5: C: Prefer to_s over string interpolation.
+    "#{self.title}"
+    ^^^^^^^^^^^^^^^
+app/models/text.rb:18:8: C: Redundant self detected.
+    "#{self.title}"
+       ^^^^^^^^^^
+app/models/user.rb:1:1: C: Missing top-level class documentation comment.
+class User < ActiveRecord::Base
+^^^^^
+app/models/user.rb:3:20: C: Use the new Ruby 1.9 hash syntax.
+  has_many :texts, :through => :collections
+                   ^^^^^^^^^^^
+app/models/user.rb:9:10: C: Use the new Ruby 1.9 hash syntax.
+         :authentication_keys => [:login]
+         ^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:16:5: C: Align the parameters of a method call if they span more than one line.
+    :presence => true, ...
+    ^^^^^^^^^^^^^^^^^^
+app/models/user.rb:16:5: C: Use the new Ruby 1.9 hash syntax.
+    :presence => true,
+    ^^^^^^^^^^^^
+app/models/user.rb:17:5: C: Use the new Ruby 1.9 hash syntax.
+    :uniqueness => {
+    ^^^^^^^^^^^^^^
+app/models/user.rb:18:7: C: Use the new Ruby 1.9 hash syntax.
+      :case_sensitive => false
+      ^^^^^^^^^^^^^^^^^^
+app/models/user.rb:23:14: W: Assignment in condition - you probably meant to use ==.
+    if login = conditions.delete(:login)
+             ^
+app/models/user.rb:24:40: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      where(conditions.to_hash).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:24:81: C: Line is too long. [128/80]
+      where(conditions.to_hash).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:24:95: C: Use the new Ruby 1.9 hash syntax.
+      where(conditions.to_hash).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+                                                                                              ^^^^^^^^^
+app/models/user.rb:31:5: C: Redundant self detected.
+    self.find_by_username(query) || super(query)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:35:5: C: Prefer to_s over string interpolation.
+    "#{self.username}"
+    ^^^^^^^^^^^^^^^^^^
+app/models/user.rb:35:8: C: Redundant self detected.
+    "#{self.username}"
+       ^^^^^^^^^^^^^
+app/models/user.rb:38:1: C: 1 trailing blank lines detected.
+app/models/collection.rb:1:1: C: Missing top-level class documentation comment.
+class Collection < ActiveRecord::Base
+^^^^^
+app/models/collection.rb:7:5: C: Align the parameters of a method call if they span more than one line.
+    :presence => true, ...
+    ^^^^^^^^^^^^^^^^^^
+app/models/collection.rb:7:5: C: Use the new Ruby 1.9 hash syntax.
+    :presence => true,
+    ^^^^^^^^^^^^
+app/models/collection.rb:8:5: C: Use the new Ruby 1.9 hash syntax.
+    :uniqueness => {
+    ^^^^^^^^^^^^^^
+app/models/collection.rb:9:7: C: Use the new Ruby 1.9 hash syntax.
+      :scope => [:user_id],
+      ^^^^^^^^^
+app/models/collection.rb:10:7: C: Use the new Ruby 1.9 hash syntax.
+      :case_sensitive => false
+      ^^^^^^^^^^^^^^^^^^
+app/models/collection.rb:12:5: C: Use the new Ruby 1.9 hash syntax.
+    :exclusion => {
+    ^^^^^^^^^^^^^
+app/models/collection.rb:14:7: C: Use the new Ruby 1.9 hash syntax.
+      :in => %w(new),
+      ^^^^^^
+app/models/collection.rb:15:7: C: Use the new Ruby 1.9 hash syntax.
+      :message => "You cannot use %{value} because it's a reserved word"
+      ^^^^^^^^^^^
+app/models/collection.rb:19:5: C: Redundant self detected.
+    self.find_by_title(query) || super(query)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/collection.rb:23:5: C: Prefer to_s over string interpolation.
+    "#{self.title}"
+    ^^^^^^^^^^^^^^^
+app/models/collection.rb:23:8: C: Redundant self detected.
+    "#{self.title}"
+       ^^^^^^^^^^
+app/models/collection.rb:28:81: C: Line is too long. [90/80]
+      Collection.where(['title LIKE ? or description LIKE ?', "%#{query}%", "%#{query}%"])
+                                                                                ^^^^^^^^^^
+test/controllers/collections_controller_test.rb:8:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should get index" do
+       ^^^^^^^^^^^^^^^^^^
+test/controllers/collections_controller_test.rb:14:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should get new" do
+       ^^^^^^^^^^^^^^^^
+test/controllers/collections_controller_test.rb:19:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should create collection" do
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/collections_controller_test.rb:21:81: C: Line is too long. [128/80]
+      post :create, collection: { description: @collection.description, title: @collection.title, user_id: @collection.user_id }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/collections_controller_test.rb:27:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should show collection" do
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/collections_controller_test.rb:32:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should get edit" do
+       ^^^^^^^^^^^^^^^^^
+test/controllers/collections_controller_test.rb:37:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should update collection" do
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/collections_controller_test.rb:38:81: C: Line is too long. [144/80]
+    patch :update, id: @collection, collection: { description: @collection.description, title: @collection.title, user_id: @collection.user_id }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/collections_controller_test.rb:42:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should destroy collection" do
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/users_controller_test.rb:4:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should get show" do
+       ^^^^^^^^^^^^^^^^^
+test/controllers/users_controller_test.rb:8:1: C: Extra empty line detected at class body end.
+test/controllers/texts_controller_test.rb:8:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should get index" do
+       ^^^^^^^^^^^^^^^^^^
+test/controllers/texts_controller_test.rb:14:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should get new" do
+       ^^^^^^^^^^^^^^^^
+test/controllers/texts_controller_test.rb:19:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should create text" do
+       ^^^^^^^^^^^^^^^^^^^^
+test/controllers/texts_controller_test.rb:21:81: C: Line is too long. [134/80]
+      post :create, text: { body: @text.body, collection_id: @text.collection_id, description: @text.description, title: @text.title }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/texts_controller_test.rb:27:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should show text" do
+       ^^^^^^^^^^^^^^^^^^
+test/controllers/texts_controller_test.rb:32:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should get edit" do
+       ^^^^^^^^^^^^^^^^^
+test/controllers/texts_controller_test.rb:37:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should update text" do
+       ^^^^^^^^^^^^^^^^^^^^
+test/controllers/texts_controller_test.rb:38:81: C: Line is too long. [144/80]
+    patch :update, id: @text, text: { body: @text.body, collection_id: @text.collection_id, description: @text.description, title: @text.title }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/texts_controller_test.rb:42:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  test "should destroy text" do
+       ^^^^^^^^^^^^^^^^^^^^^
+test/test_helper.rb:5:7: C: Use nested module/class definitions instead of compact style.
+class ActiveSupport::TestCase
+      ^^^^^^^^^^^^^^^^^^^^^^^
+test/test_helper.rb:6:81: C: Line is too long. [82/80]
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+                                                                                ^^
+db/seeds.rb:1:81: C: Line is too long. [103/80]
+# This file should contain all the record creation needed to seed the database with its default values.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^
+db/seeds.rb:2:81: C: Line is too long. [96/80]
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+                                                                                ^^^^^^^^^^^^^^^^
+db/migrate/20150718102945_devise_create_users.rb:1:1: C: Missing top-level class documentation comment.
+class DeviseCreateUsers < ActiveRecord::Migration
+^^^^^
+db/migrate/20150718102945_devise_create_users.rb:2:3: C: Method has too many lines. [15/10]
+  def change ...
+  ^^^^^^^^^^
+db/migrate/20150718102945_devise_create_users.rb:5:59: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      t.string :email,              null: false, default: ""
+                                                          ^^
+db/migrate/20150718102945_devise_create_users.rb:6:59: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      t.string :encrypted_password, null: false, default: ""
+                                                          ^^
+db/migrate/20150718102945_devise_create_users.rb:29:81: C: Line is too long. [104/80]
+      # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20150718102945_devise_create_users.rb:33:1: C: Extra blank line detected.
+db/migrate/20150718115714_add_username_to_users.rb:1:1: C: Missing top-level class documentation comment.
+class AddUsernameToUsers < ActiveRecord::Migration
+^^^^^
+db/migrate/20150718114831_create_texts.rb:1:1: C: Missing top-level class documentation comment.
+class CreateTexts < ActiveRecord::Migration
+^^^^^
+db/migrate/20150718114531_create_collections.rb:1:1: C: Missing top-level class documentation comment.
+class CreateCollections < ActiveRecord::Migration
+^^^^^
+db/schema.rb:4:81: C: Line is too long. [81/80]
+# incrementally modify your database, and then regenerate this schema definition.
+                                                                                ^
+db/schema.rb:9:81: C: Line is too long. [86/80]
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+                                                                                ^^^^^^
+db/schema.rb:12:81: C: Line is too long. [86/80]
+# It's strongly recommended that you check this file into your version control system.
+                                                                                ^^^^^^
+db/schema.rb:14:1: C: Block has too many lines. [35/25]
+ActiveRecord::Schema.define(version: 20150718115714) do ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:14:38: C: Separate every 3 digits in the integer portion of a number with underscores(_).
+ActiveRecord::Schema.define(version: 20150718115714) do
+                                     ^^^^^^^^^^^^^^
+db/schema.rb:15:1: C: Extra empty line detected at block body beginning.
+db/schema.rb:16:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "collections", force: :cascade do |t|
+               ^^^^^^^^^^^^^
+db/schema.rb:17:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "title"
+               ^^^^^^^
+db/schema.rb:18:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.text     "description"
+               ^^^^^^^^^^^^^
+db/schema.rb:19:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.integer  "user_id"
+               ^^^^^^^^^
+db/schema.rb:20:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at",  null: false
+               ^^^^^^^^^^^^
+db/schema.rb:21:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at",  null: false
+               ^^^^^^^^^^^^
+db/schema.rb:24:13: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "collections", ["user_id"], name: "index_collections_on_user_id"
+            ^^^^^^^^^^^^^
+db/schema.rb:24:29: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "collections", ["user_id"], name: "index_collections_on_user_id"
+                            ^^^^^^^^^
+db/schema.rb:24:47: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "collections", ["user_id"], name: "index_collections_on_user_id"
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:26:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "texts", force: :cascade do |t|
+               ^^^^^^^
+db/schema.rb:27:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "title"
+               ^^^^^^^
+db/schema.rb:28:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.text     "body"
+               ^^^^^^
+db/schema.rb:29:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.text     "description"
+               ^^^^^^^^^^^^^
+db/schema.rb:30:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.integer  "collection_id"
+               ^^^^^^^^^^^^^^^
+db/schema.rb:31:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at",    null: false
+               ^^^^^^^^^^^^
+db/schema.rb:32:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at",    null: false
+               ^^^^^^^^^^^^
+db/schema.rb:35:13: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "texts", ["collection_id"], name: "index_texts_on_collection_id"
+            ^^^^^^^
+db/schema.rb:35:23: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "texts", ["collection_id"], name: "index_texts_on_collection_id"
+                      ^^^^^^^^^^^^^^^
+db/schema.rb:35:47: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "texts", ["collection_id"], name: "index_texts_on_collection_id"
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:37:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "users", force: :cascade do |t|
+               ^^^^^^^
+db/schema.rb:38:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "email",                  default: "", null: false
+               ^^^^^^^
+db/schema.rb:38:51: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "email",                  default: "", null: false
+                                                  ^^
+db/schema.rb:39:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "encrypted_password",     default: "", null: false
+               ^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:39:51: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "encrypted_password",     default: "", null: false
+                                                  ^^
+db/schema.rb:40:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "reset_password_token"
+               ^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:41:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "reset_password_sent_at"
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:42:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "remember_created_at"
+               ^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:43:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.integer  "sign_in_count",          default: 0,  null: false
+               ^^^^^^^^^^^^^^^
+db/schema.rb:43:32: C: Unnecessary spacing detected.
+    t.integer  "sign_in_count",          default: 0,  null: false
+                               ^^^^^^^^^
+db/schema.rb:43:53: C: Unnecessary spacing detected.
+    t.integer  "sign_in_count",          default: 0,  null: false
+                                                    ^
+db/schema.rb:44:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "current_sign_in_at"
+               ^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:45:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "last_sign_in_at"
+               ^^^^^^^^^^^^^^^^^
+db/schema.rb:46:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "current_sign_in_ip"
+               ^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:47:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "last_sign_in_ip"
+               ^^^^^^^^^^^^^^^^^
+db/schema.rb:48:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at",                          null: false
+               ^^^^^^^^^^^^
+db/schema.rb:49:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at",                          null: false
+               ^^^^^^^^^^^^
+db/schema.rb:50:16: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string   "username"
+               ^^^^^^^^^^
+db/schema.rb:53:13: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+            ^^^^^^^
+db/schema.rb:53:23: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+                      ^^^^^^^
+db/schema.rb:53:39: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+                                      ^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:54:13: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+            ^^^^^^^
+db/schema.rb:54:23: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+                      ^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:54:54: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:54:81: C: Line is too long. [104/80]
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:55:13: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
+            ^^^^^^^
+db/schema.rb:55:23: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
+                      ^^^^^^^^^^
+db/schema.rb:55:42: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:56:1: C: Extra empty line detected at block body end.
+bin/spring:7:11: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  require "rubygems"
+          ^^^^^^^^^^
+bin/spring:8:11: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  require "bundler"
+          ^^^^^^^^^
+bin/spring:10:12: W: Assignment in condition - you probably meant to use ==.
+  if match = Bundler.default_lockfile.read.match(/^GEM$.*?^    (?:  )*spring \((.*?)\)$.*?^$/m)
+           ^
+bin/spring:10:81: C: Line is too long. [95/80]
+  if match = Bundler.default_lockfile.read.match(/^GEM$.*?^    (?:  )*spring \((.*?)\)$.*?^$/m)
+                                                                                ^^^^^^^^^^^^^^^
+bin/spring:11:19: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    Gem.paths = { "GEM_PATH" => [Bundler.bundle_path.to_s, *Gem.path].uniq }
+                  ^^^^^^^^^^
+bin/spring:12:9: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    gem "spring", match[1]
+        ^^^^^^^^
+bin/spring:13:13: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    require "spring/binstub"
+            ^^^^^^^^^^^^^^^^
+bin/rails:3:25: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  load File.expand_path("../spring", __FILE__)
+                        ^^^^^^^^^^^
+bin/rails:4:1: W: Do not suppress exceptions.
+rescue LoadError
+^^^^^^^^^^^^^^^^
+bin/rake:3:25: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  load File.expand_path("../spring", __FILE__)
+                        ^^^^^^^^^^^
+bin/rake:4:1: W: Do not suppress exceptions.
+rescue LoadError
+^^^^^^^^^^^^^^^^
+bin/setup:5:51: C: Unnecessary spacing detected.
+APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
+                                                  ^
+bin/setup:11:8: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  puts "== Installing dependencies =="
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bin/setup:12:10: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  system "gem install bundler --conservative"
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bin/setup:13:10: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  system "bundle check || bundle install"
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bin/setup:21:10: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  system "bin/rake db:setup"
+         ^^^^^^^^^^^^^^^^^^^
+bin/setup:24:10: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  system "rm -f log/*"
+         ^^^^^^^^^^^^^
+bin/setup:25:10: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  system "rm -rf tmp/cache"
+         ^^^^^^^^^^^^^^^^^^
+bin/setup:28:10: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  system "touch tmp/restart.txt"
+         ^^^^^^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:2:81: C: Line is too long. [85/80]
+  # Settings specified here will take precedence over those in config/application.rb.
+                                                                                ^^^^^
+config/environments/production.rb:34:81: C: Line is too long. [82/80]
+  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
+                                                                                ^^
+config/environments/production.rb:38:81: C: Line is too long. [102/80]
+  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:44:81: C: Line is too long. [96/80]
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+                                                                                ^^^^^^^^^^^^^^^^
+config/environments/production.rb:64:81: C: Line is too long. [100/80]
+  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
+                                                                                ^^^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:81:81: C: Line is too long. [81/80]
+  config.action_mailer.default_url_options = { host: 'usertyping.herokuapp.com' }
+                                                                                ^
+config/environments/production.rb:85:5: C: Use the new Ruby 1.9 hash syntax.
+    :address        => 'smtp.sendgrid.net',
+    ^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:86:5: C: Use the new Ruby 1.9 hash syntax.
+    :port           => '587',
+    ^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:87:5: C: Use the new Ruby 1.9 hash syntax.
+    :authentication => :plain,
+    ^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:88:5: C: Use the new Ruby 1.9 hash syntax.
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    ^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:89:5: C: Use the new Ruby 1.9 hash syntax.
+    :password       => ENV['SENDGRID_PASSWORD'],
+    ^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:90:5: C: Use the new Ruby 1.9 hash syntax.
+    :domain         => 'heroku.com',
+    ^^^^^^^^^^^^^^^^^^
+config/environments/production.rb:91:5: C: Use the new Ruby 1.9 hash syntax.
+    :enable_starttls_auto => true
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+config/environments/test.rb:2:81: C: Line is too long. [85/80]
+  # Settings specified here will take precedence over those in config/application.rb.
+                                                                                ^^^^^
+config/environments/development.rb:2:81: C: Line is too long. [85/80]
+  # Settings specified here will take precedence over those in config/application.rb.
+                                                                                ^^^^^
+config/environments/development.rb:30:81: C: Line is too long. [82/80]
+  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
+                                                                                ^^
+config/initializers/wrap_parameters.rb:6:81: C: Line is too long. [96/80]
+# Enable parameter wrapping for JSON. You can disable this by setting :format to an empty array.
+                                                                                ^^^^^^^^^^^^^^^^
+config/initializers/devise.rb:7:81: C: Line is too long. [86/80]
+  # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
+                                                                                ^^^^^^
+config/initializers/devise.rb:9:81: C: Line is too long. [154/80]
+  # config.secret_key = '6351099ca60799a88507b031808d741a06f532c1fde95afd7c3c0f6fb3e52bf77ed506b25082877cb7bcb16eaf71fd98f723f833983f0eb8dc04f212f8704331'
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/initializers/devise.rb:15:81: C: Line is too long. [85/80]
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+                                                                                ^^^^^
+config/initializers/devise.rb:31:81: C: Line is too long. [83/80]
+  # session. If you need permissions, you should implement that in a before filter.
+                                                                                ^^^
+config/initializers/devise.rb:36:81: C: Line is too long. [84/80]
+  # Configure parameters from the request object used for authentication. Each entry
+                                                                                ^^^^
+config/initializers/devise.rb:38:81: C: Line is too long. [85/80]
+  # find_for_authentication method and considered in your model lookup. For instance,
+                                                                                ^^^^^
+config/initializers/devise.rb:39:81: C: Line is too long. [88/80]
+  # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
+                                                                                ^^^^^^^^
+config/initializers/devise.rb:40:81: C: Line is too long. [89/80]
+  # The same considerations mentioned for authentication_keys also apply to request_keys.
+                                                                                ^^^^^^^^^
+config/initializers/devise.rb:50:81: C: Line is too long. [85/80]
+  # modifying a user and when used to authenticate or find a user. Default is :email.
+                                                                                ^^^^^
+config/initializers/devise.rb:54:81: C: Line is too long. [81/80]
+  # It can be set to an array that will enable params authentication only for the
+                                                                                ^
+config/initializers/devise.rb:55:81: C: Line is too long. [85/80]
+  # given strategies, for example, `config.params_authenticatable = [:database]` will
+                                                                                ^^^^^
+config/initializers/devise.rb:61:81: C: Line is too long. [83/80]
+  # given strategies, for example, `config.http_authenticatable = [:database]` will
+                                                                                ^^^
+config/initializers/devise.rb:63:81: C: Line is too long. [84/80]
+  # :database      = Support basic authentication with authentication key + password
+                                                                                ^^^^
+config/initializers/devise.rb:92:81: C: Line is too long. [86/80]
+  # using other encryptors, it sets how many times you want the password re-encrypted.
+                                                                                ^^^^^^
+config/initializers/devise.rb:94:81: C: Line is too long. [82/80]
+  # Limiting the stretches to just one in testing will increase the performance of
+                                                                                ^^
+config/initializers/devise.rb:96:81: C: Line is too long. [82/80]
+  # a value less than 10 in other environments. Note that, for bcrypt (the default
+                                                                                ^^
+config/initializers/devise.rb:97:81: C: Line is too long. [83/80]
+  # encryptor), the cost increases exponentially with the number of stretches (e.g.
+                                                                                ^^^
+config/initializers/devise.rb:98:81: C: Line is too long. [83/80]
+  # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
+                                                                                ^^^
+config/initializers/devise.rb:102:81: C: Line is too long. [150/80]
+  # config.pepper = 'fbca85c9b62a600abf76528ce3251523cb656120d4304efa3870b64fed2494b447a4c5a8a3b31ef9183e422be848d192e9bc28fb2ff5ed8168ac140f6a62cff5'
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/initializers/devise.rb:121:81: C: Line is too long. [86/80]
+  # initial account confirmation) to be applied. Requires additional unconfirmed_email
+                                                                                ^^^^^^
+config/initializers/devise.rb:123:81: C: Line is too long. [84/80]
+  # unconfirmed_email column, and copied to email column on successful confirmation.
+                                                                                ^^^^
+config/initializers/devise.rb:162:81: C: Line is too long. [85/80]
+  # :failed_attempts = Locks an account after a number of failed attempts to sign in.
+                                                                                ^^^^^
+config/initializers/devise.rb:171:81: C: Line is too long. [83/80]
+  # :time  = Re-enables login after a certain amount of time (see :unlock_in below)
+                                                                                ^^^
+config/initializers/devise.rb:196:81: C: Line is too long. [84/80]
+  # When set to false, does not sign a user in automatically after their password is
+                                                                                ^^^^
+config/initializers/devise.rb:201:81: C: Line is too long. [87/80]
+  # Allow you to use another encryption algorithm besides bcrypt (default). You can use
+                                                                                ^^^^^^^
+config/initializers/devise.rb:202:81: C: Line is too long. [85/80]
+  # :sha1, :sha512 or encryptors from others authentication tools as :clearance_sha1,
+                                                                                ^^^^^
+config/initializers/devise.rb:203:81: C: Line is too long. [86/80]
+  # :authlogic_sha512 (then you should set stretches above to 20 for default behavior)
+                                                                                ^^^^^^
+config/initializers/devise.rb:204:81: C: Line is too long. [83/80]
+  # and :restful_authentication_sha1 (then you should set stretches to 10, and copy
+                                                                                ^^^
+config/initializers/devise.rb:211:81: C: Line is too long. [82/80]
+  # Turn scoped views on. Before rendering "sessions/new", it will first check for
+                                                                                ^^
+config/initializers/devise.rb:245:81: C: Line is too long. [82/80]
+  # change the failure app, you can configure them inside the config.warden block.
+                                                                                ^^
+config/initializers/devise.rb:253:81: C: Line is too long. [81/80]
+  # When using Devise inside an engine, let's call it `MyEngine`, and this engine
+                                                                                ^
+config/initializers/backtrace_silencers.rb:3:81: C: Line is too long. [107/80]
+# You can add backtrace silencers for libraries that you're using but don't wish to see in your backtraces.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/initializers/backtrace_silencers.rb:6:81: C: Line is too long. [112/80]
+# You can also remove all the silencers if you're trying to debug a problem that might stem from framework code.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/initializers/assets.rb:10:81: C: Line is too long. [93/80]
+# application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
+                                                                                ^^^^^^^^^^^^^
+config/application.rb:10:3: C: Missing top-level class documentation comment.
+  class Application < Rails::Application
+  ^^^^^
+config/application.rb:11:81: C: Line is too long. [82/80]
+    # Settings in config/environments/* take precedence over those specified here.
+                                                                                ^^
+config/application.rb:15:81: C: Line is too long. [99/80]
+    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
+                                                                                ^^^^^^^^^^^^^^^^^^^
+config/application.rb:16:81: C: Line is too long. [89/80]
+    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
+                                                                                ^^^^^^^^^
+config/application.rb:19:81: C: Line is too long. [98/80]
+    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+                                                                                ^^^^^^^^^^^^^^^^^^
+config/application.rb:20:81: C: Line is too long. [87/80]
+    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+                                                                                ^^^^^^^
+config/routes.rb:6:21: C: Use the new Ruby 1.9 hash syntax.
+  resources :users, :only => [:show], :path => 'u' do
+                    ^^^^^^^^
+config/routes.rb:6:39: C: Use the new Ruby 1.9 hash syntax.
+  resources :users, :only => [:show], :path => 'u' do
+                                      ^^^^^^^^
+config/routes.rb:7:29: C: Use the new Ruby 1.9 hash syntax.
+    resources :collections, :except => [:index, :new], :path => '/' do
+                            ^^^^^^^^^^
+config/routes.rb:7:56: C: Use the new Ruby 1.9 hash syntax.
+    resources :collections, :except => [:index, :new], :path => '/' do
+                                                       ^^^^^^^^
+config/routes.rb:8:25: C: Use the new Ruby 1.9 hash syntax.
+      resources :texts, :except => [:index, :new]
+                        ^^^^^^^^^^
+config/routes.rb:15:27: C: Use the new Ruby 1.9 hash syntax.
+  resources :collections, :only => [:index]
+                          ^^^^^^^^
+config/routes.rb:16:81: C: Line is too long. [84/80]
+  # The priority is based upon order of creation: first created -> highest priority.
+                                                                                ^^^^
+config/routes.rb:28:81: C: Line is too long. [81/80]
+  # Example resource route (maps HTTP verbs to controller actions automatically):
+                                                                                ^
+
+55 files inspected, 262 offenses detected
+

@@ -15,6 +15,8 @@
 // 	javascript
 // 		eslint	(eslint [-f stylish]) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 		eslint-compact	(eslint -f compact) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
+// 	ruby
+// 		rubocop	A Ruby static code analyzer, based on the community Ruby style guide - https://github.com/bbatsov/rubocop
 // 	scala
 // 		sbt	the interactive build tool - http://www.scala-sbt.org/
 // 		sbt-scalastyle	Scalastyle - SBT plugin - http://www.scalastyle.org/sbt.html
