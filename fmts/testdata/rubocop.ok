@@ -1,0 +1,262 @@
+Gemfile|4 col 1 C| Extra blank line detected.
+Gemfile|50 col 81 C| Line is too long. [83/80]
+Gemfile|56 col 81 C| Line is too long. [130/80]
+Gemfile|59 col 1 C| 1 trailing blank lines detected.
+Rakefile|2 col 81 C| Line is too long. [90/80]
+app/helpers/application_helper.rb|1 col 1 C| Missing top-level module documentation comment.
+app/helpers/welcome_helper.rb|1 col 1 C| Missing top-level module documentation comment.
+app/helpers/users_helper.rb|1 col 1 C| Missing top-level module documentation comment.
+app/helpers/collections_helper.rb|1 col 1 C| Missing top-level module documentation comment.
+app/helpers/texts_helper.rb|1 col 1 C| Missing top-level module documentation comment.
+app/views/collections/show.json.jbuilder|1 col 81 C| Line is too long. [88/80]
+app/views/texts/show.json.jbuilder|1 col 81 C| Line is too long. [95/80]
+app/controllers/texts_controller.rb|1 col 1 C| Missing top-level class documentation comment.
+app/controllers/texts_controller.rb|28 col 81 C| Line is too long. [118/80]
+app/controllers/texts_controller.rb|42 col 81 C| Line is too long. [130/80]
+app/controllers/texts_controller.rb|56 col 81 C| Line is too long. [117/80]
+app/controllers/texts_controller.rb|61 col 3 C| Keep a blank line before and after private.
+app/controllers/texts_controller.rb|63 col 5 C| Inconsistent indentation detected.
+app/controllers/texts_controller.rb|67 col 81 C| Line is too long. [88/80]
+app/controllers/texts_controller.rb|68 col 5 C| Inconsistent indentation detected.
+app/controllers/texts_controller.rb|72 col 5 C| Inconsistent indentation detected.
+app/controllers/texts_controller.rb|76 col 5 C| Inconsistent indentation detected.
+app/controllers/texts_controller.rb|80 col 5 C| Inconsistent indentation detected.
+app/controllers/texts_controller.rb|82 col 7 C| Use a guard clause instead of wrapping the code inside a conditional expression.
+app/controllers/welcome_controller.rb|1 col 1 C| Missing top-level class documentation comment.
+app/controllers/welcome_controller.rb|9 col 3 C| Keep a blank line before and after private.
+app/controllers/welcome_controller.rb|10 col 5 C| Inconsistent indentation detected.
+app/controllers/welcome_controller.rb|11 col 46 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+app/controllers/collections_controller.rb|1 col 1 C| Missing top-level class documentation comment.
+app/controllers/collections_controller.rb|25 col 20 C| Space missing inside {.
+app/controllers/collections_controller.rb|25 col 27 C| Use the new Ruby 1.9 hash syntax.
+app/controllers/collections_controller.rb|25 col 56 C| Use the new Ruby 1.9 hash syntax.
+app/controllers/collections_controller.rb|25 col 75 C| Space missing inside }.
+app/controllers/collections_controller.rb|35 col 3 C| Assignment Branch Condition size for create is too high. [15.07/15]
+app/controllers/collections_controller.rb|40 col 81 C| Line is too long. [135/80]
+app/controllers/collections_controller.rb|44 col 81 C| Line is too long. [86/80]
+app/controllers/collections_controller.rb|54 col 81 C| Line is too long. [135/80]
+app/controllers/collections_controller.rb|58 col 81 C| Line is too long. [86/80]
+app/controllers/collections_controller.rb|68 col 81 C| Line is too long. [104/80]
+app/controllers/collections_controller.rb|73 col 3 C| Keep a blank line before and after private.
+app/controllers/collections_controller.rb|75 col 5 C| Inconsistent indentation detected.
+app/controllers/collections_controller.rb|79 col 81 C| Line is too long. [88/80]
+app/controllers/collections_controller.rb|80 col 5 C| Inconsistent indentation detected.
+app/controllers/collections_controller.rb|84 col 5 C| Inconsistent indentation detected.
+app/controllers/collections_controller.rb|88 col 5 C| Inconsistent indentation detected.
+app/controllers/collections_controller.rb|90 col 7 C| Use a guard clause instead of wrapping the code inside a conditional expression.
+app/controllers/application_controller.rb|1 col 1 C| Missing top-level class documentation comment.
+app/controllers/application_controller.rb|11 col 81 C| Line is too long. [129/80]
+app/controllers/application_controller.rb|12 col 81 C| Line is too long. [113/80]
+app/controllers/application_controller.rb|13 col 81 C| Line is too long. [141/80]
+app/controllers/users_controller.rb|1 col 1 C| Missing top-level class documentation comment.
+app/controllers/users_controller.rb|11 col 3 C| Keep a blank line before and after private.
+app/controllers/users_controller.rb|13 col 5 C| Inconsistent indentation detected.
+app/models/text.rb|1 col 1 C| Missing top-level class documentation comment.
+app/models/text.rb|5 col 5 C| Align the parameters of a method call if they span more than one line.
+app/models/text.rb|5 col 5 C| Use the new Ruby 1.9 hash syntax.
+app/models/text.rb|6 col 5 C| Use the new Ruby 1.9 hash syntax.
+app/models/text.rb|7 col 7 C| Use the new Ruby 1.9 hash syntax.
+app/models/text.rb|8 col 7 C| Use the new Ruby 1.9 hash syntax.
+app/models/text.rb|11 col 20 C| Use the new Ruby 1.9 hash syntax.
+app/models/text.rb|14 col 5 C| Redundant self detected.
+app/models/text.rb|18 col 5 C| Prefer to_s over string interpolation.
+app/models/text.rb|18 col 8 C| Redundant self detected.
+app/models/user.rb|1 col 1 C| Missing top-level class documentation comment.
+app/models/user.rb|3 col 20 C| Use the new Ruby 1.9 hash syntax.
+app/models/user.rb|9 col 10 C| Use the new Ruby 1.9 hash syntax.
+app/models/user.rb|16 col 5 C| Align the parameters of a method call if they span more than one line.
+app/models/user.rb|16 col 5 C| Use the new Ruby 1.9 hash syntax.
+app/models/user.rb|17 col 5 C| Use the new Ruby 1.9 hash syntax.
+app/models/user.rb|18 col 7 C| Use the new Ruby 1.9 hash syntax.
+app/models/user.rb|23 col 14 warning| Assignment in condition - you probably meant to use ==.
+app/models/user.rb|24 col 40 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+app/models/user.rb|24 col 81 C| Line is too long. [128/80]
+app/models/user.rb|24 col 95 C| Use the new Ruby 1.9 hash syntax.
+app/models/user.rb|31 col 5 C| Redundant self detected.
+app/models/user.rb|35 col 5 C| Prefer to_s over string interpolation.
+app/models/user.rb|35 col 8 C| Redundant self detected.
+app/models/user.rb|38 col 1 C| 1 trailing blank lines detected.
+app/models/collection.rb|1 col 1 C| Missing top-level class documentation comment.
+app/models/collection.rb|7 col 5 C| Align the parameters of a method call if they span more than one line.
+app/models/collection.rb|7 col 5 C| Use the new Ruby 1.9 hash syntax.
+app/models/collection.rb|8 col 5 C| Use the new Ruby 1.9 hash syntax.
+app/models/collection.rb|9 col 7 C| Use the new Ruby 1.9 hash syntax.
+app/models/collection.rb|10 col 7 C| Use the new Ruby 1.9 hash syntax.
+app/models/collection.rb|12 col 5 C| Use the new Ruby 1.9 hash syntax.
+app/models/collection.rb|14 col 7 C| Use the new Ruby 1.9 hash syntax.
+app/models/collection.rb|15 col 7 C| Use the new Ruby 1.9 hash syntax.
+app/models/collection.rb|19 col 5 C| Redundant self detected.
+app/models/collection.rb|23 col 5 C| Prefer to_s over string interpolation.
+app/models/collection.rb|23 col 8 C| Redundant self detected.
+app/models/collection.rb|28 col 81 C| Line is too long. [90/80]
+test/controllers/collections_controller_test.rb|8 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/collections_controller_test.rb|14 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/collections_controller_test.rb|19 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/collections_controller_test.rb|21 col 81 C| Line is too long. [128/80]
+test/controllers/collections_controller_test.rb|27 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/collections_controller_test.rb|32 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/collections_controller_test.rb|37 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/collections_controller_test.rb|38 col 81 C| Line is too long. [144/80]
+test/controllers/collections_controller_test.rb|42 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/users_controller_test.rb|4 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/users_controller_test.rb|8 col 1 C| Extra empty line detected at class body end.
+test/controllers/texts_controller_test.rb|8 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/texts_controller_test.rb|14 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/texts_controller_test.rb|19 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/texts_controller_test.rb|21 col 81 C| Line is too long. [134/80]
+test/controllers/texts_controller_test.rb|27 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/texts_controller_test.rb|32 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/texts_controller_test.rb|37 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/controllers/texts_controller_test.rb|38 col 81 C| Line is too long. [144/80]
+test/controllers/texts_controller_test.rb|42 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+test/test_helper.rb|5 col 7 C| Use nested module/class definitions instead of compact style.
+test/test_helper.rb|6 col 81 C| Line is too long. [82/80]
+db/seeds.rb|1 col 81 C| Line is too long. [103/80]
+db/seeds.rb|2 col 81 C| Line is too long. [96/80]
+db/migrate/20150718102945_devise_create_users.rb|1 col 1 C| Missing top-level class documentation comment.
+db/migrate/20150718102945_devise_create_users.rb|2 col 3 C| Method has too many lines. [15/10]
+db/migrate/20150718102945_devise_create_users.rb|5 col 59 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/migrate/20150718102945_devise_create_users.rb|6 col 59 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/migrate/20150718102945_devise_create_users.rb|29 col 81 C| Line is too long. [104/80]
+db/migrate/20150718102945_devise_create_users.rb|33 col 1 C| Extra blank line detected.
+db/migrate/20150718115714_add_username_to_users.rb|1 col 1 C| Missing top-level class documentation comment.
+db/migrate/20150718114831_create_texts.rb|1 col 1 C| Missing top-level class documentation comment.
+db/migrate/20150718114531_create_collections.rb|1 col 1 C| Missing top-level class documentation comment.
+db/schema.rb|4 col 81 C| Line is too long. [81/80]
+db/schema.rb|9 col 81 C| Line is too long. [86/80]
+db/schema.rb|12 col 81 C| Line is too long. [86/80]
+db/schema.rb|14 col 1 C| Block has too many lines. [35/25]
+db/schema.rb|14 col 38 C| Separate every 3 digits in the integer portion of a number with underscores(_).
+db/schema.rb|15 col 1 C| Extra empty line detected at block body beginning.
+db/schema.rb|16 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|17 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|18 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|19 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|20 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|21 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|24 col 13 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|24 col 29 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|24 col 47 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|26 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|27 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|28 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|29 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|30 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|31 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|32 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|35 col 13 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|35 col 23 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|35 col 47 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|37 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|38 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|38 col 51 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|39 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|39 col 51 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|40 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|41 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|42 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|43 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|43 col 32 C| Unnecessary spacing detected.
+db/schema.rb|43 col 53 C| Unnecessary spacing detected.
+db/schema.rb|44 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|45 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|46 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|47 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|48 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|49 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|50 col 16 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|53 col 13 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|53 col 23 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|53 col 39 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|54 col 13 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|54 col 23 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|54 col 54 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|54 col 81 C| Line is too long. [104/80]
+db/schema.rb|55 col 13 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|55 col 23 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|55 col 42 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+db/schema.rb|56 col 1 C| Extra empty line detected at block body end.
+bin/spring|7 col 11 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/spring|8 col 11 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/spring|10 col 12 warning| Assignment in condition - you probably meant to use ==.
+bin/spring|10 col 81 C| Line is too long. [95/80]
+bin/spring|11 col 19 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/spring|12 col 9 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/spring|13 col 13 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/rails|3 col 25 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/rails|4 col 1 warning| Do not suppress exceptions.
+bin/rake|3 col 25 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/rake|4 col 1 warning| Do not suppress exceptions.
+bin/setup|5 col 51 C| Unnecessary spacing detected.
+bin/setup|11 col 8 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/setup|12 col 10 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/setup|13 col 10 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/setup|21 col 10 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/setup|24 col 10 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/setup|25 col 10 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+bin/setup|28 col 10 C| Prefer single-quoted strings when you don't need string interpolation or special symbols.
+config/environments/production.rb|2 col 81 C| Line is too long. [85/80]
+config/environments/production.rb|34 col 81 C| Line is too long. [82/80]
+config/environments/production.rb|38 col 81 C| Line is too long. [102/80]
+config/environments/production.rb|44 col 81 C| Line is too long. [96/80]
+config/environments/production.rb|64 col 81 C| Line is too long. [100/80]
+config/environments/production.rb|81 col 81 C| Line is too long. [81/80]
+config/environments/production.rb|85 col 5 C| Use the new Ruby 1.9 hash syntax.
+config/environments/production.rb|86 col 5 C| Use the new Ruby 1.9 hash syntax.
+config/environments/production.rb|87 col 5 C| Use the new Ruby 1.9 hash syntax.
+config/environments/production.rb|88 col 5 C| Use the new Ruby 1.9 hash syntax.
+config/environments/production.rb|89 col 5 C| Use the new Ruby 1.9 hash syntax.
+config/environments/production.rb|90 col 5 C| Use the new Ruby 1.9 hash syntax.
+config/environments/production.rb|91 col 5 C| Use the new Ruby 1.9 hash syntax.
+config/environments/test.rb|2 col 81 C| Line is too long. [85/80]
+config/environments/development.rb|2 col 81 C| Line is too long. [85/80]
+config/environments/development.rb|30 col 81 C| Line is too long. [82/80]
+config/initializers/wrap_parameters.rb|6 col 81 C| Line is too long. [96/80]
+config/initializers/devise.rb|7 col 81 C| Line is too long. [86/80]
+config/initializers/devise.rb|9 col 81 C| Line is too long. [154/80]
+config/initializers/devise.rb|15 col 81 C| Line is too long. [85/80]
+config/initializers/devise.rb|31 col 81 C| Line is too long. [83/80]
+config/initializers/devise.rb|36 col 81 C| Line is too long. [84/80]
+config/initializers/devise.rb|38 col 81 C| Line is too long. [85/80]
+config/initializers/devise.rb|39 col 81 C| Line is too long. [88/80]
+config/initializers/devise.rb|40 col 81 C| Line is too long. [89/80]
+config/initializers/devise.rb|50 col 81 C| Line is too long. [85/80]
+config/initializers/devise.rb|54 col 81 C| Line is too long. [81/80]
+config/initializers/devise.rb|55 col 81 C| Line is too long. [85/80]
+config/initializers/devise.rb|61 col 81 C| Line is too long. [83/80]
+config/initializers/devise.rb|63 col 81 C| Line is too long. [84/80]
+config/initializers/devise.rb|92 col 81 C| Line is too long. [86/80]
+config/initializers/devise.rb|94 col 81 C| Line is too long. [82/80]
+config/initializers/devise.rb|96 col 81 C| Line is too long. [82/80]
+config/initializers/devise.rb|97 col 81 C| Line is too long. [83/80]
+config/initializers/devise.rb|98 col 81 C| Line is too long. [83/80]
+config/initializers/devise.rb|102 col 81 C| Line is too long. [150/80]
+config/initializers/devise.rb|121 col 81 C| Line is too long. [86/80]
+config/initializers/devise.rb|123 col 81 C| Line is too long. [84/80]
+config/initializers/devise.rb|162 col 81 C| Line is too long. [85/80]
+config/initializers/devise.rb|171 col 81 C| Line is too long. [83/80]
+config/initializers/devise.rb|196 col 81 C| Line is too long. [84/80]
+config/initializers/devise.rb|201 col 81 C| Line is too long. [87/80]
+config/initializers/devise.rb|202 col 81 C| Line is too long. [85/80]
+config/initializers/devise.rb|203 col 81 C| Line is too long. [86/80]
+config/initializers/devise.rb|204 col 81 C| Line is too long. [83/80]
+config/initializers/devise.rb|211 col 81 C| Line is too long. [82/80]
+config/initializers/devise.rb|245 col 81 C| Line is too long. [82/80]
+config/initializers/devise.rb|253 col 81 C| Line is too long. [81/80]
+config/initializers/backtrace_silencers.rb|3 col 81 C| Line is too long. [107/80]
+config/initializers/backtrace_silencers.rb|6 col 81 C| Line is too long. [112/80]
+config/initializers/assets.rb|10 col 81 C| Line is too long. [93/80]
+config/application.rb|10 col 3 C| Missing top-level class documentation comment.
+config/application.rb|11 col 81 C| Line is too long. [82/80]
+config/application.rb|15 col 81 C| Line is too long. [99/80]
+config/application.rb|16 col 81 C| Line is too long. [89/80]
+config/application.rb|19 col 81 C| Line is too long. [98/80]
+config/application.rb|20 col 81 C| Line is too long. [87/80]
+config/routes.rb|6 col 21 C| Use the new Ruby 1.9 hash syntax.
+config/routes.rb|6 col 39 C| Use the new Ruby 1.9 hash syntax.
+config/routes.rb|7 col 29 C| Use the new Ruby 1.9 hash syntax.
+config/routes.rb|7 col 56 C| Use the new Ruby 1.9 hash syntax.
+config/routes.rb|8 col 25 C| Use the new Ruby 1.9 hash syntax.
+config/routes.rb|15 col 27 C| Use the new Ruby 1.9 hash syntax.
+config/routes.rb|16 col 81 C| Line is too long. [84/80]
+config/routes.rb|28 col 81 C| Line is too long. [81/80]
