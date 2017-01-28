@@ -1,0 +1,8 @@
+optparse.py|69 col 11| E401 multiple imports on one line
+optparse.py|77 col 1| E302 expected 2 blank lines, found 1
+optparse.py|88 col 5| E301 expected 1 blank line, found 0
+optparse.py|222 col 34| W602 deprecated form of raising exception
+optparse.py|347 col 31| E211 whitespace before '('
+optparse.py|357 col 17| E201 whitespace after '{'
+optparse.py|472 col 29| E221 multiple spaces before operator
+optparse.py|544 col 21| W601 .has_key() is deprecated, use 'in'

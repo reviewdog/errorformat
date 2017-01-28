@@ -15,6 +15,8 @@
 // 	javascript
 // 		eslint	(eslint [-f stylish]) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 		eslint-compact	(eslint -f compact) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
+// 	python
+// 		pep8	Python style guide checker - https://pypi.python.org/pypi/pep8
 // 	ruby
 // 		rubocop	A Ruby static code analyzer, based on the community Ruby style guide - https://github.com/bbatsov/rubocop
 // 	scala
