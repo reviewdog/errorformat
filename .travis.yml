@@ -1,20 +1,18 @@
 language: go
 
 go:
-  - 1.7
-  - tip
+  - 1.8
+  - master
 
 install:
   - go get -d -v -t ./...
-  - go get github.com/mattn/goveralls
-  - go get github.com/golang/lint/golint
-  - go get honnef.co/go/unused/cmd/unused
+  - go get github.com/haya14busa/goverage
 
 script:
   - go test -v -race ./...
   - go generate ./...
   - (! git diff | grep '^') # check diff
-  - goveralls -service=travis-ci
-  - go vet ./...
-  - golint -set_exit_status ./...
-  - unused ./...
+  - goverage -coverprofile=coverage.txt ./...
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
