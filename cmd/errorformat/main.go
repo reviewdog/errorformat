@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"sort"
 	"strings"
@@ -67,7 +68,7 @@ func usage() {
 
 func main() {
 	var (
-		entryFmt = flag.String("f", "{{.String}}", "format template for -of=template")
+		entryFmt = flag.String("f", "{{.String}}", "format template for -output-format=template")
 		outFmt   = flag.String("output-format", "template", "output format (template|checkstyle)")
 		name     = flag.String("name", "", "defined errorformat name")
 		list     = flag.Bool("list", false, "list defined errorformats")
@@ -101,15 +102,26 @@ func run(r io.Reader, w io.Writer, efms []string, outFmt, entryFmt, name string,
 		efms = f.Errorformat
 	}
 
-	out := newTrackingWriter(w)
+	var writer Writer
 
-	fm := template.FuncMap{
-		"join": strings.Join,
+	switch outFmt {
+	case "template":
+		fm := template.FuncMap{
+			"join": strings.Join,
+		}
+		tmpl, err := template.New("main").Funcs(fm).Parse(entryFmt)
+		if err != nil {
+			return err
+		}
+		writer = &TemplateWriter{Template: tmpl, Writer: newTrackingWriter(w)}
+	default:
+		return fmt.Errorf("unknown output format: -output-fmt=%v", outFmt)
 	}
-	tmpl, err := template.New("main").Funcs(fm).Parse(entryFmt)
-	if err != nil {
-		return err
-	}
+	defer func() {
+		if err := writer.Flash(); err != nil {
+			log.Println(err)
+		}
+	}()
 
 	efm, err := errorformat.NewErrorformat(efms)
 	if err != nil {
@@ -117,13 +129,34 @@ func run(r io.Reader, w io.Writer, efms []string, outFmt, entryFmt, name string,
 	}
 	s := efm.NewScanner(r)
 	for s.Scan() {
-		if err := tmpl.Execute(out, s.Entry()); err != nil {
+		if err := writer.Write(s.Entry()); err != nil {
 			return err
 		}
-		if out.NeedNL() {
-			out.WriteNL()
-		}
 	}
+	return nil
+}
+
+type Writer interface {
+	Write(*errorformat.Entry) error
+	Flash() error
+}
+
+type TemplateWriter struct {
+	Template *template.Template
+	Writer   *TrackingWriter
+}
+
+func (t *TemplateWriter) Write(e *errorformat.Entry) error {
+	if err := t.Template.Execute(t.Writer, e); err != nil {
+		return err
+	}
+	if t.Writer.NeedNL() {
+		t.Writer.WriteNL()
+	}
+	return nil
+}
+
+func (*TemplateWriter) Flash() error {
 	return nil
 }
 
