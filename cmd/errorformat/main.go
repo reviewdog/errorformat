@@ -156,7 +156,9 @@ func (t *TemplateWriter) Write(e *errorformat.Entry) error {
 		return err
 	}
 	if t.Writer.NeedNL() {
-		t.Writer.WriteNL()
+		if _, err := t.Writer.WriteNL(); err != nil {
+			return err
+		}
 	}
 	return nil
 }
