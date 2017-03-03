@@ -108,7 +108,7 @@ func run(r io.Reader, w io.Writer, efms []string, writerFmt, entryFmt, name stri
 	var writer Writer
 
 	switch writerFmt {
-	case "template":
+	case "template", "":
 		fm := template.FuncMap{
 			"join": strings.Join,
 		}
