@@ -216,9 +216,10 @@ func (c *CheckStyleWriter) Write(e *errorformat.Entry) error {
 		c.files[e.Filename] = &checkstyle.File{Name: e.Filename}
 	}
 	checkerr := &checkstyle.Error{
-		Column:  e.Col,
-		Line:    e.Lnum,
-		Message: e.Text,
+		Column:   e.Col,
+		Line:     e.Lnum,
+		Message:  e.Text,
+		Severity: e.Types(),
 	}
 	c.files[e.Filename].Errors = append(c.files[e.Filename].Errors, checkerr)
 	return nil
