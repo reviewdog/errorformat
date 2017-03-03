@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io"
+	"sort"
 	"sync"
 
 	"github.com/haya14busa/errorformat"
@@ -48,8 +49,18 @@ func (c *CheckStyle) Flush() error {
 	defer c.mu.Unlock()
 	r := &checkstyle.Result{Version: "1.0"}
 	for _, f := range c.files {
+		sort.Slice(f.Errors, func(i, j int) bool {
+			x, y := f.Errors[i], f.Errors[j]
+			if x.Line == y.Line {
+				return x.Column < y.Column
+			}
+			return x.Line < y.Line
+		})
 		r.Files = append(r.Files, f)
 	}
+	sort.Slice(r.Files, func(i, j int) bool {
+		return r.Files[i].Name < r.Files[j].Name
+	})
 	fmt.Fprint(c.w, xml.Header)
 	e := xml.NewEncoder(c.w)
 	e.Indent("", "  ")
