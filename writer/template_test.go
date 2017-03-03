@@ -5,7 +5,7 @@ import (
 	"text/template"
 )
 
-func ExampleTemplate_String() {
+func ExampleTemplate_string() {
 	tmpl, _ := template.New("example").Parse("{{.String}}")
 	w := NewTemplate(tmpl, os.Stdout)
 	for _, e := range errors {
