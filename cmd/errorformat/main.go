@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/xml"
 	"flag"
 	"fmt"
 	"io"
@@ -8,10 +9,12 @@ import (
 	"os"
 	"sort"
 	"strings"
+	"sync"
 	"text/template"
 
 	"github.com/haya14busa/errorformat"
 	"github.com/haya14busa/errorformat/fmts"
+	"github.com/haya14busa/go-checkstyle/checkstyle"
 )
 
 const usageMessage = "" +
@@ -114,6 +117,8 @@ func run(r io.Reader, w io.Writer, efms []string, outFmt, entryFmt, name string,
 			return err
 		}
 		writer = &TemplateWriter{Template: tmpl, Writer: newTrackingWriter(w)}
+	case "checkstyle":
+		writer = &CheckStyleWriter{w: w}
 	default:
 		return fmt.Errorf("unknown output format: -output-fmt=%v", outFmt)
 	}
@@ -193,4 +198,42 @@ func (t *TrackingWriter) WriteNL() (int, error) {
 // NeedNL returns true if the last byte written is not NL.
 func (t *TrackingWriter) NeedNL() bool {
 	return t.last != '\n'
+}
+
+type CheckStyleWriter struct {
+	mu    sync.Mutex
+	files map[string]*checkstyle.File
+	w     io.Writer
+}
+
+func (c *CheckStyleWriter) Write(e *errorformat.Entry) error {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	if c.files == nil {
+		c.files = make(map[string]*checkstyle.File)
+	}
+	if _, ok := c.files[e.Filename]; !ok {
+		c.files[e.Filename] = &checkstyle.File{Name: e.Filename}
+	}
+	checkerr := &checkstyle.Error{
+		Column:  e.Col,
+		Line:    e.Lnum,
+		Message: e.Text,
+	}
+	c.files[e.Filename].Errors = append(c.files[e.Filename].Errors, checkerr)
+	return nil
+}
+
+func (c *CheckStyleWriter) Flash() error {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	r := &checkstyle.Result{Version: "1.0"}
+	for _, f := range c.files {
+		r.Files = append(r.Files, f)
+	}
+	fmt.Fprint(c.w, xml.Header)
+	e := xml.NewEncoder(c.w)
+	e.Indent("", "  ")
+	defer c.w.Write(nl)
+	return e.Encode(r)
 }
