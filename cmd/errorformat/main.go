@@ -71,21 +71,21 @@ func usage() {
 
 func main() {
 	var (
-		entryFmt = flag.String("f", "{{.String}}", "format template for -output-format=template")
-		outFmt   = flag.String("output-format", "template", "output format (template|checkstyle)")
-		name     = flag.String("name", "", "defined errorformat name")
-		list     = flag.Bool("list", false, "list defined errorformats")
+		entryFmt  = flag.String("f", "{{.String}}", "format template for -w=template")
+		writerFmt = flag.String("w", "template", "writer format (template|checkstyle)")
+		name      = flag.String("name", "", "defined errorformat name")
+		list      = flag.Bool("list", false, "list defined errorformats")
 	)
 	flag.Usage = usage
 	flag.Parse()
 	errorformats := flag.Args()
-	if err := run(os.Stdin, os.Stdout, errorformats, *outFmt, *entryFmt, *name, *list); err != nil {
+	if err := run(os.Stdin, os.Stdout, errorformats, *writerFmt, *entryFmt, *name, *list); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
 
-func run(r io.Reader, w io.Writer, efms []string, outFmt, entryFmt, name string, list bool) error {
+func run(r io.Reader, w io.Writer, efms []string, writerFmt, entryFmt, name string, list bool) error {
 	if list {
 		fs := fmts.DefinedFmts()
 		out := make([]string, 0, len(fs))
@@ -107,7 +107,7 @@ func run(r io.Reader, w io.Writer, efms []string, outFmt, entryFmt, name string,
 
 	var writer Writer
 
-	switch outFmt {
+	switch writerFmt {
 	case "template":
 		fm := template.FuncMap{
 			"join": strings.Join,
@@ -120,7 +120,7 @@ func run(r io.Reader, w io.Writer, efms []string, outFmt, entryFmt, name string,
 	case "checkstyle":
 		writer = &CheckStyleWriter{w: w}
 	default:
-		return fmt.Errorf("unknown output format: -output-fmt=%v", outFmt)
+		return fmt.Errorf("unknown writer: -w=%v", writerFmt)
 	}
 	defer func() {
 		if err := writer.Flash(); err != nil {
