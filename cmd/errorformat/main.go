@@ -65,23 +65,23 @@ func usage() {
 	os.Exit(2)
 }
 
-var (
-	entryFmt = flag.String("f", "{{.String}}", "format template")
-	name     = flag.String("name", "", "defined errorformat name")
-	list     = flag.Bool("list", false, "list defined errorformats")
-)
-
 func main() {
+	var (
+		entryFmt = flag.String("f", "{{.String}}", "format template for -of=template")
+		outFmt   = flag.String("output-format", "template", "output format (template|checkstyle)")
+		name     = flag.String("name", "", "defined errorformat name")
+		list     = flag.Bool("list", false, "list defined errorformats")
+	)
 	flag.Usage = usage
 	flag.Parse()
 	errorformats := flag.Args()
-	if err := run(os.Stdin, os.Stdout, errorformats, *entryFmt, *name, *list); err != nil {
+	if err := run(os.Stdin, os.Stdout, errorformats, *outFmt, *entryFmt, *name, *list); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
 
-func run(r io.Reader, w io.Writer, efms []string, entryFmt, name string, list bool) error {
+func run(r io.Reader, w io.Writer, efms []string, outFmt, entryFmt, name string, list bool) error {
 	if list {
 		fs := fmts.DefinedFmts()
 		out := make([]string, 0, len(fs))
