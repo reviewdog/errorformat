@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/xml"
 	"flag"
 	"fmt"
 	"io"
@@ -9,12 +8,11 @@ import (
 	"os"
 	"sort"
 	"strings"
-	"sync"
 	"text/template"
 
 	"github.com/haya14busa/errorformat"
 	"github.com/haya14busa/errorformat/fmts"
-	"github.com/haya14busa/go-checkstyle/checkstyle"
+	"github.com/haya14busa/errorformat/writer"
 )
 
 const usageMessage = "" +
@@ -105,7 +103,7 @@ func run(r io.Reader, w io.Writer, efms []string, writerFmt, entryFmt, name stri
 		efms = f.Errorformat
 	}
 
-	var writer Writer
+	var ewriter writer.Writer
 
 	switch writerFmt {
 	case "template", "":
@@ -116,17 +114,19 @@ func run(r io.Reader, w io.Writer, efms []string, writerFmt, entryFmt, name stri
 		if err != nil {
 			return err
 		}
-		writer = &TemplateWriter{Template: tmpl, Writer: newTrackingWriter(w)}
+		ewriter = writer.NewTemplate(tmpl, w)
 	case "checkstyle":
-		writer = &CheckStyleWriter{w: w}
+		ewriter = writer.NewCheckStyle(w)
 	default:
 		return fmt.Errorf("unknown writer: -w=%v", writerFmt)
 	}
-	defer func() {
-		if err := writer.Flash(); err != nil {
-			log.Println(err)
-		}
-	}()
+	if ewriter, ok := ewriter.(writer.BufWriter); ok {
+		defer func() {
+			if err := ewriter.Flush(); err != nil {
+				log.Println(err)
+			}
+		}()
+	}
 
 	efm, err := errorformat.NewErrorformat(efms)
 	if err != nil {
@@ -134,109 +134,9 @@ func run(r io.Reader, w io.Writer, efms []string, writerFmt, entryFmt, name stri
 	}
 	s := efm.NewScanner(r)
 	for s.Scan() {
-		if err := writer.Write(s.Entry()); err != nil {
+		if err := ewriter.Write(s.Entry()); err != nil {
 			return err
 		}
 	}
 	return nil
-}
-
-type Writer interface {
-	Write(*errorformat.Entry) error
-	Flash() error
-}
-
-type TemplateWriter struct {
-	Template *template.Template
-	Writer   *TrackingWriter
-}
-
-func (t *TemplateWriter) Write(e *errorformat.Entry) error {
-	if err := t.Template.Execute(t.Writer, e); err != nil {
-		return err
-	}
-	if t.Writer.NeedNL() {
-		if _, err := t.Writer.WriteNL(); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-func (*TemplateWriter) Flash() error {
-	return nil
-}
-
-// TrackingWriter tracks the last byte written on every write so
-// we can avoid printing a newline if one was already written or
-// if there is no output at all.
-type TrackingWriter struct {
-	w    io.Writer
-	last byte
-}
-
-func newTrackingWriter(w io.Writer) *TrackingWriter {
-	return &TrackingWriter{
-		w:    w,
-		last: '\n',
-	}
-}
-
-func (t *TrackingWriter) Write(p []byte) (n int, err error) {
-	n, err = t.w.Write(p)
-	if n > 0 {
-		t.last = p[n-1]
-	}
-	return
-}
-
-var nl = []byte{'\n'}
-
-// WriteNL writes NL.
-func (t *TrackingWriter) WriteNL() (int, error) {
-	return t.w.Write(nl)
-}
-
-// NeedNL returns true if the last byte written is not NL.
-func (t *TrackingWriter) NeedNL() bool {
-	return t.last != '\n'
-}
-
-type CheckStyleWriter struct {
-	mu    sync.Mutex
-	files map[string]*checkstyle.File
-	w     io.Writer
-}
-
-func (c *CheckStyleWriter) Write(e *errorformat.Entry) error {
-	c.mu.Lock()
-	defer c.mu.Unlock()
-	if c.files == nil {
-		c.files = make(map[string]*checkstyle.File)
-	}
-	if _, ok := c.files[e.Filename]; !ok {
-		c.files[e.Filename] = &checkstyle.File{Name: e.Filename}
-	}
-	checkerr := &checkstyle.Error{
-		Column:   e.Col,
-		Line:     e.Lnum,
-		Message:  e.Text,
-		Severity: e.Types(),
-	}
-	c.files[e.Filename].Errors = append(c.files[e.Filename].Errors, checkerr)
-	return nil
-}
-
-func (c *CheckStyleWriter) Flash() error {
-	c.mu.Lock()
-	defer c.mu.Unlock()
-	r := &checkstyle.Result{Version: "1.0"}
-	for _, f := range c.files {
-		r.Files = append(r.Files, f)
-	}
-	fmt.Fprint(c.w, xml.Header)
-	e := xml.NewEncoder(c.w)
-	e.Indent("", "  ")
-	defer c.w.Write(nl)
-	return e.Encode(r)
 }
