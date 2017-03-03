@@ -103,11 +103,13 @@ syntax of package template.  The default output is equivalent to -f
 
 Flags:
   -f string
-        format template (default "{{.String}}")
+        format template for -w=template (default "{{.String}}")
   -list
         list defined errorformats
   -name string
         defined errorformat name
+  -w string
+        writer format (template|checkstyle) (default "template")
 ```
 
 ```
@@ -137,6 +139,15 @@ $ errorformat "%E[%t%.%+] %f:%l: error: %m" "%A[%t%.%+] %f:%l: %m" "%Z[%.%+] %p^
 /path/to/dir/F3.scala|83 col 13 warning| local val in method f is never used
 /path/to/dir/F3.scala|84 col 19 error| value &#43;&#43; is not a member of Int
 /path/to/dir/F3.scala|86 col 13 warning| local val in method f is never used
+$ cat fmts/testdata/sbt.in | errorformat -name=sbt -w=checkstyle
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="1.0">
+  <file name="/home/haya14busa/src/github.com/haya14busa/errorformat/fmts/testdata/resources/scala/scalac.scala">
+    <error column="3" line="6" message="missing argument list for method error in object Predef" severity="error"></error>
+    <error column="15" line="4" message="private val in object F is never used" severity="warning"></error>
+    <error column="15" line="5" message="private method in object F is never used" severity="warning"></error>
+  </file>
+</checkstyle>
 ```
 
 ### Use cases of 'errorformat' outside Vim

@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"sort"
 	"strings"
@@ -11,6 +12,7 @@ import (
 
 	"github.com/haya14busa/errorformat"
 	"github.com/haya14busa/errorformat/fmts"
+	"github.com/haya14busa/errorformat/writer"
 )
 
 const usageMessage = "" +
@@ -65,23 +67,23 @@ func usage() {
 	os.Exit(2)
 }
 
-var (
-	entryFmt = flag.String("f", "{{.String}}", "format template")
-	name     = flag.String("name", "", "defined errorformat name")
-	list     = flag.Bool("list", false, "list defined errorformats")
-)
-
 func main() {
+	var (
+		entryFmt  = flag.String("f", "{{.String}}", "format template for -w=template")
+		writerFmt = flag.String("w", "template", "writer format (template|checkstyle)")
+		name      = flag.String("name", "", "defined errorformat name")
+		list      = flag.Bool("list", false, "list defined errorformats")
+	)
 	flag.Usage = usage
 	flag.Parse()
 	errorformats := flag.Args()
-	if err := run(os.Stdin, os.Stdout, errorformats, *entryFmt, *name, *list); err != nil {
+	if err := run(os.Stdin, os.Stdout, errorformats, *writerFmt, *entryFmt, *name, *list); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
 
-func run(r io.Reader, w io.Writer, efms []string, entryFmt, name string, list bool) error {
+func run(r io.Reader, w io.Writer, efms []string, writerFmt, entryFmt, name string, list bool) error {
 	if list {
 		fs := fmts.DefinedFmts()
 		out := make([]string, 0, len(fs))
@@ -101,14 +103,29 @@ func run(r io.Reader, w io.Writer, efms []string, entryFmt, name string, list bo
 		efms = f.Errorformat
 	}
 
-	out := newTrackingWriter(w)
+	var ewriter writer.Writer
 
-	fm := template.FuncMap{
-		"join": strings.Join,
+	switch writerFmt {
+	case "template", "":
+		fm := template.FuncMap{
+			"join": strings.Join,
+		}
+		tmpl, err := template.New("main").Funcs(fm).Parse(entryFmt)
+		if err != nil {
+			return err
+		}
+		ewriter = writer.NewTemplate(tmpl, w)
+	case "checkstyle":
+		ewriter = writer.NewCheckStyle(w)
+	default:
+		return fmt.Errorf("unknown writer: -w=%v", writerFmt)
 	}
-	tmpl, err := template.New("main").Funcs(fm).Parse(entryFmt)
-	if err != nil {
-		return err
+	if ewriter, ok := ewriter.(writer.BufWriter); ok {
+		defer func() {
+			if err := ewriter.Flush(); err != nil {
+				log.Println(err)
+			}
+		}()
 	}
 
 	efm, err := errorformat.NewErrorformat(efms)
@@ -117,47 +134,9 @@ func run(r io.Reader, w io.Writer, efms []string, entryFmt, name string, list bo
 	}
 	s := efm.NewScanner(r)
 	for s.Scan() {
-		if err := tmpl.Execute(out, s.Entry()); err != nil {
+		if err := ewriter.Write(s.Entry()); err != nil {
 			return err
-		}
-		if out.NeedNL() {
-			out.WriteNL()
 		}
 	}
 	return nil
-}
-
-// TrackingWriter tracks the last byte written on every write so
-// we can avoid printing a newline if one was already written or
-// if there is no output at all.
-type TrackingWriter struct {
-	w    io.Writer
-	last byte
-}
-
-func newTrackingWriter(w io.Writer) *TrackingWriter {
-	return &TrackingWriter{
-		w:    w,
-		last: '\n',
-	}
-}
-
-func (t *TrackingWriter) Write(p []byte) (n int, err error) {
-	n, err = t.w.Write(p)
-	if n > 0 {
-		t.last = p[n-1]
-	}
-	return
-}
-
-var nl = []byte{'\n'}
-
-// WriteNL writes NL.
-func (t *TrackingWriter) WriteNL() (int, error) {
-	return t.w.Write(nl)
-}
-
-// NeedNL returns true if the last byte written is not NL.
-func (t *TrackingWriter) NeedNL() bool {
-	return t.last != '\n'
 }
