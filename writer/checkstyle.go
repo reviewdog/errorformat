@@ -10,6 +10,7 @@ import (
 	"github.com/haya14busa/go-checkstyle/checkstyle"
 )
 
+// CheckStyle represents checkstyle XML writer. http://checkstyle.sourceforge.net/
 type CheckStyle struct {
 	mu    sync.Mutex
 	files map[string]*checkstyle.File

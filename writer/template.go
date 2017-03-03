@@ -7,6 +7,7 @@ import (
 	"github.com/haya14busa/errorformat"
 )
 
+// Template represents text/template based writer.
 type Template struct {
 	tmpl *template.Template
 	w    *trackingWriter
