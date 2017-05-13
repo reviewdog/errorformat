@@ -409,7 +409,8 @@ type Efm struct {
 var fmtpattern = map[byte]string{
 	'f': `(?P<f>(?:[[:alpha:]]:)?(?:\\ |[^ ])+?)`,
 	'n': `(?P<n>\d+)`,
-	'l': `(?P<l>\d+)`,
+	// Negative line number is supported as special markers.
+	'l': `(?P<l>-?\d+)`,
 	'c': `(?P<c>\d+)`,
 	't': `(?P<t>.)`,
 	'm': `(?P<m>.+)`,
