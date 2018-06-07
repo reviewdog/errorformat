@@ -557,7 +557,7 @@ func (efm *Efm) Match(s string) *Match {
 }
 
 func strchar(chars string, c byte) bool {
-	return bytes.IndexAny([]byte{c}, chars) != -1
+	return bytes.ContainsAny([]byte{c}, chars)
 }
 
 func mustAtoI(s string) int {
