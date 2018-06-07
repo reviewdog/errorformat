@@ -1,0 +1,5 @@
+/application/controllers/Account.php|63| Call to static method BaseModel::TransRollback() with incorrect case: TransRollBack
+/application/controllers/Account.php|107| Access to an undefined property account::$member_id.
+/application/controllers/Account.php|119| Call to static method BaseModel::TransRollback() with incorrect case: TransRollBack
+/application/controllers/Account.php|135| Access to an undefined property account::$member_id.
+/application/controllers/Account.php|189| Access to an undefined property account::$member_id.
