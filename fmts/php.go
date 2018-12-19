@@ -12,4 +12,14 @@ func init() {
 		URL:         "https://github.com/phpstan/phpstan",
 		Language:    lang,
 	})
+
+	register(&Fmt{
+		Name: "phpcs",
+		Errorformat: []string{
+			`%f:%l:%c: %s - %m`,
+		},
+		Description: "(phpcs --report=emacs -q) PHP_CodeSniffer - tokenizes PHP files to detect violations of a defined coding standard!",
+		URL:         "https://github.com/squizlabs/PHP_CodeSniffer",
+		Language:    lang,
+	})
 }

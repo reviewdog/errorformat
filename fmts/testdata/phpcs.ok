@@ -1,0 +1,5 @@
+/application/controllers/DefaultController.php|19 col 1| Use statements are incorrectly ordered. The first wrong one is DateTimeImmutable
+/application/controllers/DefaultController.php|22 col 1| Type Iterator is not used in this file
+/application/controllers/DefaultController.php|69 col 56| Opening brace should be on a new line
+/application/controllers/DefaultController.php|99 col 83| Expected 1 space(s) after closing parenthesis; found newline
+/application/controllers/DefaultController.php|214 col 83| Call to sprintf contains 0 placeholders, 1 value given
