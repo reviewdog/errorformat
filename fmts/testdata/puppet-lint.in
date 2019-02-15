@@ -1,0 +1,5 @@
+/modules/manifests/install.pp - ERROR: docker::install not in autoload module layout on line 7
+/modules/manifests/init.pp - ERROR: docker not in autoload module layout on line 347
+/modules/manifests/registry_auth.pp - ERROR: docker::registry_auth not in autoload module layout on line 2
+/modules/manifests/systemd_reload.pp - ERROR: docker::systemd_reload not in autoload module layout on line 5
+/modules/manifests/image.pp - ERROR: docker::image not in autoload module layout on line 26
