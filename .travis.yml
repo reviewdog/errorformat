@@ -1,16 +1,20 @@
 language: go
 
 go:
-  - 1.10.x
-  - 1.11.x
+  - 1.12.x
   - master
+
+matrix:
+  allow_failures:
+    - go: master
+  fast_finish: true
 
 install:
   - go get -d -v -t ./...
   - go get github.com/haya14busa/goverage
   # Install linters.
   - go get github.com/haya14busa/reviewdog/cmd/reviewdog
-  - go get github.com/golang/lint/golint
+  - go get golang.org/x/lint/golint
   - go get github.com/kisielk/errcheck
   - go get honnef.co/go/tools/cmd/gosimple
   - go get honnef.co/go/tools/cmd/staticcheck
