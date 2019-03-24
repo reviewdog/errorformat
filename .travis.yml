@@ -1,8 +1,13 @@
 language: go
 
 go:
-  - 1.8
+  - "1.12.x"
   - master
+
+matrix:
+  allow_failures:
+    - go: master
+  fast_finish: true
 
 install:
   - go get -d -v -t ./...
