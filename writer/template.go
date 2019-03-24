@@ -4,7 +4,7 @@ import (
 	"io"
 	"text/template"
 
-	"github.com/haya14busa/errorformat"
+	"github.com/reviewdog/errorformat"
 )
 
 // Template represents text/template based writer.

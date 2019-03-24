@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/haya14busa/errorformat"
+	"github.com/reviewdog/errorformat"
 )
 
 func ExampleErrorformat() {

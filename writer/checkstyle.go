@@ -7,7 +7,7 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/haya14busa/errorformat"
+	"github.com/reviewdog/errorformat"
 	"github.com/haya14busa/go-checkstyle/checkstyle"
 )
 

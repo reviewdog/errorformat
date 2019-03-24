@@ -1,6 +1,6 @@
 package writer
 
-import "github.com/haya14busa/errorformat"
+import "github.com/reviewdog/errorformat"
 
 var errors = []*errorformat.Entry{
 	{Filename: "path/to/file1", Lnum: 1, Col: 14, Text: "hello", Type: 'W'},

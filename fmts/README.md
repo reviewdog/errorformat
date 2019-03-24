@@ -3,13 +3,13 @@
 ### 1) Download errorformat CLI tool for debugging (optional)
 
 ```
-go get -u github.com/haya14busa/errorformat/cmd/errorformat
+go get -u github.com/reviewdog/errorformat/cmd/errorformat
 ```
 
 ### 2) Write errorformat for the target output
 - errorformat doc: http://vimdoc.sourceforge.net/htmldoc/quickfix.html#errorformat
 
-Note that https://github.com/haya14busa/errorformat doesn't support Vim regex, and `efm-%>` feature (currently).
+Note that https://github.com/reviewdog/errorformat doesn't support Vim regex, and `efm-%>` feature (currently).
 Other syntax are supported.
 
 #### Example (add errorformat for golint)
@@ -64,7 +64,7 @@ func init() {
 }
 ```
 
-Required fields are self descriptive. See https://godoc.org/github.com/haya14busa/errorformat/fmts#Fmt
+Required fields are self descriptive. See https://godoc.org/github.com/reviewdog/errorformat/fmts#Fmt
 
 #### fmts/testdata/golint.in
 

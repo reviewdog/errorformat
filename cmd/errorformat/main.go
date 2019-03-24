@@ -10,9 +10,9 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/haya14busa/errorformat"
-	"github.com/haya14busa/errorformat/fmts"
-	"github.com/haya14busa/errorformat/writer"
+	"github.com/reviewdog/errorformat"
+	"github.com/reviewdog/errorformat/fmts"
+	"github.com/reviewdog/errorformat/writer"
 )
 
 const usageMessage = "" +
