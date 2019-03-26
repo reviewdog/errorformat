@@ -12,7 +12,7 @@ func init() {
 			`%-G%.%#`,
 		},
 		Description: "A Ruby static code analyzer, based on the community Ruby style guide",
-		URL:         "https://github.com/bbatsov/rubocop",
+		URL:         "https://github.com/rubocop-hq/rubocop",
 		Language:    lang,
 	})
 
