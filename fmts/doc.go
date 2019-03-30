@@ -22,7 +22,7 @@
 // 	python
 // 		pep8	Python style guide checker - https://pypi.python.org/pypi/pep8
 // 	ruby
-// 		rubocop	A Ruby static code analyzer, based on the community Ruby style guide - https://github.com/bbatsov/rubocop
+// 		rubocop	A Ruby static code analyzer, based on the community Ruby style guide - https://github.com/rubocop-hq/rubocop
 // 	scala
 // 		sbt	the interactive build tool - http://www.scala-sbt.org/
 // 		sbt-scalastyle	Scalastyle - SBT plugin - http://www.scalastyle.org/sbt.html
