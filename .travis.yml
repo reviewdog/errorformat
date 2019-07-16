@@ -16,9 +16,9 @@ install:
   - go get github.com/haya14busa/reviewdog/cmd/reviewdog
   - go get golang.org/x/lint/golint
   - go get github.com/kisielk/errcheck
-  - go get honnef.co/go/tools/cmd/gosimple
-  - go get honnef.co/go/tools/cmd/staticcheck
-  - go get honnef.co/go/tools/cmd/unused
+  - go get honnef.co/go/tools/cmd/gosimple@2019.1.1
+  - go get honnef.co/go/tools/cmd/staticcheck@2019.1.1
+  - go get honnef.co/go/tools/cmd/unused@2019.1.1
   - go get github.com/client9/misspell/cmd/misspell
 
 script:
