@@ -9,11 +9,13 @@ matrix:
     - go: master
   fast_finish: true
 
+env:
+  global:
+    - GO111MODULE=on
+
 install:
-  - go get -d -v -t ./...
-  - go get github.com/haya14busa/goverage
+  - curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b $(go env GOPATH)/bin
   # Install linters.
-  - go get github.com/haya14busa/reviewdog/cmd/reviewdog
   - go get golang.org/x/lint/golint
   - go get github.com/kisielk/errcheck
   - go get honnef.co/go/tools/cmd/gosimple@2019.1.1
@@ -24,9 +26,9 @@ install:
 script:
   - reviewdog -reporter=github-pr-check
   - go test -v -race ./...
+  - go test -coverpkg=./... -coverprofile=coverage.txt ./...
   - go generate ./...
   - (! git diff | grep '^') # check diff
-  - goverage -coverprofile=coverage.txt ./...
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
