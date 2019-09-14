@@ -1,0 +1,15 @@
+fmts/fmt_test.go:42:21: Error return value of `bufout.WriteString` is not checked (errcheck)
+		bufout.WriteString(s.Entry().String() + "\n")
+		                  ^
+writer/checkstyle.go:67:17: Error return value of `c.w.Write` is not checked (errcheck)
+	defer c.w.Write(nl)
+	               ^
+writer/checkstyle_test.go:8:10: Error return value of `w.Write` is not checked (errcheck)
+		w.Write(e)
+		       ^
+writer/template_test.go:12:10: Error return value of `w.Write` is not checked (errcheck)
+		w.Write(e)
+		       ^
+writer/template_test.go:25:10: Error return value of `w.Write` is not checked (errcheck)
+		w.Write(e)
+		       ^

@@ -1,0 +1,5 @@
+fmts/fmt_test.go|42 col 21 error| Error return value of `bufout.WriteString` is not checked (errcheck)
+writer/checkstyle.go|67 col 17 error| Error return value of `c.w.Write` is not checked (errcheck)
+writer/checkstyle_test.go|8 col 10 error| Error return value of `w.Write` is not checked (errcheck)
+writer/template_test.go|12 col 10 error| Error return value of `w.Write` is not checked (errcheck)
+writer/template_test.go|25 col 10 error| Error return value of `w.Write` is not checked (errcheck)
