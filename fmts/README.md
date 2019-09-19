@@ -77,7 +77,7 @@ golint.new.go:7:1: comment on exported function F should be of the form "F ..."
 golint.new.go:11:1: comment on exported function F2 should be of the form "F2 ..."
 ```
 
-I also recoomends add resource code to reproduce this input file in `fmts/testdata/resources/{lang}/{name}`
+I also recommend to add resource code to reproduce this input file in `fmts/testdata/resources/{lang}/{name}`
 
 #### fmts/testdata/golint.ok
 
