@@ -14,6 +14,13 @@ Also, it's easy to [add new errorformat](fmts/README.md) in a similar way to Vim
 
 Note that it's highly compatible with Vim implementation, but it doesn't support Vim regex.
 
+### :arrow_forward: Playground :arrow_forward:
+
+Try errorformat on [the Playground](https://reviewdog.github.io/errorformat-playground/)!
+
+The playground uses [gopherjs](https://github.com/gopherjs/gopherjs) to try
+errorformat implementation in Go with JavaScript :sparkles:
+
 ### Usage
 
 ```go
