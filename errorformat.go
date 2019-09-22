@@ -84,28 +84,28 @@ type qffields struct {
 // list item.
 type Entry struct {
 	// name of a file
-	Filename string
+	Filename string `json:"filename"`
 	// line number
-	Lnum int
+	Lnum int `json:"lnum"`
 	// column number (first column is 1)
-	Col int
+	Col int `json:"col"`
 	// true: "col" is visual column
 	// false: "col" is byte index
-	Vcol bool
+	Vcol bool `json:"vcol"`
 	// error number
-	Nr int
+	Nr int `json:"nr"`
 	// search pattern used to locate the error
-	Pattern string
+	Pattern string `json:"pattern"`
 	// description of the error
-	Text string
+	Text string `json:"text"`
 	// type of the error, 'E', '1', etc.
-	Type rune
+	Type rune `json:"type"`
 	// true: recognized error message
-	Valid bool
+	Valid bool `json:"valid"`
 
 	// Original error lines (often one line. more than one line for multi-line
 	// errorformat. :h errorformat-multi-line)
-	Lines []string
+	Lines []string `json:"lines"`
 }
 
 // || message
