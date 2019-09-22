@@ -6,7 +6,7 @@
 [![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GoDoc](https://godoc.org/github.com/reviewdog/errorformat?status.svg)](https://godoc.org/github.com/reviewdog/errorformat)
 
-errorformat is Vim's quickfix [errorformat](http://vimdoc.sourceforge.net/htmldoc/quickfix.html#errorformat) implementation in golang.
+errorformat is Vim's quickfix [errorformat](https://vim-jp.org/vimdoc-en/quickfix.html#error-file-format) implementation in golang.
 
 errorformat provides default errorformats for major tools.
 You can see defined errorformats [here](https://godoc.org/github.com/reviewdog/errorformat/fmts).
