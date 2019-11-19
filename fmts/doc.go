@@ -17,7 +17,7 @@
 // 		eslint	(eslint [-f stylish]) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 		eslint-compact	(eslint -f compact) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 	php
-// 		phpstan	(phpstan --errorFormat=raw) PHP Static Analysis Tool - discover bugs in your code without running it! - https://github.com/phpstan/phpstan
+// 		phpstan	(phpstan --error-format=raw) PHP Static Analysis Tool - discover bugs in your code without running it! - https://github.com/phpstan/phpstan
 // 	puppet
 // 		puppet-lint	Check that your Puppet manifests conform to the style guide - https://github.com/rodjek/puppet-lint
 // 	python
