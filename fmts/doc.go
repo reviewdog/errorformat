@@ -24,6 +24,8 @@
 // 		pep8	Python style guide checker - https://pypi.python.org/pypi/pep8
 // 	ruby
 // 		rubocop	A Ruby static code analyzer, based on the community Ruby style guide - https://github.com/rubocop-hq/rubocop
+// 	rust
+// 		clippy	(cargo clippy -q --message-format=short) A bunch of lints to catch common mistakes and improve your Rust code - https://github.com/rust-lang/rust-clippy
 // 	scala
 // 		sbt	the interactive build tool - http://www.scala-sbt.org/
 // 		sbt-scalastyle	Scalastyle - SBT plugin - http://www.scalastyle.org/sbt.html
