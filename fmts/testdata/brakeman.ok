@@ -1,0 +1,3 @@
+/app/app/models/package.rb|13| Command Injection       General Possible command injection near line 13: system("ls #{params[:dir]}")   High
+/app/app/controllers/api_controller.rb|10| Dangerous Send  General User controlled method execution near line 10: User.send(params[:method].to_sym)        High
+/app/app/controllers/api_controller.rb|21| SSL Verification Bypass General SSL certificate verification was bypassed near line 21: Net::HTTP.new(URI.parse("https://ssl-site.com/").host, URI.parse("https://ssl-site.com/").port).verify_mode = OpenSSL::SSL::VERIFY_NONE High

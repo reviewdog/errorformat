@@ -17,14 +17,17 @@
 // 		eslint	(eslint [-f stylish]) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 		eslint-compact	(eslint -f compact) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 	php
-// 		phpstan	(phpstan --errorFormat=raw) PHP Static Analysis Tool - discover bugs in your code without running it! - https://github.com/phpstan/phpstan
+// 		phpstan	(phpstan --error-format=raw) PHP Static Analysis Tool - discover bugs in your code without running it! - https://github.com/phpstan/phpstan
 // 	puppet
 // 		puppet-lint	Check that your Puppet manifests conform to the style guide - https://github.com/rodjek/puppet-lint
 // 	python
 // 		pep8	Python style guide checker - https://pypi.python.org/pypi/pep8
 // 	ruby
+// 		brakeman	(brakeman --quiet --format tabs) A static analysis security vulnerability scanner for Ruby on Rails applications - https://github.com/presidentbeef/brakeman
 // 		reek	(reek --single-line) Code smell detector for Ruby - https://github.com/troessner/reek
 // 		rubocop	A Ruby static code analyzer, based on the community Ruby style guide - https://github.com/rubocop-hq/rubocop
+// 	rust
+// 		clippy	(cargo clippy -q --message-format=short) A bunch of lints to catch common mistakes and improve your Rust code - https://github.com/rust-lang/rust-clippy
 // 	scala
 // 		sbt	the interactive build tool - http://www.scala-sbt.org/
 // 		sbt-scalastyle	Scalastyle - SBT plugin - http://www.scalastyle.org/sbt.html
