@@ -17,6 +17,17 @@ func init() {
 	})
 
 	register(&Fmt{
+		Name: "reek",
+		Errorformat: []string{
+			`%*\s%f:%l: %m`,
+			`%-G%.%#`,
+		},
+		Description: "(reek --single-line) Code smell detector for Ruby",
+		URL:         "https://github.com/troessner/reek",
+		Language:    lang,
+	})
+
+  register(&Fmt{
 		Name: "brakeman",
 		Errorformat: []string{
 			`%f%*\s%l%*\s%m`,
