@@ -23,6 +23,7 @@
 // 	python
 // 		pep8	Python style guide checker - https://pypi.python.org/pypi/pep8
 // 	ruby
+// 		brakeman	(brakeman --quiet --format tabs) A static analysis security vulnerability scanner for Ruby on Rails applications - https://github.com/presidentbeef/brakeman
 // 		rubocop	A Ruby static code analyzer, based on the community Ruby style guide - https://github.com/rubocop-hq/rubocop
 // 	scala
 // 		sbt	the interactive build tool - http://www.scala-sbt.org/
