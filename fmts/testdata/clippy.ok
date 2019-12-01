@@ -1,0 +1,2 @@
+src/main.rs|10 col 13| warning: use of a blacklisted/placeholder name `foo`
+src/main.rs|27 col 8| warning: length comparison to zero
