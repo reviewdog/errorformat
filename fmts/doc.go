@@ -23,6 +23,7 @@
 // 	python
 // 		pep8	Python style guide checker - https://pypi.python.org/pypi/pep8
 // 	ruby
+// 		brakeman	(brakeman --quiet --format tabs) A static analysis security vulnerability scanner for Ruby on Rails applications - https://github.com/presidentbeef/brakeman
 // 		rubocop	A Ruby static code analyzer, based on the community Ruby style guide - https://github.com/rubocop-hq/rubocop
 // 	rust
 // 		clippy	(cargo clippy -q --message-format=short) A bunch of lints to catch common mistakes and improve your Rust code - https://github.com/rust-lang/rust-clippy
