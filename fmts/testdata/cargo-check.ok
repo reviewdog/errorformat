@@ -1,0 +1,2 @@
+src/main.rs|3 col 5| warning: unused import: `std::process`
+src/main.rs|6 col 5| warning: unused `std::result::Result` that must be used
