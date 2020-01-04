@@ -1,0 +1,5 @@
+.env|1| Leading space detected
+.env|2| The FOO key should be with a value or have an equal sign
+.env|3| The FOO-BAR key has incorrect delimiter
+.env|4| The FOo_BAR key should be in uppercase
+.env|5| The foo_bar key should be in uppercase

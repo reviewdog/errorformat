@@ -9,6 +9,8 @@
 // 
 // 	css
 // 		stylelint	A mighty modern CSS linter - https://github.com/stylelint/stylelint
+// 	env
+// 		dotenv-linter	Linter for .env files - https://github.com/mgrachev/dotenv-linter
 // 	go
 // 		golangci-lint	(golangci-lint run --out-format=line-number) GolangCI-Lint is a linters aggregator. - https://github.com/golangci/golangci-lint
 // 		golint	linter for Go source code - https://github.com/golang/lint

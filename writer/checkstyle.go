@@ -7,8 +7,8 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/reviewdog/errorformat"
 	"github.com/haya14busa/go-checkstyle/checkstyle"
+	"github.com/reviewdog/errorformat"
 )
 
 // CheckStyle represents checkstyle XML writer. http://checkstyle.sourceforge.net/
