@@ -27,7 +27,7 @@ func init() {
 		Language:    lang,
 	})
 
-  register(&Fmt{
+	register(&Fmt{
 		Name: "brakeman",
 		Errorformat: []string{
 			`%f%*\s%l%*\s%m`,
