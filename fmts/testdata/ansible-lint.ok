@@ -1,0 +1,3 @@
+main.yml|1| [E201] Trailing whitespace
+main.yml|2| [E206] Variables should have spaces before and after: {{ var_name }}
+main.yml|86| [E301] Commands should not change things if nothing needs doing

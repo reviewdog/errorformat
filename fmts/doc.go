@@ -7,6 +7,8 @@
 //
 // Defined formats:
 // 
+// 	ansible
+// 		ansible-lint	(ansible-lint -p playbook.yml) Checks playbooks for practices and behaviour that could potentially be improved - https://github.com/ansible/ansible-lint
 // 	css
 // 		stylelint	A mighty modern CSS linter - https://github.com/stylelint/stylelint
 // 	env
