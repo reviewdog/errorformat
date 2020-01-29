@@ -4,15 +4,22 @@ func init() {
 	const lang = "ruby"
 
 	register(&Fmt{
-		Name: "rubocop",
+		Name: "brakeman",
 		Errorformat: []string{
-			`%A%f:%l:%c: %t: %m`,
-			`%Z%p^%#`,
-			`%C%.%#`,
-			`%-G%.%#`,
+			`%f%*\s%l%*\s%m`,
 		},
-		Description: "A Ruby static code analyzer, based on the community Ruby style guide",
-		URL:         "https://github.com/rubocop-hq/rubocop",
+		Description: "(brakeman --quiet --format tabs) A static analysis security vulnerability scanner for Ruby on Rails applications",
+		URL:         "https://github.com/presidentbeef/brakeman",
+		Language:    lang,
+	})
+
+	register(&Fmt{
+		Name: "fasterer",
+		Errorformat: []string{
+			`%f:%l %m`,
+		},
+		Description: "Speed improvements suggester",
+		URL:         "https://github.com/DamirSvrtan/fasterer",
 		Language:    lang,
 	})
 
@@ -28,12 +35,15 @@ func init() {
 	})
 
 	register(&Fmt{
-		Name: "brakeman",
+		Name: "rubocop",
 		Errorformat: []string{
-			`%f%*\s%l%*\s%m`,
+			`%A%f:%l:%c: %t: %m`,
+			`%Z%p^%#`,
+			`%C%.%#`,
+			`%-G%.%#`,
 		},
-		Description: "(brakeman --quiet --format tabs) A static analysis security vulnerability scanner for Ruby on Rails applications",
-		URL:         "https://github.com/presidentbeef/brakeman",
+		Description: "A Ruby static code analyzer, based on the community Ruby style guide",
+		URL:         "https://github.com/rubocop-hq/rubocop",
 		Language:    lang,
 	})
 }
