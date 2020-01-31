@@ -1,0 +1,4 @@
+app/models/post.rb|57| Array#select.first is slower than Array#detect.
+app/models/post.rb|61| Array#select.first is slower than Array#detect.
+db/seeds/cities.rb|15| Hash#keys.each is slower than Hash#each_key.
+db/seeds/cities.rb|33| Hash#keys.each is slower than Hash#each_key.
