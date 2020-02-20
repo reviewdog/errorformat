@@ -1,0 +1,23 @@
+app/views/layouts/application.html.haml|33 warning| ImplicitDiv: `%div.section#flash` can be written as `.section#flash` since `%div` is implicit
+app/views/node_classes/show.html.haml|34 warning| ObjectReferenceAttributes: Avoid using object reference syntax to assign class/id attributes for tags
+app/views/node_group_class_memberships/_form.html.haml|8 warning| InstanceVariables: Avoid using instance variables in partials views
+app/views/node_groups/index.html.haml|21 warning| ObjectReferenceAttributes: Avoid using object reference syntax to assign class/id attributes for tags
+app/views/nodes/_form.html.haml|1 warning| InstanceVariables: Avoid using instance variables in partials views
+app/views/nodes/_form.html.haml|36 warning| InstanceVariables: Avoid using instance variables in partials views
+app/views/nodes/_nodes.html.haml|7 warning| MultilinePipe: Don't use the `|` character to split up lines. Wrap on commas or extract code into helper.
+app/views/nodes/_reports.html.haml|14 warning| TrailingWhitespace: Line contains trailing whitespace
+app/views/pages/home.html.haml|13 warning| HtmlAttributes: Prefer the hash attributes syntax (%tag{ lang: 'en' }) over HTML attributes syntax (%tag(lang=en))
+app/views/pages/home.html.haml|16 warning| HtmlAttributes: Prefer the hash attributes syntax (%tag{ lang: 'en' }) over HTML attributes syntax (%tag(lang=en))
+app/views/parameters/_parameter_input.html.haml|22 warning| UnnecessaryStringOutput: `= "..."` should be rewritten as `...`
+app/views/parameters/_parameter_input.html.haml|37 warning| UnnecessaryStringOutput: `= "..."` should be rewritten as `...`
+app/views/parameters/_parameter_input.html.haml|53 warning| UnnecessaryStringOutput: `= "..."` should be rewritten as `...`
+app/views/parameters/_parameter_input.html.haml|68 warning| UnnecessaryStringOutput: `= "..."` should be rewritten as `...`
+app/views/reports/_report.html.haml|14 warning| ClassesBeforeIds: Classes should be listed before IDs (.tabbed should precede #report-tabs)
+app/views/reports/_report_title.html.haml|3 warning| TrailingWhitespace: Line contains trailing whitespace
+app/views/reports/index.html.haml|14 warning| ClassesBeforeIds: Classes should be listed before IDs (.tabbed should precede #report-tabs)
+app/views/shared/_error.html.haml|1 warning| FinalNewline: Files should end with a trailing newline
+app/views/shared/_node_manager_sidebar.html.haml|12 warning| UnnecessaryStringOutput: `= "..."` should be rewritten as `...`
+app/views/shared/_parameters.html.haml|3 warning| RubyComments: Use `-#` for comments instead of `- #`
+app/views/shared/_parameters_part1.html.haml|11 warning| FinalNewline: Files should end with a trailing newline
+app/views/shared/_variables.html.haml|3 warning| RubyComments: Use `-#` for comments instead of `- #`
+app/views/statuses/_run_failure.html.haml|31 warning| TrailingWhitespace: Line contains trailing whitespace
