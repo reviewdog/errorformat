@@ -17,6 +17,8 @@
 // 		golangci-lint	(golangci-lint run --out-format=line-number) GolangCI-Lint is a linters aggregator. - https://github.com/golangci/golangci-lint
 // 		golint	linter for Go source code - https://github.com/golang/lint
 // 		govet	Vet examines Go source code and reports suspicious problems - https://golang.org/cmd/vet/
+// 	haml
+// 		haml-lint	Tool for writing clean and consistent HAML - https://github.com/sds/haml-lint
 // 	javascript
 // 		eslint	(eslint [-f stylish]) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 		eslint-compact	(eslint -f compact) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
