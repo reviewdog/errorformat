@@ -35,4 +35,14 @@ func init() {
 		URL:         "https://github.com/golangci/golangci-lint",
 		Language:    lang,
 	})
+
+	register(&Fmt{
+		Name: "go-consistent",
+		Errorformat: []string{
+			`%f:%l:%c: %m`,
+		},
+		Description: "Source code analyzer that helps you to make your Go programs more consistent",
+		URL:         "https://github.com/quasilyte/go-consistent",
+		Language:    lang,
+	})
 }

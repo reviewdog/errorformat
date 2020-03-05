@@ -1,0 +1,16 @@
+./fmts/testdata/resources/go/go_consistent.go|29 col 6| zero value ptr alloc: use new(T) for *T allocation
+./fmts/testdata/resources/go/go_consistent.go|31 col 6| zero value ptr alloc: use new(T) for *T allocation
+./fmts/testdata/resources/go/go_consistent.go|38 col 6| empty slice: use make([]T, 0)
+./fmts/testdata/resources/go/go_consistent.go|45 col 6| empty map: use make(map[K]V)
+./fmts/testdata/resources/go/go_consistent.go|52 col 6| hex lit: use a-f (lower case) digits
+./fmts/testdata/resources/go/go_consistent.go|60 col 6| range check: use align-left, like in `x >= low && x <= high`
+./fmts/testdata/resources/go/go_consistent.go|67 col 6| and-not: remove a space between & and ^, like in `x &^ y`
+./fmts/testdata/resources/go/go_consistent.go|75 col 6| float lit: use explicit int/frac part, like in `1.0` and `0.1`
+./fmts/testdata/resources/go/go_consistent.go|77 col 6| float lit: use explicit int/frac part, like in `1.0` and `0.1`
+./fmts/testdata/resources/go/go_consistent.go|84 col 1| label case: use ALL_UPPER
+./fmts/testdata/resources/go/go_consistent.go|86 col 1| label case: use ALL_UPPER
+./fmts/testdata/resources/go/go_consistent.go|99 col 2| untyped const coerce: specify type in LHS, like in `var x T = const`
+./fmts/testdata/resources/go/go_consistent.go|113 col 2| arg list parens: align `)` to a same line with last argument
+./fmts/testdata/resources/go/go_consistent.go|136 col 6| non-zero length test: use `len(s) != 0`
+./fmts/testdata/resources/go/go_consistent.go|138 col 6| non-zero length test: use `len(s) != 0`
+./fmts/testdata/resources/go/go_consistent.go|154 col 2| default case order: default case should be the first case

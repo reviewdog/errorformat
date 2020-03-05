@@ -14,6 +14,7 @@
 // 	env
 // 		dotenv-linter	Linter for .env files - https://github.com/mgrachev/dotenv-linter
 // 	go
+// 		go-consistent	Source code analyzer that helps you to make your Go programs more consistent - https://github.com/quasilyte/go-consistent
 // 		golangci-lint	(golangci-lint run --out-format=line-number) GolangCI-Lint is a linters aggregator. - https://github.com/golangci/golangci-lint
 // 		golint	linter for Go source code - https://github.com/golang/lint
 // 		govet	Vet examines Go source code and reports suspicious problems - https://golang.org/cmd/vet/
