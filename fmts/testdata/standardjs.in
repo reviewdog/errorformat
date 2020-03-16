@@ -1,0 +1,13 @@
+standard: Use JavaScript Standard Style (https://standardjs.com)
+standard: Run `standard --fix` to automatically fix some problems.
+  /project/app/javascript/controllers/notification_controller.js:4:12: Missing space before function parentheses.
+  /project/app/javascript/controllers/subscription_controller.js:8:21: Strings must use singlequote.
+  /project/app/javascript/controllers/subscription_controller.js:16:40: Extra semicolon.
+  /project/app/javascript/controllers/subscription_controller.js:35:14: Missing space before function parentheses.
+  /project/app/javascript/controllers/subscription_controller.js:39:19: Missing space before function parentheses.
+  /project/app/javascript/controllers/subscription_controller.js:43:21: Missing space before function parentheses.
+  /project/app/javascript/controllers/subscription_controller.js:48:43: Extra semicolon.
+  /project/app/javascript/controllers/subscription_controller.js:49:51: Extra semicolon.
+  /project/app/javascript/controllers/subscription_controller.js:53:39: Extra semicolon.
+  /project/app/javascript/controllers/subscription_controller.js:54:46: Extra semicolon.
+  /project/app/javascript/controllers/subscription_controller.js:65:65: Extra semicolon.
