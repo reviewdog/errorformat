@@ -23,6 +23,7 @@
 // 	javascript
 // 		eslint	(eslint [-f stylish]) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 		eslint-compact	(eslint -f compact) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
+// 		standardjs	(standard) JavaScript style guide, linter, and formatter - https://github.com/standard/standard
 // 	php
 // 		phpstan	(phpstan --error-format=raw) PHP Static Analysis Tool - discover bugs in your code without running it! - https://github.com/phpstan/phpstan
 // 	puppet
