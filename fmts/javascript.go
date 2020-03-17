@@ -29,4 +29,15 @@ func init() {
 		Language:    lang,
 	})
 
+	register(&Fmt{
+		Name: "standardjs",
+		Errorformat: []string{
+			`%*\s%f:%l:%c: %m`,
+			`%-G%.%#`,
+		},
+		Description: "(standard) JavaScript style guide, linter, and formatter",
+		URL:         "https://github.com/standard/standard",
+		Language:    lang,
+	})
+
 }

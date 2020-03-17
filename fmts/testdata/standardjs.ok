@@ -1,0 +1,11 @@
+/project/app/javascript/controllers/notification_controller.js|4 col 12| Missing space before function parentheses.
+/project/app/javascript/controllers/subscription_controller.js|8 col 21| Strings must use singlequote.
+/project/app/javascript/controllers/subscription_controller.js|16 col 40| Extra semicolon.
+/project/app/javascript/controllers/subscription_controller.js|35 col 14| Missing space before function parentheses.
+/project/app/javascript/controllers/subscription_controller.js|39 col 19| Missing space before function parentheses.
+/project/app/javascript/controllers/subscription_controller.js|43 col 21| Missing space before function parentheses.
+/project/app/javascript/controllers/subscription_controller.js|48 col 43| Extra semicolon.
+/project/app/javascript/controllers/subscription_controller.js|49 col 51| Extra semicolon.
+/project/app/javascript/controllers/subscription_controller.js|53 col 39| Extra semicolon.
+/project/app/javascript/controllers/subscription_controller.js|54 col 46| Extra semicolon.
+/project/app/javascript/controllers/subscription_controller.js|65 col 65| Extra semicolon.
