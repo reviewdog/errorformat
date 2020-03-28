@@ -35,6 +35,7 @@
 // 		fasterer	Speed improvements suggester - https://github.com/DamirSvrtan/fasterer
 // 		reek	(reek --single-line) Code smell detector for Ruby - https://github.com/troessner/reek
 // 		rubocop	A Ruby static code analyzer, based on the community Ruby style guide - https://github.com/rubocop-hq/rubocop
+// 		sorbet	A fast, powerful type checker designed for Ruby - https://github.com/sorbet/sorbet
 // 	rust
 // 		cargo-check	(cargo check -q --message-format=short) Check a local package and all of its dependencies for errors - https://github.com/rust-lang/cargo
 // 		clippy	(cargo clippy -q --message-format=short) A bunch of lints to catch common mistakes and improve your Rust code - https://github.com/rust-lang/rust-clippy

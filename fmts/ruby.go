@@ -46,4 +46,15 @@ func init() {
 		URL:         "https://github.com/rubocop-hq/rubocop",
 		Language:    lang,
 	})
+
+	register(&Fmt{
+		Name: "sorbet",
+		Errorformat:[]string{
+			`%f:%l: %m`,
+			`%-G%.%#`,
+		},
+		Description: "A fast, powerful type checker designed for Ruby",
+		URL:         "https://github.com/sorbet/sorbet",
+		Language:    lang,
+	})
 }

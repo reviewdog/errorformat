@@ -1,0 +1,20 @@
+sample.rb:13: Method barr does not exist on A https://srb.help/7003
+    13 |  A.new.barr(91)   # error: Typo!
+          ^^^^^^^^^^^^^^
+  Autocorrect: Use `-a` to autocorrect
+    sample.rb:13: Replace with bar
+    13 |  A.new.barr(91)   # error: Typo!
+                ^^^^
+
+
+sample.rb:14: Expected Integer but found String("91") for argument x https://srb.help/7002
+    14 |  A.new.bar("91")  # error: Type mismatch!
+          ^^^^^^^^^^^^^^^
+    sample.rb:6: Method A#bar has specified x as Integer
+     6 |  sig {params(x: Integer).returns(String)}
+                      ^
+  Got String("91") originating from:
+    sample.rb:14:
+    14 |  A.new.bar("91")  # error: Type mismatch!
+                    ^^^^
+Errors: 2

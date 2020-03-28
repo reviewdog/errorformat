@@ -1,0 +1,2 @@
+sample.rb|13| Method barr does not exist on A https://srb.help/7003
+sample.rb|14| Expected Integer but found String("91") for argument x https://srb.help/7002
