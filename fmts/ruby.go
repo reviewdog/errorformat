@@ -17,6 +17,7 @@ func init() {
 		Name: "fasterer",
 		Errorformat: []string{
 			`%f:%l %m`,
+			`%-G%.%#`,
 		},
 		Description: "Speed improvements suggester",
 		URL:         "https://github.com/DamirSvrtan/fasterer",
