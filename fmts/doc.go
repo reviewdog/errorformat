@@ -9,6 +9,9 @@
 // 
 // 	ansible
 // 		ansible-lint	(ansible-lint -p playbook.yml) Checks playbooks for practices and behaviour that could potentially be improved - https://github.com/ansible/ansible-lint
+// 	csharp
+// 		dotnet	(dotnet build -clp:NoSummary -p:GenerateFullPaths=true --no-incremental --nologo -v q) .NET Core CLI - https://docs.microsoft.com/en-us/dotnet/core/tools/
+// 		msbuild	(msbuild /property:GenerateFullPaths=true /nologo /v:q) Microsoft Build Engine - https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild
 // 	css
 // 		stylelint	A mighty modern CSS linter - https://github.com/stylelint/stylelint
 // 	env
