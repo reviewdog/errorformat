@@ -230,6 +230,15 @@ README.md
 				"/path/to/file| error| oneline error for the file 2",
 			},
 		},
+		{
+			efm: []string{
+				`%EMultilineError`,
+				`%Z%f:%l:%c`,
+			},
+			in: `MultilineError
+~/.vimrc:1:2`,
+			want: []string{"~/.vimrc|1 col 2 error|"},
+		},
 	}
 nexttext:
 	for _, tt := range tests {

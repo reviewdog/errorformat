@@ -355,6 +355,9 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 				if fields.etype != 0 && qfprev.Type == 0 {
 					qfprev.Type = rune(fields.etype)
 				}
+				if qfprev.Filename == "" {
+					qfprev.Filename = fields.namebuf
+				}
 				if qfprev.Lnum == 0 {
 					qfprev.Lnum = fields.lnum
 				}
