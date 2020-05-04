@@ -1,0 +1,3 @@
+standard: Use Ruby Standard Style (https://github.com/testdouble/standard)
+standard: Run `standardrb --fix` to automatically fix some problems.
+  app/models/order.rb:45:5: Style/TrailingCommaInHashLiteral: Put a comma after the last item of a multiline hash.
