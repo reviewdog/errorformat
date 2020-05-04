@@ -1,0 +1,1 @@
+app/models/order.rb|45 col 5| Put a comma after the last item of a multiline hash.

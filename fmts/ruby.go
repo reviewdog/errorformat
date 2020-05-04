@@ -58,4 +58,15 @@ func init() {
 		URL:         "https://github.com/sorbet/sorbet",
 		Language:    lang,
 	})
+
+	register(&Fmt{
+		Name: "standardrb",
+		Errorformat: []string{
+			`%*\s%f:%l:%c: %.%#: %m`,
+			`%-G%.%#`,
+		},
+		Description: "(standard) Ruby style guide, linter, and formatter",
+		URL:         "https://github.com/testdouble/standard",
+		Language:    lang,
+	})
 }
