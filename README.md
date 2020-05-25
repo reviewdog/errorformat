@@ -1,7 +1,7 @@
 ## errorformat - Vim 'errorformat' implementation in Go
 
 [![Travis Build Status][travis-badge]](https://travis-ci.org/reviewdog/errorformat)
-[![codecov][codecov-badge]](https://codecov.io/gh/haya14busa/reviewdog)
+[![codecov][codecov-badge]](https://codecov.io/gh/reviewdog/errorformat)
 [![Go Report Card](https://goreportcard.com/badge/github.com/reviewdog/errorformat)](https://goreportcard.com/report/github.com/reviewdog/errorformat)
 [![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GoDoc](https://godoc.org/github.com/reviewdog/errorformat?status.svg)](https://godoc.org/github.com/reviewdog/errorformat)
