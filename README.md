@@ -155,6 +155,10 @@ $ cat fmts/testdata/sbt.in | errorformat -name=sbt -w=checkstyle
     <error column="15" line="5" message="private method in object F is never used" severity="warning"></error>
   </file>
 </checkstyle>
+$ cat fmts/testdata/sbt.in | errorformat -name=sbt -w=jsonl
+{"filename":"/home/haya14busa/src/github.com/reviewdog/errorformat/fmts/testdata/resources/scala/scalac.scala","lnum":6,"col":3,"vcol":true,"nr":0,"pattern":"","text":"missing argument list for method error in object Predef","type":101,"valid":true,"lines":["[error] /home/haya14busa/src/github.com/reviewdog/errorformat/fmts/testdata/resources/scala/scalac.scala:6: missing argument list for method error in object Predef","[error] Unapplied methods are only converted to functions when a function type is expected.","[error] You can make this conversion explicit by writing `error _` or `error(_)` instead of `error`.","[error]   error","[error]   ^"]}
+{"filename":"/home/haya14busa/src/github.com/reviewdog/errorformat/fmts/testdata/resources/scala/scalac.scala","lnum":4,"col":15,"vcol":true,"nr":0,"pattern":"","text":"private val in object F is never used","type":119,"valid":true,"lines":["[warn] /home/haya14busa/src/github.com/reviewdog/errorformat/fmts/testdata/resources/scala/scalac.scala:4: private val in object F is never used","[warn]   private val unused = 1","[warn]               ^"]}
+{"filename":"/home/haya14busa/src/github.com/reviewdog/errorformat/fmts/testdata/resources/scala/scalac.scala","lnum":5,"col":15,"vcol":true,"nr":0,"pattern":"","text":"private method in object F is never used","type":119,"valid":true,"lines":["[warn] /home/haya14busa/src/github.com/reviewdog/errorformat/fmts/testdata/resources/scala/scalac.scala:5: private method in object F is never used","[warn]   private def unusedF = {}","[warn]               ^"]}
 ```
 
 ### Use cases of 'errorformat' outside Vim
