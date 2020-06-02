@@ -70,7 +70,7 @@ func usage() {
 func main() {
 	var (
 		entryFmt  = flag.String("f", "{{.String}}", "format template for -w=template")
-		writerFmt = flag.String("w", "template", "writer format (template|checkstyle)")
+		writerFmt = flag.String("w", "template", "writer format (template|checkstyle|jsonl)")
 		name      = flag.String("name", "", "defined errorformat name")
 		list      = flag.Bool("list", false, "list defined errorformats")
 	)
@@ -117,6 +117,8 @@ func run(r io.Reader, w io.Writer, efms []string, writerFmt, entryFmt, name stri
 		ewriter = writer.NewTemplate(tmpl, w)
 	case "checkstyle":
 		ewriter = writer.NewCheckStyle(w)
+	case "jsonl":
+		ewriter = writer.NewJSONL(w)
 	default:
 		return fmt.Errorf("unknown writer: -w=%v", writerFmt)
 	}
