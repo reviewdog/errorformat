@@ -1,0 +1,42 @@
+src/Calc.hs|11 col 18| Suggestion: Redundant bracket
+src/Calc.hs|11 col 18| Suggestion: Redundant bracket
+src/Calc.hs|12 col 18| Suggestion: Redundant bracket
+src/Calc.hs|12 col 18| Suggestion: Redundant bracket
+src/CreditCard.hs|19 col 19| Suggestion: Redundant bracket
+src/CreditCard.hs|22 col 19| Suggestion: Redundant bracket
+src/CreditCard.hs|22 col 20| Suggestion: Redundant bracket
+src/Editor.hs|95 col 15| Suggestion: Avoid lambda
+src/Fibonacci.hs|35 col 44| Warning: Redundant bracket
+src/Golf.hs|7 col 19| Suggestion: Redundant bracket
+src/Golf.hs|8 col 8| Warning: Use map
+src/Golf.hs|20 col 57| Suggestion: Redundant $
+src/Hanoi.hs|8 col 23| Suggestion: Redundant bracket
+src/Hanoi.hs|8 col 52| Suggestion: Redundant bracket
+src/JoinList.hs|35 col 15| Suggestion: Move brackets to avoid $
+src/JoinList.hs|52 col 13| Suggestion: Move brackets to avoid $
+src/JoinList.hs|67 col 16| Warning: Use concat
+src/JoinList.hs|68 col 5| Warning: Eta reduce
+src/JoinList.hs|69 col 43| Suggestion: Redundant bracket
+src/LogAnalysis.hs|12 col 1| Error: Parse error
+src/Matrix.hs|16 col 34| Suggestion: Redundant bracket
+src/Parser.hs|36 col 41| Warning: Use <|>
+src/Parser.hs|44 col 9| Suggestion: Redundant $
+src/Parser.hs|57 col 9| Suggestion: Redundant $
+src/Parser.hs|65 col 12| Suggestion: Use <$
+src/Parser.hs|65 col 12| Warning: Use void
+src/Parser.hs|76 col 6| Suggestion: Use <$
+src/Parser.hs|76 col 6| Suggestion: Redundant bracket
+src/Parser.hs|76 col 35| Suggestion: Use <$
+src/Parser.hs|76 col 35| Suggestion: Redundant bracket
+src/Party.hs|33 col 31| Suggestion: Redundant bracket
+src/Risk.hs|33 col 12| Warning: Avoid reverse
+src/Risk.hs|34 col 12| Warning: Avoid reverse
+src/Risk.hs|35 col 21| Suggestion: Redundant bracket
+src/Risk.hs|40 col 12| Suggestion: Redundant $
+src/Risk.hs|42 col 11| Suggestion: Redundant bracket
+src/StringBuffer.hs|1 col 1| Warning: Unused LANGUAGE pragma
+src/StringBuffer.hs|12 col 3| Warning: Eta reduce
+src/Wholemeal.hs|6 col 22| Suggestion: Use section
+src/Wholemeal.hs|23 col 1| Warning: Eta reduce
+src/Wholemeal.hs|40 col 1| Warning: Eta reduce
+src/Wholemeal.hs|40 col 13| Warning: Use map

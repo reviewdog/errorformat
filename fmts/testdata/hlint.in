@@ -1,0 +1,262 @@
+src/Calc.hs:11:18: Suggestion: Redundant bracket
+Found:
+  (eval a) + (eval b)
+Perhaps:
+  eval a + (eval b)
+
+src/Calc.hs:11:18: Suggestion: Redundant bracket
+Found:
+  (eval a) + (eval b)
+Perhaps:
+  (eval a) + eval b
+
+src/Calc.hs:12:18: Suggestion: Redundant bracket
+Found:
+  (eval a) * (eval b)
+Perhaps:
+  eval a * (eval b)
+
+src/Calc.hs:12:18: Suggestion: Redundant bracket
+Found:
+  (eval a) * (eval b)
+Perhaps:
+  (eval a) * eval b
+
+src/CreditCard.hs:19:19: Suggestion: Redundant bracket
+Found:
+  concat . (map toDigits)
+Perhaps:
+  concat . map toDigits
+
+src/CreditCard.hs:22:19: Suggestion: Redundant bracket
+Found:
+  ((flip mod) 10) . sumDigits . doubleEveryOther . toDigits
+Perhaps:
+  (flip mod) 10 . sumDigits . doubleEveryOther . toDigits
+
+src/CreditCard.hs:22:20: Suggestion: Redundant bracket
+Found:
+  (flip mod) 10
+Perhaps:
+  flip mod 10
+
+src/Editor.hs:95:15: Suggestion: Avoid lambda
+Found:
+  \ l -> onBuffer $ line l
+Perhaps:
+  onBuffer . line
+
+src/Fibonacci.hs:35:44: Warning: Redundant bracket
+Found:
+  (fooStream)
+Perhaps:
+  fooStream
+
+src/Golf.hs:7:19: Suggestion: Redundant bracket
+Found:
+  [y | (j, y) <- (zip [1 .. ] ys), j `mod` i == 0]
+Perhaps:
+  [y | (j, y) <- zip [1 .. ] ys, j `mod` i == 0]
+
+src/Golf.hs:8:8: Warning: Use map
+Found:
+  zipWith ith [1 .. length xs] (repeat xs)
+Perhaps:
+  map (\ x -> ith x xs) [1 .. length xs]
+
+src/Golf.hs:20:57: Suggestion: Redundant $
+Found:
+  draw c $ maxi
+Perhaps:
+  draw c maxi
+
+src/Hanoi.hs:8:23: Suggestion: Redundant bracket
+Found:
+  (hanoi (n - 1) from tmp to)
+    ++ [(from, to)] ++ (hanoi (n - 1) tmp to from)
+Perhaps:
+  hanoi (n - 1) from tmp to
+    ++ [(from, to)] ++ (hanoi (n - 1) tmp to from)
+
+src/Hanoi.hs:8:52: Suggestion: Redundant bracket
+Found:
+  [(from, to)] ++ (hanoi (n - 1) tmp to from)
+Perhaps:
+  [(from, to)] ++ hanoi (n - 1) tmp to from
+
+src/JoinList.hs:35:15: Suggestion: Move brackets to avoid $
+Found:
+  n > (getSize $ size jl)
+Perhaps:
+  n > getSize (size jl)
+
+src/JoinList.hs:52:13: Suggestion: Move brackets to avoid $
+Found:
+  i > (getSize $ size a)
+Perhaps:
+  i > getSize (size a)
+
+src/JoinList.hs:67:16: Warning: Use concat
+Found:
+  foldr (++) []
+Perhaps:
+  concat
+
+src/JoinList.hs:68:5: Warning: Eta reduce
+Found:
+  line n b = indexJ n b
+Perhaps:
+  line = indexJ
+
+src/JoinList.hs:69:43: Suggestion: Redundant bracket
+Found:
+  (Single (scoreString l, Size 1) l) +++ dropJ n b
+Perhaps:
+  Single (scoreString l, Size 1) l +++ dropJ n b
+
+src/LogAnalysis.hs:12:1: Error: Parse error
+Found:
+    parseMessage :: String -> LogMessage
+    parseMessage ("E":rest) =
+  > parseMessage :: String -> LogMessage
+    parseMessage s = fromMaybe (Unknown s) (pure fst <*> runParser logMessage s) where
+        logMessage = parseError <|> parseInfo <|> parseWarn
+
+src/Matrix.hs:16:34: Suggestion: Redundant bracket
+Found:
+  (Matrix 1 1 1 0) ^ n
+Perhaps:
+  Matrix 1 1 1 0 ^ n
+
+src/Parser.hs:36:41: Warning: Use <|>
+Found:
+  maybe (g s) Just (f s)
+Perhaps:
+  f s <|> g s
+
+src/Parser.hs:44:9: Suggestion: Redundant $
+Found:
+  State $ parseDigit
+Perhaps:
+  State parseDigit
+
+src/Parser.hs:57:9: Suggestion: Redundant $
+Found:
+  State $ parseSpace
+Perhaps:
+  State parseSpace
+
+src/Parser.hs:65:12: Suggestion: Use <$
+Found:
+  const () <$> many space
+Perhaps:
+  () <$ many space
+
+src/Parser.hs:65:12: Warning: Use void
+Found:
+  const () <$> many space
+Perhaps:
+  Control.Monad.void (many space)
+
+src/Parser.hs:76:6: Suggestion: Use <$
+Found:
+  const Add <$> (char '+')
+Perhaps:
+  (Add <$ char '+')
+
+src/Parser.hs:76:6: Suggestion: Redundant bracket
+Found:
+  const Add <$> (char '+')
+Perhaps:
+  const Add <$> char '+'
+
+src/Parser.hs:76:35: Suggestion: Use <$
+Found:
+  const Mul <$> (char '*')
+Perhaps:
+  (Mul <$ char '*')
+
+src/Parser.hs:76:35: Suggestion: Redundant bracket
+Found:
+  const Mul <$> (char '*')
+Perhaps:
+  const Mul <$> char '*'
+
+src/Party.hs:33:31: Suggestion: Redundant bracket
+Found:
+  "Total fun: " ++ (show f)
+Perhaps:
+  "Total fun: " ++ show f
+
+src/Risk.hs:33:12: Warning: Avoid reverse
+Found:
+  reverse . sort
+Perhaps:
+  sortOn Data.Ord.Down
+Note: Stabilizes sort order
+
+src/Risk.hs:34:12: Warning: Avoid reverse
+Found:
+  reverse . sort
+Perhaps:
+  sortOn Data.Ord.Down
+Note: Stabilizes sort order
+
+src/Risk.hs:35:21: Suggestion: Redundant bracket
+Found:
+  (B.bimap length length) . partition id
+Perhaps:
+  B.bimap length length . partition id
+
+src/Risk.hs:40:12: Suggestion: Redundant $
+Found:
+  max 3 $ (attackers b - 1)
+Perhaps:
+  max 3 (attackers b - 1)
+
+src/Risk.hs:42:11: Suggestion: Redundant bracket
+Found:
+  (flip replicateM) die
+Perhaps:
+  flip replicateM die
+
+src/StringBuffer.hs:1:1: Warning: Unused LANGUAGE pragma
+Found:
+  {-# LANGUAGE FlexibleInstances, TypeSynonymInstances #-}
+Perhaps:
+  {-# LANGUAGE FlexibleInstances #-}
+Note: Extension TypeSynonymInstances is implied by FlexibleInstances
+
+src/StringBuffer.hs:12:3: Warning: Eta reduce
+Found:
+  replaceLine n l b
+    = unlines . uncurry replaceLine' . splitAt n . lines $ b
+Perhaps:
+  replaceLine n l
+    = unlines . uncurry replaceLine' . splitAt n . lines
+
+src/Wholemeal.hs:6:22: Suggestion: Use section
+Found:
+  ((-) 2)
+Perhaps:
+  (2 -)
+
+src/Wholemeal.hs:23:1: Warning: Eta reduce
+Found:
+  foldTree xs = foldr insert Leaf xs
+Perhaps:
+  foldTree = foldr insert Leaf
+
+src/Wholemeal.hs:40:1: Warning: Eta reduce
+Found:
+  map' f xs = foldr (\ x acc -> f x : acc) [] xs
+Perhaps:
+  map' f = foldr (\ x acc -> f x : acc) []
+
+src/Wholemeal.hs:40:13: Warning: Use map
+Found:
+  foldr (\ x acc -> f x : acc) []
+Perhaps:
+  map (\ x -> f x)
+
+42 hints
