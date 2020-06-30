@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"strings"
 	"testing"
+
+	"github.com/reviewdog/errorformat/writer"
 )
 
 func TestRun(t *testing.T) {
@@ -60,7 +62,11 @@ golint.new.go
 
 	for _, tt := range tests {
 		out := new(bytes.Buffer)
-		if err := run(strings.NewReader(tt.in), out, tt.efms, "", tt.entryFmt, tt.name, false); err != nil {
+		opt := option{
+			entryFmt: tt.entryFmt,
+			name:     tt.name,
+		}
+		if err := run(strings.NewReader(tt.in), out, tt.efms, opt, writer.SarifOption{}); err != nil {
 			t.Error(err)
 		}
 		if got := out.String(); got != tt.want {
@@ -96,7 +102,8 @@ golint.new.go:11:1: comment on exported function F2 should be of the form "F2 ..
 	}
 	for _, tt := range tests {
 		out := new(bytes.Buffer)
-		if err := run(strings.NewReader(tt.in), out, tt.efms, "checkstyle", "", "", false); err != nil {
+		opt := option{writerFmt: "checkstyle"}
+		if err := run(strings.NewReader(tt.in), out, tt.efms, opt, writer.SarifOption{}); err != nil {
 			t.Error(err)
 		}
 		if got := out.String(); got != tt.want {
@@ -106,14 +113,16 @@ golint.new.go:11:1: comment on exported function F2 should be of the form "F2 ..
 }
 
 func TestRun_unknown_writer(t *testing.T) {
-	if err := run(nil, nil, nil, "unknown", "", "", false); err == nil {
+	opt := option{writerFmt: "unknown"}
+	if err := run(nil, nil, nil, opt, writer.SarifOption{}); err == nil {
 		t.Error("error expected but got nil")
 	}
 }
 
 func TestRun_list(t *testing.T) {
 	out := new(bytes.Buffer)
-	if err := run(nil, out, nil, "", "", "", true); err != nil {
+	opt := option{list: true}
+	if err := run(nil, out, nil, opt, writer.SarifOption{}); err != nil {
 		t.Error(err)
 	}
 	t.Log(out.String())
