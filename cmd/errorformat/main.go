@@ -131,7 +131,11 @@ func run(r io.Reader, w io.Writer, efms []string, opt option, sarifOpt writer.Sa
 	case "jsonl":
 		ewriter = writer.NewJSONL(w)
 	case "sarif":
-		ewriter = writer.NewSarif(w, sarifOpt)
+		var err error
+		ewriter, err = writer.NewSarif(w, sarifOpt)
+		if err != nil {
+			return err
+		}
 	default:
 		return fmt.Errorf("unknown writer: -w=%v", opt.writerFmt)
 	}

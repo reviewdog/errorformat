@@ -3,8 +3,8 @@ package writer
 import "os"
 
 func ExampleSarif() {
-	w := NewSarif(os.Stdout, SarifOption{ToolName: "super-linter"})
-	for _, e := range errors {
+	w, _ := NewSarif(os.Stdout, SarifOption{ToolName: "super-linter"})
+	for _, e := range testErrs {
 		w.Write(e)
 	}
 	w.Flush()

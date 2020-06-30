@@ -2,6 +2,7 @@ package writer
 
 import (
 	"encoding/json"
+	"errors"
 	"io"
 	"os"
 	"path/filepath"
@@ -23,18 +24,19 @@ type SarifOption struct {
 	ToolName string
 }
 
-func NewSarif(w io.Writer, opt SarifOption) *Sarif {
-	s := &Sarif{w: w, data: sarif.NewSarif(), run: &sarif.Run{}}
-	if opt.ToolName != "" {
-		// Tool is actually required, but fill it only when ToolName is available.
-		s.run.Tool = sarif.Tool{
+func NewSarif(w io.Writer, opt SarifOption) (*Sarif, error) {
+	if opt.ToolName == "" {
+		return nil, errors.New("-sarif.tool-name is required.")
+	}
+	s := &Sarif{w: w, data: sarif.NewSarif(), run: &sarif.Run{
+		Tool: sarif.Tool{
 			Driver: sarif.ToolComponent{
 				Name: opt.ToolName,
 			},
-		}
-	}
+		},
+	}}
 	s.srcRoot, _ = os.Getwd()
-	return s
+	return s, nil
 }
 
 func (s *Sarif) Write(e *errorformat.Entry) error {
