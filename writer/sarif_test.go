@@ -105,3 +105,11 @@ func ExampleSarif() {
 	//   "version": "2.1.0"
 	// }
 }
+
+func testForCodeScanning() {
+	w, _ := NewSarif(os.Stdout, SarifOption{ToolName: "super-linter"})
+	for _, e := range testErrs {
+		w.Write(e)
+	}
+	w.Flush()
+}
