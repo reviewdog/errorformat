@@ -67,24 +67,32 @@ func usage() {
 	os.Exit(2)
 }
 
+type option struct {
+	entryFmt  string
+	writerFmt string
+	name      string
+	list      bool
+}
+
 func main() {
-	var (
-		entryFmt  = flag.String("f", "{{.String}}", "format template for -w=template")
-		writerFmt = flag.String("w", "template", "writer format (template|checkstyle|jsonl)")
-		name      = flag.String("name", "", "defined errorformat name")
-		list      = flag.Bool("list", false, "list defined errorformats")
-	)
+	opt := option{}
+	sarifOpt := writer.SarifOption{}
+	flag.StringVar(&opt.entryFmt, "f", "{{.String}}", "format template for -w=template")
+	flag.StringVar(&opt.writerFmt, "w", "template", "writer format (template|checkstyle|jsonl|sarif)")
+	flag.StringVar(&opt.name, "name", "", "defined errorformat name")
+	flag.BoolVar(&opt.list, "list", false, "list defined errorformats")
+	flag.StringVar(&sarifOpt.ToolName, "sarif.tool-name", "", "Tool name for Sarif writer format. Use -name flag if available.")
 	flag.Usage = usage
 	flag.Parse()
 	errorformats := flag.Args()
-	if err := run(os.Stdin, os.Stdout, errorformats, *writerFmt, *entryFmt, *name, *list); err != nil {
+	if err := run(os.Stdin, os.Stdout, errorformats, opt, sarifOpt); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
 
-func run(r io.Reader, w io.Writer, efms []string, writerFmt, entryFmt, name string, list bool) error {
-	if list {
+func run(r io.Reader, w io.Writer, efms []string, opt option, sarifOpt writer.SarifOption) error {
+	if opt.list {
 		fs := fmts.DefinedFmts()
 		out := make([]string, 0, len(fs))
 		for _, f := range fs {
@@ -95,22 +103,25 @@ func run(r io.Reader, w io.Writer, efms []string, writerFmt, entryFmt, name stri
 		return nil
 	}
 
-	if name != "" {
-		f, ok := fmts.DefinedFmts()[name]
+	if opt.name != "" {
+		f, ok := fmts.DefinedFmts()[opt.name]
 		if !ok {
-			return fmt.Errorf("%q is not defined", name)
+			return fmt.Errorf("%q is not defined", opt.name)
 		}
 		efms = f.Errorformat
+		if sarifOpt.ToolName == "" {
+			sarifOpt.ToolName = opt.name
+		}
 	}
 
 	var ewriter writer.Writer
 
-	switch writerFmt {
+	switch opt.writerFmt {
 	case "template", "":
 		fm := template.FuncMap{
 			"join": strings.Join,
 		}
-		tmpl, err := template.New("main").Funcs(fm).Parse(entryFmt)
+		tmpl, err := template.New("main").Funcs(fm).Parse(opt.entryFmt)
 		if err != nil {
 			return err
 		}
@@ -119,8 +130,14 @@ func run(r io.Reader, w io.Writer, efms []string, writerFmt, entryFmt, name stri
 		ewriter = writer.NewCheckStyle(w)
 	case "jsonl":
 		ewriter = writer.NewJSONL(w)
+	case "sarif":
+		var err error
+		ewriter, err = writer.NewSarif(w, sarifOpt)
+		if err != nil {
+			return err
+		}
 	default:
-		return fmt.Errorf("unknown writer: -w=%v", writerFmt)
+		return fmt.Errorf("unknown writer: -w=%v", opt.writerFmt)
 	}
 	if ewriter, ok := ewriter.(writer.BufWriter); ok {
 		defer func() {

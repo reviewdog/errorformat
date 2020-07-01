@@ -4,7 +4,7 @@ import "os"
 
 func ExampleCheckStyle() {
 	w := NewCheckStyle(os.Stdout)
-	for _, e := range errors {
+	for _, e := range testErrs {
 		w.Write(e)
 	}
 	w.Flush()

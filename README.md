@@ -115,8 +115,10 @@ Flags:
         list defined errorformats
   -name string
         defined errorformat name
+  -sarif.tool-name string
+        Tool name for Sarif writer format. Use -name flag if available.
   -w string
-        writer format (template|checkstyle) (default "template")
+        writer format (template|checkstyle|jsonl|sarif) (default "template")
 ```
 
 ```
@@ -160,6 +162,93 @@ $ cat fmts/testdata/sbt.in | errorformat -name=sbt -w=jsonl
 {"filename":"/home/haya14busa/src/github.com/reviewdog/errorformat/fmts/testdata/resources/scala/scalac.scala","lnum":4,"col":15,"vcol":true,"nr":0,"pattern":"","text":"private val in object F is never used","type":119,"valid":true,"lines":["[warn] /home/haya14busa/src/github.com/reviewdog/errorformat/fmts/testdata/resources/scala/scalac.scala:4: private val in object F is never used","[warn]   private val unused = 1","[warn]               ^"]}
 {"filename":"/home/haya14busa/src/github.com/reviewdog/errorformat/fmts/testdata/resources/scala/scalac.scala","lnum":5,"col":15,"vcol":true,"nr":0,"pattern":"","text":"private method in object F is never used","type":119,"valid":true,"lines":["[warn] /home/haya14busa/src/github.com/reviewdog/errorformat/fmts/testdata/resources/scala/scalac.scala:5: private method in object F is never used","[warn]   private def unusedF = {}","[warn]               ^"]}
 ```
+
+### SARIF Support (experimental)
+It supports [SARIF](https://sarifweb.azurewebsites.net/) (Static Analysis Results Interchange Format) as output experimentally. Use `-w=sarif` to give it a shot.
+
+<details>
+<summary> Example: errorformat -w=sarif</summary>
+
+```shell
+$ cat fmts/testdata/sbt.in | errorformat -name=sbt -w=sarif
+{
+  "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.4",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "fmts/testdata/resources/scala/scalac.scala",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startColumn": 3,
+                  "startLine": 6
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "missing argument list for method error in object Predef"
+          }
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "fmts/testdata/resources/scala/scalac.scala",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startColumn": 15,
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "private val in object F is never used"
+          }
+        },
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "fmts/testdata/resources/scala/scalac.scala",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startColumn": 15,
+                  "startLine": 5
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "private method in object F is never used"
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "sbt"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
+```
+
+</details>
 
 ### Use cases of 'errorformat' outside Vim
 - [reviewdog/reviewdog - A code review dog who keeps your codebase healthy](https://github.com/haya14busa/reviewdog)

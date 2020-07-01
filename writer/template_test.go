@@ -8,7 +8,7 @@ import (
 func ExampleTemplate_string() {
 	tmpl, _ := template.New("example").Parse("{{.String}}")
 	w := NewTemplate(tmpl, os.Stdout)
-	for _, e := range errors {
+	for _, e := range testErrs {
 		w.Write(e)
 	}
 	// Output:
@@ -21,7 +21,7 @@ func ExampleTemplate_string() {
 func ExampleTemplate_more() {
 	tmpl, _ := template.New("example").Parse("file:{{.Filename}}\tline:{{.Lnum}}\tcol:{{.Col}}\tmes:{{.Text}}")
 	w := NewTemplate(tmpl, os.Stdout)
-	for _, e := range errors {
+	for _, e := range testErrs {
 		w.Write(e)
 	}
 	// Output:
