@@ -5,7 +5,7 @@ import "os"
 func ExampleSarif() {
 	w, _ := NewSarif(os.Stdout, SarifOption{ToolName: "super-linter"})
 	for _, e := range testErrs {
-		w.Write(e)
+		w.Write(e) // add comment
 	}
 	w.Flush()
 	// Output:
