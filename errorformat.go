@@ -338,10 +338,10 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 			// continuation of multi-line msg
 			if !s.qi.multiignore {
 				qfprev := s.qi.qflist[len(s.qi.qflist)-1]
-				qfprev.Lines = append(qfprev.Lines, line)
 				if qfprev == nil {
 					return qffail, nil
 				}
+				qfprev.Lines = append(qfprev.Lines, line)
 				if fields.errmsg != "" && !s.qi.multiignore {
 					if qfprev.Text == "" {
 						qfprev.Text = fields.errmsg
