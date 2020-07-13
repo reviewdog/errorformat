@@ -45,4 +45,14 @@ func init() {
 		URL:         "https://github.com/quasilyte/go-consistent",
 		Language:    lang,
 	})
+
+	register(&Fmt{
+		Name: "gosec",
+		Errorformat: []string{
+			`%f:%l:%c: %m`,
+		},
+		Description: "Golang Security Checker",
+		URL:         "https://github.com/securego/gosec",
+		Language:    lang,
+	})
 }
