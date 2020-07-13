@@ -1,0 +1,3 @@
+/path/to/main.go:37:2: Deferring unsafe method "*os.File" on type "Close" (Rule:G307, Severity:MEDIUM, Confidence:HIGH)
+/path/to/main.go:64:2: [CWE-703] Errors unhandled. (Rule:G104, Severity:LOW, Confidence:HIGH)
+/path/to/main.go:39:2: [CWE-703] Errors unhandled. (Rule:G104, Severity:LOW, Confidence:HIGH)
