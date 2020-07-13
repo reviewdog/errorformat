@@ -51,7 +51,7 @@ func init() {
 		Errorformat: []string{
 			`%f:%l:%c: %m`,
 		},
-		Description: "Golang Security Checker",
+		Description: "(gosec -fmt=golint) Golang Security Checker",
 		URL:         "https://github.com/securego/gosec",
 		Language:    lang,
 	})
