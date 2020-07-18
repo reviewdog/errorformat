@@ -1,0 +1,3 @@
+/path/to/main.php:258:4:error - InvalidGlobal: Cannot use global scope heredler in global scope
+/path/to/main.php:80:8:error - UndefinedGlobalVariable: Cannot find referenced variable $CustomErrorHandler in global scope
+/path/to/main.php:84:21:error - UndefinedConstant: Const __ROOT__ is not defined
