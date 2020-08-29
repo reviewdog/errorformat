@@ -1,0 +1,7 @@
+app/views/layouts/application.html.slim|16 warning| LineLength: Line is too long. [82/80]
+app/views/layouts/application.html.slim|43 warning| RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+app/views/layouts/application.html.slim|44 warning| RuboCop: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+app/views/pages/top.html.slim|40 warning| RuboCop: Layout/ExtraSpacing: Unnecessary spacing detected.
+app/views/pages/top.html.slim|40 warning| RuboCop: Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+app/views/pages/top.html.slim|53 warning| LineLength: Line is too long. [82/80]
+app/views/pages/top.html.slim|65 warning| RuboCop: Layout/SpaceAroundOperators: Surrounding space missing for operator `-`.
