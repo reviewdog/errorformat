@@ -8,8 +8,8 @@ func init() {
 		Errorformat: []string{
 			`%f:%l %m`,
 		},
-		Description: "Linter for .env files",
-		URL:         "https://github.com/mgrachev/dotenv-linter",
+		Description: "Lightning-fast linter for .env files. Written in Rust",
+		URL:         "https://github.com/dotenv-linter/dotenv-linter",
 		Language:    lang,
 	})
 }

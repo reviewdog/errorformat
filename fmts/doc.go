@@ -15,7 +15,7 @@
 // 	css
 // 		stylelint	A mighty modern CSS linter - https://github.com/stylelint/stylelint
 // 	env
-// 		dotenv-linter	Linter for .env files - https://github.com/mgrachev/dotenv-linter
+// 		dotenv-linter	Lightning-fast linter for .env files. Written in Rust - https://github.com/dotenv-linter/dotenv-linter
 // 	go
 // 		go-consistent	Source code analyzer that helps you to make your Go programs more consistent - https://github.com/quasilyte/go-consistent
 // 		golangci-lint	(golangci-lint run --out-format=line-number) GolangCI-Lint is a linters aggregator. - https://github.com/golangci/golangci-lint
