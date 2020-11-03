@@ -12,7 +12,7 @@ func init() {
 			`%-Q`,
 			`%-G%.%#`,
 		},
-		Description: "Tool for writing clean and consistent markdown code.",
+		Description: "Tool for writing clean and consistent markdown code",
 		URL:         "https://github.com/remarkjs/remark-lint",
 		Language:    lang,
 	})
