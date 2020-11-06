@@ -31,7 +31,7 @@
 // 		eslint-compact	(eslint -f compact) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 		standardjs	(standard) JavaScript style guide, linter, and formatter - https://github.com/standard/standard
 // 	markdown
-// 		remark-lint	Tool for writing clean and consistent markdown code. - https://github.com/remarkjs/remark-lint
+// 		remark-lint	Tool for writing clean and consistent markdown code - https://github.com/remarkjs/remark-lint
 // 	php
 // 		phpstan	(phpstan --error-format=raw) PHP Static Analysis Tool - discover bugs in your code without running it! - https://github.com/phpstan/phpstan
 // 		psalm	(psalm --output-format=text) Psalm is a static analysis tool for finding errors in PHP - https://github.com/vimeo/psalm
