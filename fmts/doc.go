@@ -57,4 +57,6 @@
 // 	typescript
 // 		tsc	TypeScript compiler - https://www.typescriptlang.org/
 // 		tslint	An extensible linter for the TypeScript language - https://github.com/palantir/tslint
+// 	yaml
+// 		yamllint	linter for YAML files - https://github.com/adrienverge/yamllint
 package fmts
