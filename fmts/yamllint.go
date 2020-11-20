@@ -8,7 +8,7 @@ func init() {
 		Errorformat: []string{
 			`%f:%l:%c: %m`,
 		},
-		Description: "linter for YAML files",
+		Description: "(yamllint -f parsable) A linter for YAML files",
 		URL:         "https://github.com/adrienverge/yamllint",
 		Language:    lang,
 	})
