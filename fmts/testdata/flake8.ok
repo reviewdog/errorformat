@@ -1,0 +1,30 @@
+./num_guess.py|4 col 1 F 401| 'sys' imported but unused
+./num_guess.py|4 col 11 error 261| at least two spaces before inline comment
+./num_guess.py|5 col 1 F 401| 'os' imported but unused
+./num_guess.py|5 col 10 error 261| at least two spaces before inline comment
+./num_guess.py|7 col 1 error 266| too many leading '#' for block comment
+./num_guess.py|9 col 80 error 501| line too long (82 > 79 characters)
+./num_guess.py|17 col 77 error 261| at least two spaces before inline comment
+./num_guess.py|17 col 80 error 501| line too long (118 > 79 characters)
+./num_guess.py|43 col 1 error 402| module level import not at top of file
+./num_guess.py|43 col 1 F 401| 'itertools' imported but unused
+./num_guess.py|43 col 17 error 261| at least two spaces before inline comment
+./num_guess.py|43 col 63 warning 292| no newline at end of file
+./subfolder/queen_problem.py|3 col 1 F 401| 'pwd' imported but unused
+./subfolder/queen_problem.py|3 col 11 error 261| at least two spaces before inline comment
+./subfolder/queen_problem.py|4 col 1 F 401| 'grp' imported but unused
+./subfolder/queen_problem.py|4 col 11 error 261| at least two spaces before inline comment
+./subfolder/queen_problem.py|8 col 1 error 266| too many leading '#' for block comment
+./subfolder/queen_problem.py|10 col 80 error 501| line too long (80 > 79 characters)
+./subfolder/queen_problem.py|13 col 1 error 302| expected 2 blank lines, found 1
+./subfolder/queen_problem.py|16 col 1 error 302| expected 2 blank lines, found 1
+./subfolder/queen_problem.py|17 col 36 error 261| at least two spaces before inline comment
+./subfolder/queen_problem.py|17 col 80 error 501| line too long (100 > 79 characters)
+./subfolder/queen_problem.py|23 col 1 error 302| expected 2 blank lines, found 1
+./subfolder/queen_problem.py|36 col 1 error 305| expected 2 blank lines after class or function definition, found 1
+./subfolder/queen_problem.py|37 col 6 error 211| whitespace before '('
+./subfolder/queen_problem.py|38 col 6 error 211| whitespace before '('
+./subfolder/queen_problem.py|40 col 1 error 402| module level import not at top of file
+./subfolder/queen_problem.py|40 col 1 F 401| 'dis' imported but unused
+./subfolder/queen_problem.py|40 col 11 error 261| at least two spaces before inline comment
+./subfolder/queen_problem.py|40 col 57 warning 292| no newline at end of file
