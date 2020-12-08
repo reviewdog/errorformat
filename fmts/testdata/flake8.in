@@ -1,0 +1,30 @@
+./num_guess.py:4:1: F401 'sys' imported but unused
+./num_guess.py:4:11: E261 at least two spaces before inline comment
+./num_guess.py:5:1: F401 'os' imported but unused
+./num_guess.py:5:10: E261 at least two spaces before inline comment
+./num_guess.py:7:1: E266 too many leading '#' for block comment
+./num_guess.py:9:80: E501 line too long (82 > 79 characters)
+./num_guess.py:17:77: E261 at least two spaces before inline comment
+./num_guess.py:17:80: E501 line too long (118 > 79 characters)
+./num_guess.py:43:1: E402 module level import not at top of file
+./num_guess.py:43:1: F401 'itertools' imported but unused
+./num_guess.py:43:17: E261 at least two spaces before inline comment
+./num_guess.py:43:63: W292 no newline at end of file
+./subfolder/queen_problem.py:3:1: F401 'pwd' imported but unused
+./subfolder/queen_problem.py:3:11: E261 at least two spaces before inline comment
+./subfolder/queen_problem.py:4:1: F401 'grp' imported but unused
+./subfolder/queen_problem.py:4:11: E261 at least two spaces before inline comment
+./subfolder/queen_problem.py:8:1: E266 too many leading '#' for block comment
+./subfolder/queen_problem.py:10:80: E501 line too long (80 > 79 characters)
+./subfolder/queen_problem.py:13:1: E302 expected 2 blank lines, found 1
+./subfolder/queen_problem.py:16:1: E302 expected 2 blank lines, found 1
+./subfolder/queen_problem.py:17:36: E261 at least two spaces before inline comment
+./subfolder/queen_problem.py:17:80: E501 line too long (100 > 79 characters)
+./subfolder/queen_problem.py:23:1: E302 expected 2 blank lines, found 1
+./subfolder/queen_problem.py:36:1: E305 expected 2 blank lines after class or function definition, found 1
+./subfolder/queen_problem.py:37:6: E211 whitespace before '('
+./subfolder/queen_problem.py:38:6: E211 whitespace before '('
+./subfolder/queen_problem.py:40:1: E402 module level import not at top of file
+./subfolder/queen_problem.py:40:1: F401 'dis' imported but unused
+./subfolder/queen_problem.py:40:11: E261 at least two spaces before inline comment
+./subfolder/queen_problem.py:40:57: W292 no newline at end of file
