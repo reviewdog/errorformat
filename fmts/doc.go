@@ -38,6 +38,7 @@
 // 	puppet
 // 		puppet-lint	Check that your Puppet manifests conform to the style guide - https://github.com/rodjek/puppet-lint
 // 	python
+// 		black	A uncompromising Python code formatter - https://github.com/psf/black
 // 		flake8	Tool for python style guide enforcement - https://flake8.pycqa.org/
 // 		pep8	Python style guide checker - https://pypi.python.org/pypi/pep8
 // 	ruby

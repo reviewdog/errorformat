@@ -22,4 +22,17 @@ func init() {
 		URL:         "https://flake8.pycqa.org/",
 		Language:    lang,
 	})
+
+	register(&Fmt{
+		Name: "black",
+		Errorformat: []string{
+			`%-GOh no!%.%#`,
+			`%-G%\d\+ files%.%#`,
+			`%m %f`,
+			`%-G%.%#`,
+		},
+		Description: "A uncompromising Python code formatter",
+		URL:         "https://github.com/psf/black",
+		Language:    lang,
+	})
 }
