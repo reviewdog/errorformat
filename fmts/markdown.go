@@ -6,7 +6,7 @@ func init() {
 	register(&Fmt{
 		Name: "remark-lint",
 		Errorformat: []string{
-			`%P%f`,
+			`%-P%f`,
 			`%#%l:%c %# %trror  %m`,
 			`%#%l:%c %# %tarning  %m`,
 			`%-Q`,
