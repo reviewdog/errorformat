@@ -8,3 +8,5 @@ github.com/haya14busa/go-sarif v0.0.0-20200630141737-3c4893c6d735 h1:c3EFVRLg+cq
 github.com/haya14busa/go-sarif v0.0.0-20200630141737-3c4893c6d735/go.mod h1:1Hkn3JseGMB/hv1ywzkapVQDWV3bFgp6POZobZmR/5g=
 github.com/haya14busa/go-sarif v0.0.0-20200721090635-d2343efc5d00 h1:PHHK/Qr6GoczWoc4gg92mztZ0G1ns+qGYjSftyPXTag=
 github.com/haya14busa/go-sarif v0.0.0-20200721090635-d2343efc5d00/go.mod h1:1Hkn3JseGMB/hv1ywzkapVQDWV3bFgp6POZobZmR/5g=
+github.com/haya14busa/go-sarif v0.0.0-20210102043135-e2c5fed2fa3d h1:2uCbyMhWNFYI+HkRqXfIeTq5pTPxQM68yG+INJ2gvq8=
+github.com/haya14busa/go-sarif v0.0.0-20210102043135-e2c5fed2fa3d/go.mod h1:1Hkn3JseGMB/hv1ywzkapVQDWV3bFgp6POZobZmR/5g=
