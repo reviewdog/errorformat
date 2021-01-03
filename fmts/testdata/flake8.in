@@ -28,3 +28,4 @@
 ./subfolder/queen_problem.py:40:1: F401 'dis' imported but unused
 ./subfolder/queen_problem.py:40:11: E261 at least two spaces before inline comment
 ./subfolder/queen_problem.py:40:57: W292 no newline at end of file
+./subfolder/syntax_error.py:1:4: E999 SyntaxError: invalid syntax
