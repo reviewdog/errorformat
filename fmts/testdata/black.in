@@ -1,5 +1,9 @@
-would reformat /home/ricks/Development/personal/errorformat/fmts/testdata/resources/python/num_guess.py
-would reformat /home/ricks/Development/personal/errorformat/fmts/testdata/resources/python/subfolder/queen_problem.py
+error: cannot format /home/ricks/Development/personal/gh-actions/errorformat/fmts/testdata/resources/python/subfolder/syntax_error.py: Cannot parse: 1:3: jan~20
+error:/home/ricks/Development/personal/gh-actions/errorformat/fmts/testdata/resources/python/subfolder/syntax_error.py:1:3:cannot format: Cannot parse: jan~20
+would reformat /home/ricks/Development/personal/gh-actions/errorformat/fmts/testdata/resources/python/num_guess.py
+would reformat /home/ricks/Development/personal/gh-actions/errorformat/fmts/testdata/resources/python/subfolder/queen_problem.py
 Oh no! 💥 💔 💥
+2 files would be reformatted, 1 file would fail to reformat.
 2 files would be reformatted.
+1 file left unchanged, 1 file failed to reformat.
 All done! ✨ 🍰 ✨
