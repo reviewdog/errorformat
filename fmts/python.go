@@ -27,8 +27,10 @@ func init() {
 		Name: "black",
 		Errorformat: []string{
 			`%-GOh no!%.%#`,
-			`%-G%\d\+ files%.%#`,
+			`%-G%\d\+ file%.%#`,
 			`%-GAll done!%.%#`,
+			`%trror:%f:%l:%c:%m`,
+			`%trror:%m`,
 			`%m %f`,
 			`%-G%.%#`,
 		},
