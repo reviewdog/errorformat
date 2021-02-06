@@ -55,4 +55,14 @@ func init() {
 		URL:         "https://github.com/securego/gosec",
 		Language:    lang,
 	})
+
+	register(&Fmt{
+		Name:        "staticcheck",
+		Errorformat: []string{
+			"%f:%l:%c: %m",
+		},
+		Description: "Golang Static Analysis",
+		URL:         "https://staticcheck.io",
+		Language:    lang,
+	})
 }

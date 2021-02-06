@@ -1,0 +1,6 @@
+test.go|9 col 9| empty branch (SA9003)
+test.go|9 col 13| identical expressions on the left and right side of the '==' operator (SA4000)
+test.go|15 col 2| should replace loop with y = append(y, x...) (S1011)
+test.go|16 col 7| this result of append is never used, except maybe in other appends (SA4010)
+test.go|19 col 2| Sprintf is a pure function but its return value is ignored (SA4017)
+test.go|19 col 2| the argument is already a string, there's no need to use fmt.Sprintf (S1025)
