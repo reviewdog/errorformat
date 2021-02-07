@@ -22,6 +22,7 @@
 // 		golint	linter for Go source code - https://github.com/golang/lint
 // 		gosec	(gosec -fmt=golint) Golang Security Checker - https://github.com/securego/gosec
 // 		govet	Vet examines Go source code and reports suspicious problems - https://golang.org/cmd/vet/
+// 		staticcheck	Golang Static Analysis - https://staticcheck.io
 // 	haml
 // 		haml-lint	Tool for writing clean and consistent HAML - https://github.com/sds/haml-lint
 // 	haskell
