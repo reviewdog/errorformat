@@ -8,6 +8,7 @@ func init() {
 		Errorformat: []string{
 			`%E%f %#(%l,%c): error TS%n: %m`,
 			`%f(%l,%c): error TS%n: %m`,
+			`%f:%l:%c - error TS%n: %m`,
 			`%E%f %#(%l,%c): error %m`, // fallback
 			`%E%f %#(%l,%c): %m`,       // fallback
 			`%Eerror %m`,
