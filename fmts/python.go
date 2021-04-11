@@ -38,4 +38,15 @@ func init() {
 		URL:         "https://github.com/psf/black",
 		Language:    lang,
 	})
+
+	register(&Fmt{
+		Name: "isort",
+		Errorformat: []string{
+			`ERROR: %f %m`,
+			`%-GSkipped %\d\+ file%.`,
+		},
+		Description: "A Python utility / library to sort Python imports",
+		URL:         "https://github.com/PyCQA/isort",
+		Language:    lang,
+	})
 }
