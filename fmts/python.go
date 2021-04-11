@@ -42,7 +42,7 @@ func init() {
 	register(&Fmt{
 		Name: "isort",
 		Errorformat: []string{
-			`ERROR: %f %m`,
+			`%tRROR: %f %m`,
 			`%-GSkipped %\d\+ file%.`,
 		},
 		Description: "A Python utility / library to sort Python imports",
