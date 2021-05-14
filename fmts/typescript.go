@@ -11,6 +11,7 @@ func init() {
 			`%E%f %#(%l,%c): %m`,       // fallback
 			`%Eerror %m`,
 			`%C%\s%+%m`,
+			`%-G%.%#`,
 		},
 		Description: "TypeScript compiler",
 		URL:         "https://www.typescriptlang.org/",
