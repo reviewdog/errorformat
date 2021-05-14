@@ -1,4 +1,7 @@
+yarn run v1.22.10
+$ /Users/odan/source/github.com/odan-sandbox/reviewdog-later-strict-example/node_modules/.bin/tsc --project tsconfig.strict.json --noEmit
 tsc.ts(3,13): error TS7006: Parameter 'y' implicitly has an 'any' type.
 tsc.ts(5,12): error TS2345: Argument of type 'boolean' is not assignable to parameter of type 'number | string'.
   Type 'boolean' is not assignable to type 'string'.
 tsc.ts(11,1): error TS2304: Cannot find name 'error'.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
