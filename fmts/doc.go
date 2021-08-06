@@ -6,7 +6,7 @@
 // Package fmts holds defined errorformats.
 //
 // Defined formats:
-// 
+//
 // 	ansible
 // 		ansible-lint	(ansible-lint -p playbook.yml) Checks playbooks for practices and behaviour that could potentially be improved - https://github.com/ansible/ansible-lint
 // 	csharp
@@ -65,4 +65,6 @@
 // 		tslint	An extensible linter for the TypeScript language - https://github.com/palantir/tslint
 // 	yaml
 // 		yamllint	(yamllint -f parsable) A linter for YAML files - https://github.com/adrienverge/yamllint
+// 	lua
+// 		luacheck	(luacheck --format=plain) Lua linter and static analyzer - https://github.com/luarocks/luacheck
 package fmts
