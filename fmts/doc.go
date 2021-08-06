@@ -6,7 +6,7 @@
 // Package fmts holds defined errorformats.
 //
 // Defined formats:
-//
+// 
 // 	ansible
 // 		ansible-lint	(ansible-lint -p playbook.yml) Checks playbooks for practices and behaviour that could potentially be improved - https://github.com/ansible/ansible-lint
 // 	csharp
@@ -31,6 +31,8 @@
 // 		eslint	(eslint [-f stylish]) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 		eslint-compact	(eslint -f compact) A fully pluggable tool for identifying and reporting on patterns in JavaScript - https://github.com/eslint/eslint
 // 		standardjs	(standard) JavaScript style guide, linter, and formatter - https://github.com/standard/standard
+// 	lua
+// 		luacheck	(luacheck --format=plain) Lua linter and static analyzer - https://github.com/luarocks/luacheck
 // 	markdown
 // 		remark-lint	Tool for writing clean and consistent markdown code - https://github.com/remarkjs/remark-lint
 // 	php
@@ -65,6 +67,4 @@
 // 		tslint	An extensible linter for the TypeScript language - https://github.com/palantir/tslint
 // 	yaml
 // 		yamllint	(yamllint -f parsable) A linter for YAML files - https://github.com/adrienverge/yamllint
-// 	lua
-// 		luacheck	(luacheck --format=plain) Lua linter and static analyzer - https://github.com/luarocks/luacheck
 package fmts

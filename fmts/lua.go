@@ -8,7 +8,7 @@ func init() {
 		Errorformat: []string{
 			`%f:%l:%c: %m`,
 		},
-		Description: "a linter and a static analyzer for Lua",
+		Description: "(luacheck --format=plain) Lua linter and static analyzer",
 		URL:         "https://github.com/luarocks/luacheck",
 		Language:    lang,
 	})
