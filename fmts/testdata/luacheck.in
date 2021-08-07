@@ -1,0 +1,4 @@
+format.lua:5:17: trailing whitespace in a comment
+format.lua:50:121: line is too long (126 > 120)
+format.lua:78:121: line is too long (132 > 120)
+format.lua:118:1: setting non-standard global variable 'comment'
