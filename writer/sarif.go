@@ -44,11 +44,11 @@ func (s *Sarif) Write(e *errorformat.Entry) error {
 
 	// Set Level
 	switch e.Type {
-	case 'e', 'E':
+	case "e", "E", "✖":
 		result.Level = sarif.Error.Ptr()
-	case 'w', 'W':
+	case "w", "W", "⚠":
 		result.Level = sarif.Warning.Ptr()
-	case 'n', 'N', 'i', 'I': // Handle info as note.
+	case "n", "N", "i", "I": // Handle info as note.
 		result.Level = sarif.Note.Ptr()
 	}
 

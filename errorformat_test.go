@@ -267,15 +267,15 @@ nexttext:
 
 func TestEntry_Types(t *testing.T) {
 	tests := []struct {
-		t    rune
+		t    string
 		nr   int
 		want string
 	}{
-		{t: 'e', want: "error"},
-		{t: 'E', want: "error"},
-		{t: 'e', nr: 14, want: "error 14"},
-		{t: 'w', nr: 14, want: "warning 14"},
-		{t: 'i', want: "info"},
+		{t: "e", want: "error"},
+		{t: "E", want: "error"},
+		{t: "e", nr: 14, want: "error 14"},
+		{t: "w", nr: 14, want: "warning 14"},
+		{t: "i", want: "info"},
 		{nr: 14, want: "error 14"},
 	}
 	for _, tt := range tests {

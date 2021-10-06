@@ -74,7 +74,7 @@ type qffields struct {
 	useviscol bool
 	pattern   string
 	enr       int
-	etype     byte
+	etype     string
 	valid     bool
 
 	lines []string
@@ -98,8 +98,8 @@ type Entry struct {
 	Pattern string `json:"pattern"`
 	// description of the error
 	Text string `json:"text"`
-	// type of the error, 'E', '1', etc.
-	Type rune `json:"type"`
+	// type of the error, "E", "1", etc.
+	Type string `json:"type"`
 	// true: recognized error message
 	Valid bool `json:"valid"`
 
@@ -138,18 +138,18 @@ func (e *Entry) String() string {
 func (e *Entry) Types() string {
 	s := ""
 	switch e.Type {
-	case 'e', 'E':
+	case "e", "E", "✖":
 		s = "error"
-	case 0:
+	case "":
 		if e.Nr > 0 {
 			s = "error"
 		}
-	case 'w', 'W':
+	case "w", "W", "⚠":
 		s = "warning"
-	case 'i', 'I':
+	case "i", "I":
 		s = "info"
 	default:
-		s = string(e.Type)
+		s = e.Type
 	}
 	if e.Nr > 0 {
 		if s != "" {
@@ -190,7 +190,7 @@ func (s *Scanner) Scan() bool {
 			Text:     fields.errmsg,
 			Vcol:     fields.useviscol,
 			Valid:    fields.valid,
-			Type:     rune(fields.etype),
+			Type:     fields.etype,
 			Lines:    fields.lines,
 		}
 		if qfl.Filename == "" && s.qi.currfile != "" {
@@ -266,7 +266,7 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 		}
 
 		if strchar("EWI", idx) {
-			fields.etype = idx
+			fields.etype = string(idx)
 		}
 
 		if r.F != "" { // %f
@@ -278,7 +278,7 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 		fields.enr = r.N  // %n
 		fields.lnum = r.L // %l
 		fields.col = r.C  // %c
-		if r.T != 0 {
+		if r.T != "" {
 			fields.etype = r.T // %t
 		}
 		if efm.flagplus && !s.qi.multiscan { // %+
@@ -352,8 +352,8 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 				if qfprev.Nr < 1 {
 					qfprev.Nr = fields.enr
 				}
-				if fields.etype != 0 && qfprev.Type == 0 {
-					qfprev.Type = rune(fields.etype)
+				if fields.etype != "" && qfprev.Type == "" {
+					qfprev.Type = fields.etype
 				}
 				if qfprev.Filename == "" {
 					qfprev.Filename = fields.namebuf
@@ -512,7 +512,7 @@ type Match struct {
 	N int    // (%n) error number
 	L int    // (%l) line number
 	C int    // (%c) column number
-	T byte   // (%t) error type
+	T string // (%t) error type
 	M string // (%m) error message
 	R string // (%r) the "rest" of a single-line file message
 	P string // (%p) pointer line
@@ -543,7 +543,7 @@ func (efm *Efm) Match(s string) *Match {
 		case "c":
 			match.C = mustAtoI(m)
 		case "t":
-			match.T = m[0]
+			match.T = m
 		case "m":
 			match.M = m
 		case "r":
