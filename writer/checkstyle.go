@@ -37,8 +37,8 @@ func (c *CheckStyle) Write(e *errorformat.Entry) error {
 		Message:  e.Text,
 		Severity: e.Types(),
 	}
-	if e.Nr != 0 && e.Type != 0 {
-		checkerr.Source = fmt.Sprintf("%s%d", string(e.Type), e.Nr)
+	if e.Nr != 0 && e.Type != "" {
+		checkerr.Source = fmt.Sprintf("%s%d", e.Type, e.Nr)
 	}
 	c.files[e.Filename].Errors = append(c.files[e.Filename].Errors, checkerr)
 	return nil
