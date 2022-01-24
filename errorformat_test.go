@@ -233,11 +233,11 @@ README.md
 		{
 			efm: []string{
 				`%EMultilineError`,
-				`%Z%f:%l:%c`,
+				`%Z%f:%l-%e:%c-%k`,
 			},
 			in: `MultilineError
-~/.vimrc:1:2`,
-			want: []string{"~/.vimrc|1 col 2 error|"},
+~/.vimrc:1-2:3-4`,
+			want: []string{"~/.vimrc|1-2 col 3-4 error|"},
 		},
 		{ // note
 			efm: []string{
@@ -250,6 +250,16 @@ README.md
 			want: []string{
 				"/path/to/file|1 col 2 note| note msg 1",
 				"/path/to/file|1 col 2 note| note msg 2",
+			},
+		},
+		{ // end line/column
+			efm: []string{
+				`%f:%l-%e:%c-%k: %m`,
+				`%-G%.%#`,
+			},
+			in: `/path/to/file:1-2:3-4: msg`,
+			want: []string{
+				"/path/to/file|1-2 col 3-4| msg",
 			},
 		},
 	}

@@ -250,11 +250,24 @@ $ cat fmts/testdata/sbt.in | errorformat -name=sbt -w=sarif
 
 </details>
 
+### Experimental Go Version Extensions
+In addition to Vim's quickfix [errorformat](https://vim-jp.org/vimdoc-en/quickfix.html#error-file-format),
+it supports the following experimental features.
+
+Item | Description
+---- | -----------
+`%e` | end line number
+`%k` | end column number
+
+**CAUTION**: It's still **EXPERIMENTAL** features and the format can change or the feature can be removed in the future.
+I plan to send a patch to Vim with the equivalent features, and will change the
+format accordingly if it's accepted with modification.
+
 ### Use cases of 'errorformat' outside Vim
 - [reviewdog/reviewdog - A code review dog who keeps your codebase healthy](https://github.com/haya14busa/reviewdog)
 - [mattn/efm-langserver - General purpose Language Server](https://github.com/mattn/efm-langserver)
 
-## :bird: Author
+### :bird: Author
 haya14busa (https://github.com/haya14busa)
 
 <!-- From https://github.com/zchee/template -->

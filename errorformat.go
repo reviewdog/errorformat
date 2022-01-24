@@ -71,6 +71,8 @@ type qffields struct {
 	errmsg    string
 	lnum      int
 	col       int
+	endlnum   int
+	endcol    int
 	useviscol bool
 	pattern   string
 	enr       int
@@ -87,8 +89,12 @@ type Entry struct {
 	Filename string `json:"filename"`
 	// line number
 	Lnum int `json:"lnum"`
+	// End of line number if the item is multiline
+	EndLnum int `json:"end_lnum"`
 	// column number (first column is 1)
 	Col int `json:"col"`
+	// End of column number if the item has range
+	EndCol int `json:"end_col"`
 	// true: "col" is visual column
 	// false: "col" is byte index
 	Vcol bool `json:"vcol"`
@@ -113,23 +119,34 @@ type Entry struct {
 // /path/to/file|1| message
 // /path/to/file|1 col 14| message
 // /path/to/file|1 col 14 error 8| message
-// {filename}|{lnum}[ col {col}][ {type} [{nr}]]| {text}
+// /path/to/file|1-2 col 14-28| message
+// {filename}|{lnum}[-{end_lnum}][ col {col}[-{end_col}]][ {type} [{nr}]]| {text}
 func (e *Entry) String() string {
-	s := fmt.Sprintf("%s|", e.Filename)
+	var b strings.Builder
+	b.WriteString(e.Filename)
+	b.WriteRune('|')
 	if e.Lnum > 0 {
-		s += strconv.Itoa(e.Lnum)
+		b.WriteString(strconv.Itoa(e.Lnum))
+		if e.EndLnum > 0 {
+			b.WriteString(fmt.Sprintf("-%d", e.EndLnum))
+		}
 	}
 	if e.Col > 0 {
-		s += fmt.Sprintf(" col %d", e.Col)
+		b.WriteString(fmt.Sprintf(" col %d", e.Col))
+		if e.EndCol > 0 {
+			b.WriteString(fmt.Sprintf("-%d", e.EndCol))
+		}
 	}
 	if t := e.Types(); t != "" {
-		s += " " + t
+		b.WriteRune(' ')
+		b.WriteString(t)
 	}
-	s += "|"
+	b.WriteRune('|')
 	if e.Text != "" {
-		s += " " + e.Text
+		b.WriteRune(' ')
+		b.WriteString(e.Text)
 	}
-	return s
+	return b.String()
 }
 
 // Types makes a nice message out of the error character and the error number:
@@ -186,7 +203,9 @@ func (s *Scanner) Scan() bool {
 		qfl := &Entry{
 			Filename: fields.namebuf,
 			Lnum:     fields.lnum,
+			EndLnum:  fields.endlnum,
 			Col:      fields.col,
+			EndCol:   fields.endcol,
 			Nr:       fields.enr,
 			Pattern:  fields.pattern,
 			Text:     fields.errmsg,
@@ -277,9 +296,11 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 				continue
 			}
 		}
-		fields.enr = r.N  // %n
-		fields.lnum = r.L // %l
-		fields.col = r.C  // %c
+		fields.enr = r.N     // %n
+		fields.lnum = r.L    // %l
+		fields.endlnum = r.E // %e
+		fields.col = r.C     // %c
+		fields.endcol = r.K  // %k
 		if r.T != 0 {
 			fields.etype = r.T // %t
 		}
@@ -363,8 +384,14 @@ func (s *Scanner) parseLineInternal(line string, i int) (qfstatus, *qffields) {
 				if qfprev.Lnum == 0 {
 					qfprev.Lnum = fields.lnum
 				}
+				if qfprev.EndLnum == 0 {
+					qfprev.EndLnum = fields.endlnum
+				}
 				if qfprev.Col == 0 {
 					qfprev.Col = fields.col
+				}
+				if qfprev.EndCol == 0 {
+					qfprev.EndCol = fields.endcol
 				}
 				qfprev.Vcol = fields.useviscol
 			}
@@ -415,7 +442,9 @@ var fmtpattern = map[byte]string{
 	'f': `(?P<f>(?:[[:alpha:]]:)?(?:\\ |[^ ])+?)`,
 	'n': `(?P<n>\d+)`,
 	'l': `(?P<l>\d+)`,
+	'e': `(?P<e>\d+)`,
 	'c': `(?P<c>\d+)`,
+	'k': `(?P<k>\d+)`,
 	't': `(?P<t>.)`,
 	'm': `(?P<m>.+)`,
 	'r': `(?P<r>.*)`,
@@ -520,6 +549,10 @@ type Match struct {
 	P string // (%p) pointer line
 	V int    // (%v) virtual column number
 	S string // (%s) search text
+
+	// Extensions
+	E int // (%e) end line number
+	K int // (%k) end column number
 }
 
 // Match returns match against given string.
@@ -542,8 +575,12 @@ func (efm *Efm) Match(s string) *Match {
 			match.N = mustAtoI(m)
 		case "l":
 			match.L = mustAtoI(m)
+		case "e":
+			match.E = mustAtoI(m)
 		case "c":
 			match.C = mustAtoI(m)
+		case "k":
+			match.K = mustAtoI(m)
 		case "t":
 			match.T = m[0]
 		case "m":

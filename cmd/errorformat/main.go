@@ -54,9 +54,16 @@ syntax of package template.  The default output is equivalent to -f
 		// true: recognized error message
 		Valid bool
 
+		// -- Extensions (Go version only) --
+
 		// Original error lines (often one line. more than one line for multi-line
 		// errorformat. :h errorformat-multi-line)
 		Lines []string
+
+		// [experimental] End of line number if the item is multiline
+		EndLnum int
+		// [experimental] End of column number if the item has range
+		EndCol int
 	}
 `
 
