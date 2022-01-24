@@ -239,6 +239,19 @@ README.md
 ~/.vimrc:1:2`,
 			want: []string{"~/.vimrc|1 col 2 error|"},
 		},
+		{ // note
+			efm: []string{
+				`[%tote]%f:%l:%c: %m`,
+				`%-G%.%#`,
+			},
+			in: `
+[note]/path/to/file:1:2: note msg 1
+[Note]/path/to/file:1:2: note msg 2`,
+			want: []string{
+				"/path/to/file|1 col 2 note| note msg 1",
+				"/path/to/file|1 col 2 note| note msg 2",
+			},
+		},
 	}
 nexttext:
 	for _, tt := range tests {
@@ -276,6 +289,7 @@ func TestEntry_Types(t *testing.T) {
 		{t: 'e', nr: 14, want: "error 14"},
 		{t: 'w', nr: 14, want: "warning 14"},
 		{t: 'i', want: "info"},
+		{t: 'n', want: "note"},
 		{nr: 14, want: "error 14"},
 	}
 	for _, tt := range tests {

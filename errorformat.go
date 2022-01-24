@@ -148,6 +148,8 @@ func (e *Entry) Types() string {
 		s = "warning"
 	case 'i', 'I':
 		s = "info"
+	case 'n', 'N':
+		s = "note"
 	default:
 		s = string(e.Type)
 	}
