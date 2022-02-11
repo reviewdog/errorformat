@@ -38,8 +38,12 @@ syntax of package template.  The default output is equivalent to -f
 		Filename string
 		// line number
 		Lnum int
+		// End of line number if the item is multiline
+		EndLnum int
 		// column number (first column is 1)
 		Col int
+		// End of column number if the item has range
+		EndCol int
 		// true: "col" is visual column
 		// false: "col" is byte index
 		Vcol bool
@@ -59,11 +63,6 @@ syntax of package template.  The default output is equivalent to -f
 		// Original error lines (often one line. more than one line for multi-line
 		// errorformat. :h errorformat-multi-line)
 		Lines []string
-
-		// [experimental] End of line number if the item is multiline
-		EndLnum int
-		// [experimental] End of column number if the item has range
-		EndCol int
 	}
 `
 
