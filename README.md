@@ -254,7 +254,7 @@ $ cat fmts/testdata/sbt.in | errorformat -name=sbt -w=sarif
 - [reviewdog/reviewdog - A code review dog who keeps your codebase healthy](https://github.com/haya14busa/reviewdog)
 - [mattn/efm-langserver - General purpose Language Server](https://github.com/mattn/efm-langserver)
 
-## :bird: Author
+### :bird: Author
 haya14busa (https://github.com/haya14busa)
 
 <!-- From https://github.com/zchee/template -->

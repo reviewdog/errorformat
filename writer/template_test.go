@@ -12,7 +12,7 @@ func ExampleTemplate_string() {
 		w.Write(e)
 	}
 	// Output:
-	// path/to/file1|1 col 14 warning| hello
+	// path/to/file1|1-2 col 14-15 warning| hello
 	// path/to/file1|2 col 14 info| vim
 	// file2|2 col 14 error 1| emacs
 	// file2|14 col 1 error 14| neovim

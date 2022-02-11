@@ -65,10 +65,16 @@ func (s *Sarif) Write(e *errorformat.Entry) error {
 	if e.Lnum != 0 {
 		loc.Region.StartLine = sarif.Int64(int64(e.Lnum))
 	}
+	if e.EndLnum != 0 {
+		loc.Region.EndLine = sarif.Int64(int64(e.EndLnum))
+	}
 	if e.Col != 0 {
 		// Errorformat.Col is not usually unicodeCodePoints, but let's just keep it
 		// as is...
 		loc.Region.StartColumn = sarif.Int64(int64(e.Col))
+	}
+	if e.EndCol != 0 {
+		loc.Region.EndColumn = sarif.Int64(int64(e.EndCol))
 	}
 	if e.Filename != "" {
 		uri := e.Filename

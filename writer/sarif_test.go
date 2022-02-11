@@ -24,6 +24,8 @@ func ExampleSarif() {
 	//                   "uriBaseId": "%SRCROOT%"
 	//                 },
 	//                 "region": {
+	//                   "endColumn": 15,
+	//                   "endLine": 2,
 	//                   "startColumn": 14,
 	//                   "startLine": 1
 	//                 }
