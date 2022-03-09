@@ -49,4 +49,17 @@ func init() {
 		URL:         "https://github.com/PyCQA/isort",
 		Language:    lang,
 	})
+
+	register(&Fmt{
+		Name: "mypy",
+		Errorformat: []string{
+		    `%f:%l: %trror: %m`,
+            `%f:%l: %tarning: %m`,
+            `%f:%l: %tnfo: %m`,
+            `%f:%l: %tote: %m`,
+		},
+		Description: "An optional static type checker for Python",
+		URL:         "http://mypy-lang.org/",
+		Language:    lang,
+	})
 }
