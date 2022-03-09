@@ -44,6 +44,7 @@
 // 		black	A uncompromising Python code formatter - https://github.com/psf/black
 // 		flake8	Tool for python style guide enforcement - https://flake8.pycqa.org/
 // 		isort	A Python utility / library to sort Python imports - https://github.com/PyCQA/isort
+// 		mypy	An optional static type checker for Python - http://mypy-lang.org/
 // 		pep8	Python style guide checker - https://pypi.python.org/pypi/pep8
 // 	ruby
 // 		brakeman	(brakeman --quiet --format tabs) A static analysis security vulnerability scanner for Ruby on Rails applications - https://github.com/presidentbeef/brakeman
