@@ -1,0 +1,4 @@
+/path/to/my/file.py:123: error: Error message!
+/path/to/another/file.py:234: warning: Warning message with $ characters!
+/path/to/third/file.py:1: info: Only nice to have
+file.py:99999: note: A very long and elaborate error message with ! lot $ of % special characters äöüß...
