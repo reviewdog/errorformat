@@ -1,0 +1,3 @@
+[protolint.new.proto:1:1] File name should be lower_snake_case.proto.
+[protolint.new.proto:11:5] Found an incorrect indentation style "    ". "  " is correct.
+[protolint.new.proto:12:5] Found an incorrect indentation style "    ". "  " is correct.
