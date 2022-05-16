@@ -53,13 +53,24 @@ func init() {
 	register(&Fmt{
 		Name: "mypy",
 		Errorformat: []string{
-		    `%f:%l: %trror: %m`,
-            `%f:%l: %tarning: %m`,
-            `%f:%l: %tnfo: %m`,
-            `%f:%l: %tote: %m`,
+			`%f:%l: %trror: %m`,
+			`%f:%l: %tarning: %m`,
+			`%f:%l: %tnfo: %m`,
+			`%f:%l: %tote: %m`,
 		},
 		Description: "An optional static type checker for Python",
 		URL:         "http://mypy-lang.org/",
+		Language:    lang,
+	})
+
+	register(&Fmt{
+		Name: "pydocstyle",
+		Errorformat: []string{
+			`%A%f:%l in %r`,
+			`%C%\s%+%m`,
+		},
+		Description: "A static analysis tool for checking compliance with Python docstring conventions",
+		URL:         "https://github.com/PyCQA/pydocstyle",
 		Language:    lang,
 	})
 }
