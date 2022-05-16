@@ -48,6 +48,7 @@
 // 		isort	A Python utility / library to sort Python imports - https://github.com/PyCQA/isort
 // 		mypy	An optional static type checker for Python - http://mypy-lang.org/
 // 		pep8	Python style guide checker - https://pypi.python.org/pypi/pep8
+// 		pydocstyle	A static analysis tool for checking compliance with Python docstring conventions - https://github.com/PyCQA/pydocstyle
 // 	ruby
 // 		brakeman	(brakeman --quiet --format tabs) A static analysis security vulnerability scanner for Ruby on Rails applications - https://github.com/presidentbeef/brakeman
 // 		fasterer	Speed improvements suggester - https://github.com/DamirSvrtan/fasterer
