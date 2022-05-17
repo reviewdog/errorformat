@@ -1,0 +1,44 @@
+|| ************* Module torch.nn.functional
+pytorch/torch/nn/functional.py|874 col 4| W0622: Redefining built-in 'input' (redefined-builtin)
+pytorch/torch/nn/functional.py|878 col 4| C0200: Consider using enumerate instead of iterating with range and len (consider-using-enumerate)
+pytorch/torch/nn/functional.py|878 col 8| C0103: Variable name "d" doesn't conform to snake_case naming style (invalid-name)
+pytorch/torch/nn/functional.py|887 col 16| C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+pytorch/torch/nn/functional.py|892 col 12| C0103: Variable name "d" doesn't conform to snake_case naming style (invalid-name)
+pytorch/torch/nn/functional.py|897 col 20| C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+pytorch/torch/nn/functional.py|907 col 4| W0622: Redefining built-in 'input' (redefined-builtin)
+pytorch/torch/nn/functional.py|906| R0913: Too many arguments (6/5) (too-many-arguments)
+pytorch/torch/nn/functional.py|939 col 11| I1101: Module 'torch._C' has no '_nn' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+pytorch/torch/nn/functional.py|939 col 11| W0212: Access to a protected member _nn of a client class (protected-access)
+pytorch/torch/nn/functional.py|939 col 11| W0212: Access to a protected member _C of a client class (protected-access)
+pytorch/torch/nn/functional.py|943 col 4| W0622: Redefining built-in 'input' (redefined-builtin)
+pytorch/torch/nn/functional.py|942| R0913: Too many arguments (6/5) (too-many-arguments)
+pytorch/torch/nn/functional.py|971 col 11| I1101: Module 'torch._C' has no '_nn' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+pytorch/torch/nn/functional.py|971 col 11| W0212: Access to a protected member _nn of a client class (protected-access)
+pytorch/torch/nn/functional.py|971 col 11| W0212: Access to a protected member _C of a client class (protected-access)
+pytorch/torch/nn/functional.py|975 col 4| W0622: Redefining built-in 'input' (redefined-builtin)
+pytorch/torch/nn/functional.py|974| R0913: Too many arguments (6/5) (too-many-arguments)
+pytorch/torch/nn/modules/fold.py|1| R0801: Similar lines in 2 files
+|| ==torch.nn.intrinsic.qat.modules.conv_fused:[53:75]
+|| ==torch.nn.intrinsic.qat.modules.linear_fused:[44:66]
+||         else:
+||             self.register_parameter('bias', None)
+||         self.reset_bn_parameters()
+||
+||         # this needs to be called after reset_bn_parameters,
+||         # as they modify the same state
+||         if self.training:
+||             if freeze_bn:
+||                 self.freeze_bn_stats()
+||             else:
+||                 self.update_bn_stats()
+||         else:
+||             self.freeze_bn_stats()
+||
+||     def reset_running_stats(self):
+||         self.bn.reset_running_stats()
+||
+||     def reset_bn_parameters(self):
+||         self.bn.reset_running_stats()
+||         init.uniform_(self.bn.weight)
+||         init.zeros_(self.bn.bias)
+||         # note: below is actully for conv, not BN (duplicate-code)
