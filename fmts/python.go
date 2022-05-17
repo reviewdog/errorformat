@@ -73,11 +73,11 @@ func init() {
 		URL:         "https://github.com/PyCQA/pydocstyle",
 		Language:    lang,
 	})
-	
+
 	register(&Fmt{
 		Name: "pylint",
 		Errorformat: []string{
-			`%f:%l:%c: %t%n: %m`,
+			`%f:%l:%c: %m`,
 		},
 		Description: "Python static code analysis tool which looks for programming errors, helps enforcing a coding standard, sniffs for code smells and offers simple refactoring suggestions",
 		URL:         "https://github.com/PyCQA/pylint",
