@@ -77,7 +77,7 @@ func init() {
 	register(&Fmt{
 		Name: "pylint",
 		Errorformat: []string{
-			`%f:%l:%c: %m`,
+			`%f:%l:%c: %t%n: %m`,
 		},
 		Description: "Python static code analysis tool which looks for programming errors, helps enforcing a coding standard, sniffs for code smells and offers simple refactoring suggestions",
 		URL:         "https://github.com/PyCQA/pylint",
