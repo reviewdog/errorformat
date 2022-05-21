@@ -1,0 +1,3 @@
+Linting 1 files with 13 linters...
+application.html.erb:9:0: Indent `%>` on column 4 to match start of tag.
+application.html.erb:4:6: Use 1 newline after `<%` instead of 2.

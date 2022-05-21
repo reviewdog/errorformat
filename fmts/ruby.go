@@ -14,6 +14,17 @@ func init() {
 	})
 
 	register(&Fmt{
+		Name: "erb-lint",
+		Errorformat: []string{
+			`%f:%l:%c: %m`,
+			`%-G%.%#`,
+		},
+		Description: "(erblint --format compact) Lint your ERB or HTML files",
+		URL:         "https://github.com/Shopify/erb-lint",
+		Language:    lang,
+	})
+
+	register(&Fmt{
 		Name: "fasterer",
 		Errorformat: []string{
 			`%f:%l %m`,
@@ -50,7 +61,7 @@ func init() {
 
 	register(&Fmt{
 		Name: "sorbet",
-		Errorformat:[]string{
+		Errorformat: []string{
 			`%f:%l: %m`,
 			`%-G%.%#`,
 		},

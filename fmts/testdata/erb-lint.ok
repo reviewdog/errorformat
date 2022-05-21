@@ -1,0 +1,2 @@
+application.html.erb|9| Indent `%>` on column 4 to match start of tag.
+application.html.erb|4 col 6| Use 1 newline after `<%` instead of 2.

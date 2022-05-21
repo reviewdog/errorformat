@@ -51,6 +51,7 @@
 // 		pydocstyle	A static analysis tool for checking compliance with Python docstring conventions - https://github.com/PyCQA/pydocstyle
 // 	ruby
 // 		brakeman	(brakeman --quiet --format tabs) A static analysis security vulnerability scanner for Ruby on Rails applications - https://github.com/presidentbeef/brakeman
+// 		erb-lint	(erblint --format compact) Lint your ERB or HTML files - https://github.com/Shopify/erb-lint
 // 		fasterer	Speed improvements suggester - https://github.com/DamirSvrtan/fasterer
 // 		reek	(reek --single-line) Code smell detector for Ruby - https://github.com/troessner/reek
 // 		rubocop	A Ruby static code analyzer, based on the community Ruby style guide - https://github.com/rubocop-hq/rubocop
