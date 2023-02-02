@@ -9,6 +9,9 @@
 // 
 // 	ansible
 // 		ansible-lint	(ansible-lint -p playbook.yml) Checks playbooks for practices and behaviour that could potentially be improved - https://github.com/ansible/ansible-lint
+// 	common
+// 		misspell	Correct commonly misspelled English words in source files - https://github.com/client9/misspell
+// 		typos	Source code spell checker - https://github.com/crate-ci/typos
 // 	csharp
 // 		dotnet	(dotnet build -clp:NoSummary -p:GenerateFullPaths=true --no-incremental --nologo -v q) .NET Core CLI - https://docs.microsoft.com/en-us/dotnet/core/tools/
 // 		msbuild	(msbuild /property:GenerateFullPaths=true /nologo /v:q) Microsoft Build Engine - https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild

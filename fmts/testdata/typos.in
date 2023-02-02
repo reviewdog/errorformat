@@ -1,0 +1,6 @@
+error: `zeebra` should be `zebra`
+  --> fmts/testdata/typos.in:1:1
+  |
+1 | zeebra
+  | ^^^^^^
+  |
