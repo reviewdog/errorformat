@@ -42,6 +42,7 @@
 // 		phpstan	(phpstan --error-format=raw) PHP Static Analysis Tool - discover bugs in your code without running it! - https://github.com/phpstan/phpstan
 // 		psalm	(psalm --output-format=text) Psalm is a static analysis tool for finding errors in PHP - https://github.com/vimeo/psalm
 // 	protocolbuffer
+// 		buf	A new way of working with Protocol Buffers. - https://github.com/bufbuild/buf
 // 		protolint	A pluggable linting utility for Protocol Buffer files - https://github.com/yoheimuta/protolint
 // 	puppet
 // 		puppet-lint	Check that your Puppet manifests conform to the style guide - https://github.com/rodjek/puppet-lint
