@@ -66,7 +66,7 @@ func init() {
 	register(&Fmt{
 		Name: "pydocstyle",
 		Errorformat: []string{
-			`%A%f:%l in %r`,
+			`%A%f:%l%r`,
 			`%C%\s%+%m`,
 		},
 		Description: "A static analysis tool for checking compliance with Python docstring conventions",

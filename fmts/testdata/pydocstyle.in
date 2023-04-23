@@ -1,3 +1,5 @@
+test.py:1 at module level:
+        D100: Missing docstring in public module
 test.py:18 in private nested class `meta`:
         D101: Docstring missing
 test.py:27 in public function `get_user`:
