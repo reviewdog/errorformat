@@ -73,4 +73,19 @@ func init() {
 		URL:         "https://github.com/PyCQA/pydocstyle",
 		Language:    lang,
 	})
+	register(&Fmt{
+		Name: "bandit",
+		Errorformat: []string{
+			`%E>>\ Issue:\ %m`,
+			`%C%sCWE:%m`,
+			`%C%sMore\ Info:%m`,
+			`%C%sLocation:\ %f:%l:%e`,
+			`%Z--------------------------------------------------`,
+			`%C%#`,
+			`%-G%.%#`,
+		},
+		Description: "A tool designed to find common security issues in Python code.",
+		URL:         "https://github.com/PyCQA/bandit.git",
+		Language:    lang,
+	})
 }

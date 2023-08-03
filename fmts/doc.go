@@ -45,6 +45,7 @@
 //	puppet
 //		puppet-lint	Check that your Puppet manifests conform to the style guide - https://github.com/rodjek/puppet-lint
 //	python
+//		bandit	A tool designed to find common security issues in Python code. - https://github.com/PyCQA/bandit.git
 //		black	A uncompromising Python code formatter - https://github.com/psf/black
 //		flake8	Tool for python style guide enforcement - https://flake8.pycqa.org/
 //		isort	A Python utility / library to sort Python imports - https://github.com/PyCQA/isort
