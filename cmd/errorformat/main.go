@@ -67,7 +67,7 @@ syntax of package template.  The default output is equivalent to -f
 `
 
 func usage() {
-	fmt.Fprintln(os.Stderr, usageMessage)
+	fmt.Fprintf(os.Stderr, "%s", usageMessage)
 	fmt.Fprintln(os.Stderr, "Flags:")
 	flag.PrintDefaults()
 	os.Exit(2)
