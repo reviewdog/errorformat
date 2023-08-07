@@ -53,6 +53,7 @@
 // 		mypy	An optional static type checker for Python - http://mypy-lang.org/
 // 		pep8	Python style guide checker - https://pypi.python.org/pypi/pep8
 // 		pydocstyle	A static analysis tool for checking compliance with Python docstring conventions - https://github.com/PyCQA/pydocstyle
+// 		pylint	Python static code analysis tool which looks for programming errors, helps enforcing a coding standard, sniffs for code smells and offers simple refactoring suggestions - https://github.com/PyCQA/pylint
 // 	ruby
 // 		brakeman	(brakeman --quiet --format tabs) A static analysis security vulnerability scanner for Ruby on Rails applications - https://github.com/presidentbeef/brakeman
 // 		erb-lint	(erblint --format compact) Lint your ERB or HTML files - https://github.com/Shopify/erb-lint
