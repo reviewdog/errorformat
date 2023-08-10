@@ -57,7 +57,7 @@ func init() {
 	})
 
 	register(&Fmt{
-		Name:        "staticcheck",
+		Name: "staticcheck",
 		Errorformat: []string{
 			"%f:%l:%c: %m",
 		},
