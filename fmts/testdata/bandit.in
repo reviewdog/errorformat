@@ -1,0 +1,4 @@
+/workspaces/errorformat/test.py:1: B404[bandit]: LOW: Consider possible security implications associated with the subprocess module.
+/workspaces/errorformat/test.py:5: B105[bandit]: LOW: Possible hardcoded password: 'aaa'
+/workspaces/errorformat/test.py:8: B307[bandit]: MEDIUM: Use of possibly insecure function - consider using safer ast.literal_eval.
+/workspaces/errorformat/test.py:11: B304[bandit]: HIGH: Use of insecure cipher Crypto.Cipher.XOR.new. Replace with a known secure cipher such as AES.

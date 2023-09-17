@@ -1,0 +1,4 @@
+/workspaces/errorformat/test.py|1 L 404| Consider possible security implications associated with the subprocess module.
+/workspaces/errorformat/test.py|5 L 105| Possible hardcoded password: 'aaa'
+/workspaces/errorformat/test.py|8 M 307| Use of possibly insecure function - consider using safer ast.literal_eval.
+/workspaces/errorformat/test.py|11 H 304| Use of insecure cipher Crypto.Cipher.XOR.new. Replace with a known secure cipher such as AES.
