@@ -1,12 +1,4 @@
-test.py|1 error| [B404:blacklist] Consider possible security implications associated with the subprocess module.
- CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
- https://bandit.readthedocs.io/en/1.7.6.dev20/blacklists/blacklist_imports.html#b404-import-subprocess
-test.py|5-16 error| [B105:hardcoded_password_string] Possible hardcoded password: 'aaa'
- CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
- https://bandit.readthedocs.io/en/1.7.6.dev20/plugins/b105_hardcoded_password_string.html
-test.py|8-6 error| [B307:blacklist] Use of possibly insecure function - consider using safer ast.literal_eval.
- CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
- https://bandit.readthedocs.io/en/1.7.6.dev20/blacklists/blacklist_calls.html#b307-eval
-test.py|11-6 error| [B304:blacklist] Use of insecure cipher Crypto.Cipher.XOR.new. Replace with a known secure cipher such as AES.
- CWE-327 (https://cwe.mitre.org/data/definitions/327.html)
- https://bandit.readthedocs.io/en/1.7.6.dev20/blacklists/blacklist_calls.html#b304-b305-ciphers-and-modes
+/workspaces/errorformat/test.py|1 L 404| Consider possible security implications associated with the subprocess module.
+/workspaces/errorformat/test.py|5 L 105| Possible hardcoded password: 'aaa'
+/workspaces/errorformat/test.py|8 M 307| Use of possibly insecure function - consider using safer ast.literal_eval.
+/workspaces/errorformat/test.py|11 H 304| Use of insecure cipher Crypto.Cipher.XOR.new. Replace with a known secure cipher such as AES.

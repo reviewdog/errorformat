@@ -76,13 +76,9 @@ func init() {
 	register(&Fmt{
 		Name: "bandit",
 		Errorformat: []string{
-			`%E>>\ Issue:\ %m`,
-			`%C%sCWE:%m`,
-			`%C%sMore\ Info:%m`,
-			`%C%sLocation:\ %f:%l:%e`,
-			`%Z--------------------------------------------------`,
-			`%C%#`,
-			`%-G%.%#`,
+			`%f:%l: B%n[bandit]: %tIGH: %m`,
+			`%f:%l: B%n[bandit]: %tEDIUM: %m`,
+			`%f:%l: B%n[bandit]: %tOW: %m`,
 		},
 		Description: "A tool designed to find common security issues in Python code.",
 		URL:         "https://github.com/PyCQA/bandit.git",
