@@ -16,6 +16,7 @@ func init() {
 	register(&Fmt{
 		Name: "govet",
 		Errorformat: []string{
+			`%f:%l:%c: %m`,
 			`%f:%l: %m`,
 			`%-G%.%#`,
 		},

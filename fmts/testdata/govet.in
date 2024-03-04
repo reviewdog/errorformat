@@ -3,4 +3,5 @@ buildtag.go:12: +build comment must appear before package clause and be followed
 assign.go:15: self-assignment of x to x
 assign.go:17: self-assignment of s.x to s.x
 atomic.go:17: direct assignment to atomic value
+./main.go:7:2: fmt.Printf format %s has arg x of wrong type int
 exit status 1
