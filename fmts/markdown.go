@@ -7,8 +7,8 @@ func init() {
 		Name: "remark-lint",
 		Errorformat: []string{
 			`%-P%f`,
-			`%#%l:%c %# %trror  %m`,
-			`%#%l:%c %# %tarning  %m`,
+			`%#%l:%c %# %trror %m`,
+			`%#%l:%c %# %tarning %m`,
 			`%-Q`,
 			`%-G%.%#`,
 		},
