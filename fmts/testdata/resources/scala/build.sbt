@@ -1,4 +1,4 @@
-scalaVersion := "2.13.12"
+scalaVersion := "3.8.4"
 
 scalacOptions ++= Seq(
   "-Ywarn-unused"
