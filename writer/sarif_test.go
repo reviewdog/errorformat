@@ -10,7 +10,7 @@ func ExampleSarif() {
 	w.Flush()
 	// Output:
 	// {
-	//   "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.4",
+	//   "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
 	//   "runs": [
 	//     {
 	//       "results": [
