@@ -9,3 +9,4 @@ jobs:
       - uses: reviewdog/action-golangci-lint@v2.10.2
         with:
           github_token: ${{ secrets.github_token }}
+          golangci_lint_version: v2.15.0
