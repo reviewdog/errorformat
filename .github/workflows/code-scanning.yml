@@ -13,7 +13,7 @@ jobs:
       - name: Install golangci-lint
         uses: golangci/golangci-lint-action@v9.3.0
         with:
-          version: latest
+          version: v2.15
           install-only: true
       - run: golangci-lint run --output.text.path=stdout --output.text.print-issued-lines=false --show-stats=false | errorformat -name=golangci-lint -w=sarif > results.sarif
       - name: Upload SARIF file
