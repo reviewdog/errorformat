@@ -6,7 +6,7 @@ workflows:
     '.github/workflows/code-scanning.yml':
         - 'actions/checkout@v7.0.1'
         - 'actions/setup-go@v7.0.0'
-        - 'github/codeql-action@5f8171a638ada777af81d42b55959a643bb29017'
+        - 'github/codeql-action@v3.28.12'
         - 'golangci/golangci-lint-action@v9.3.0'
     '.github/workflows/reviewdog.yml':
         - 'actions/checkout@v7.0.1'
@@ -38,8 +38,8 @@ dependencies:
         repo_id: 200299178
         uses:
             - 'actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd'
-    'github/codeql-action@5f8171a638ada777af81d42b55959a643bb29017':
-        ref: 'main'
+    'github/codeql-action@v3.28.12':
+        ref: 'v3.28.12'
         commit: 'sha1-5f8171a638ada777af81d42b55959a643bb29017'
         owner_id: 9919
         repo_id: 259445878
