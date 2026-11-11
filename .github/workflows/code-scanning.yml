@@ -17,6 +17,6 @@ jobs:
           install-only: true
       - run: golangci-lint run --output.text.path=stdout --output.text.print-issued-lines=false --show-stats=false | errorformat -name=golangci-lint -w=sarif > results.sarif
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3.28.12
+        uses: github/codeql-action/upload-sarif@v4.39.3
         with:
           sarif_file: results.sarif
