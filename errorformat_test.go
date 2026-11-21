@@ -1,6 +1,8 @@
 package errorformat
 
 import (
+	"bufio"
+	"errors"
 	"reflect"
 	"strings"
 	"testing"
@@ -285,7 +287,86 @@ nexttext:
 			}
 			i++
 		}
+		if err := s.Err(); err != nil {
+			t.Errorf("%v: unexpected error: %v", strings.Join(tt.efm, ","), err)
+		}
 	}
+}
+
+// longLineInput returns an input whose second line is longer than
+// bufio.MaxScanTokenSize.
+func longLineInput(msgLen int) string {
+	return "a.go:1:2: short\n" +
+		"b.go:3:4: " + strings.Repeat("x", msgLen) + "\n" +
+		"c.go:5:6: after\n"
+}
+
+func TestScanner_Err_TooLong(t *testing.T) {
+	defer func(save func(string) bool) { fileexists = save }(fileexists)
+	fileexists = func(string) bool { return true }
+
+	efm, err := NewErrorformat([]string{`%f:%l:%c: %m`})
+	if err != nil {
+		t.Fatal(err)
+	}
+	s := efm.NewScanner(strings.NewReader(longLineInput(bufio.MaxScanTokenSize)))
+	var got []string
+	for s.Scan() {
+		got = append(got, s.Entry().Filename)
+	}
+	if want := []string{"a.go"}; !reflect.DeepEqual(got, want) {
+		t.Errorf("got entries %v, want %v", got, want)
+	}
+	if err := s.Err(); !errors.Is(err, bufio.ErrTooLong) {
+		t.Errorf("Err() = %v, want %v", err, bufio.ErrTooLong)
+	}
+}
+
+func TestScanner_Buffer(t *testing.T) {
+	defer func(save func(string) bool) { fileexists = save }(fileexists)
+	fileexists = func(string) bool { return true }
+
+	efm, err := NewErrorformat([]string{`%f:%l:%c: %m`})
+	if err != nil {
+		t.Fatal(err)
+	}
+	msgLen := bufio.MaxScanTokenSize
+	s := efm.NewScanner(strings.NewReader(longLineInput(msgLen)))
+	s.Buffer(nil, 1024*1024)
+	var got []*Entry
+	for s.Scan() {
+		got = append(got, s.Entry())
+	}
+	if err := s.Err(); err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if len(got) != 3 {
+		t.Fatalf("got %d entries, want 3", len(got))
+	}
+	for i, want := range []string{"a.go", "b.go", "c.go"} {
+		if got[i].Filename != want {
+			t.Errorf("entry %d: got filename %q, want %q", i, got[i].Filename, want)
+		}
+	}
+	if e := got[1]; e.Lnum != 3 || e.Col != 4 || len(e.Text) != msgLen {
+		t.Errorf("long entry: got lnum=%d col=%d len(text)=%d, want lnum=3 col=4 len(text)=%d",
+			e.Lnum, e.Col, len(e.Text), msgLen)
+	}
+}
+
+func TestScanner_Buffer_PanicsAfterScan(t *testing.T) {
+	efm, err := NewErrorformat([]string{`%f:%l:%c: %m`})
+	if err != nil {
+		t.Fatal(err)
+	}
+	s := efm.NewScanner(strings.NewReader("a.go:1:2: msg\n"))
+	s.Scan()
+	defer func() {
+		if recover() == nil {
+			t.Error("Buffer did not panic after Scan")
+		}
+	}()
+	s.Buffer(nil, 1024*1024)
 }
 
 func TestEntry_Types(t *testing.T) {
