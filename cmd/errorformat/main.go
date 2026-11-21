@@ -163,5 +163,5 @@ func run(r io.Reader, w io.Writer, efms []string, opt option, sarifOpt writer.Sa
 			return err
 		}
 	}
-	return nil
+	return s.Err()
 }
