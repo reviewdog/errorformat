@@ -173,7 +173,7 @@ It supports [SARIF](https://sarifweb.azurewebsites.net/) (Static Analysis Result
 ```shell
 $ cat fmts/testdata/sbt.in | errorformat -name=sbt -w=sarif
 {
-  "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.4",
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
   "runs": [
     {
       "results": [
